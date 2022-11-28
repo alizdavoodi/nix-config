@@ -63,19 +63,85 @@ require('lspconfig')['yamlls'].setup {
   capabilities = capabilities;
   settings = {
     yaml = {
-      format = {
-        enable = true,
-        singleQuote = true
-      },
       schemas = {
-        -- ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/master-standalone-strict/all.json"] = "/*",
-        -- ["https://json.schemastore.org/chart.json"] = "/*",
-        -- ["https://raw.githubusercontent.com/vscode-kubernetes-tools/vscode-kubernetes-tools/master/syntaxes/helm.tmLanguage.json"] = "/*",
+        --   ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/master-standalone-strict/all.json"] = "/*",
+        --   ["https://json.schemastore.org/chart.json"] = "/*",
+        --  ["https://raw.githubusercontent.com/vscode-kubernetes-tools/vscode-kubernetes-tools/master/syntaxes/helm.tmLanguage.json"] = "/chart/*",
         ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "/.gitlab-ci.*",
+        ["https://raw.githubusercontent.com/awslabs/goformation/master/schema/cloudformation.schema.json"] = "/cloudformation/*"
       },
       customTags = {
         "!reference sequence";
+        "!And scalar",
+        "!And mapping",
+        "!And sequence",
+        "!If scalar",
+        "!If mapping",
+        "!If sequence",
+        "!Not scalar",
+        "!Not mapping",
+        "!Not sequence",
+        "!Equals scalar",
+        "!Equals mapping",
+        "!Equals sequence",
+        "!Or scalar",
+        "!Or mapping",
+        "!Or sequence",
+        "!FindInMap scalar",
+        "!FindInMap mappping",
+        "!FindInMap sequence",
+        "!Base64 scalar",
+        "!Base64 mapping",
+        "!Base64 sequence",
+        "!Cidr scalar",
+        "!Cidr mapping",
+        "!Cidr sequence",
+        "!Ref scalar",
+        "!Ref mapping",
+        "!Ref sequence",
+        "!Sub scalar",
+        "!Sub mapping",
+        "!Sub sequence",
+        "!GetAtt scalar",
+        "!GetAtt mapping",
+        "!GetAtt sequence",
+        "!GetAZs scalar",
+        "!GetAZs mapping",
+        "!GetAZs sequence",
+        "!ImportValue scalar",
+        "!ImportValue mapping",
+        "!ImportValue sequence",
+        "!Select scalar",
+        "!Select mapping",
+        "!Select sequence",
+        "!Split scalar",
+        "!Split mapping",
+        "!Split sequence",
+        "!Join scalar",
+        "!Join mapping",
+        "!Join sequence"
       }
+    }
+  }
+}
+
+
+require('lspconfig')['ansiblels'].setup {
+  on_attach = on_attach;
+  capabilities = capabilities;
+  settings = {
+    ansible = {
+      path = "ansible"
+    },
+    ansibleLint = {
+      enabled = true,
+      path = "ansible-lint"
+    },
+    executionEnvironment = {
+      enabled = false
+    },
+    python = {
+      interpreterPath = "python"
     }
   }
 }
@@ -104,3 +170,6 @@ require 'lspconfig'.sumneko_lua.setup {
     },
   },
 }
+
+require 'lspconfig'.terraformls.setup {}
+require 'lspconfig'.tflint.setup {}

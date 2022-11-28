@@ -5,8 +5,8 @@ let
          url = "https://github.com/NixOS/nixpkgs/";
          ref = "refs/heads/nixpkgs-unstable";
          rev = "6d02a514db95d3179f001a5a204595f17b89cb32";
-     }) {};
-
+       }) {};
+     extraNodePackages = import ./node/default.nix {};
      kubectl122 = kubectlPkgs.kubectl;
 in
 {
@@ -22,16 +22,23 @@ in
     pinentry
     awscli2
     delta
+    ansible
     tmux
+    python
     fzf
     powerline-fonts
     ghq
     nerdfonts
     kubectx
     kubernetes-helm
+    ansible-lint
+    tflint
+    terraform-ls
     sumneko-lua-language-server
     nodePackages.yaml-language-server
     nodePackages.prettier
+    
+    extraNodePackages."@ansible/ansible-language-server"
   ];
 
   # This value determines the Home Manager release that your
@@ -75,6 +82,7 @@ in
      vim-helm
      nvim-cmp
      cmp-nvim-lsp
+     cmp-rg
      nvim-lspconfig
      luasnip
      vim-lua
@@ -82,9 +90,13 @@ in
      cmp-buffer
      fidget-nvim
      vim-sleuth
+     ansible-vim
      fzf-vim
      nvim-web-devicons
      plenary-nvim
+     vim-fugitive
+     vim-rhubarb
+     gitsigns-nvim
      neoformat
      (nvim-treesitter.withPlugins (plugins: with plugins; [
       tree-sitter-bash
@@ -142,6 +154,7 @@ in
 
      # UI #####
      gruvbox
+     everforest 
      vim-airline
      vim-airline-themes
    ];
@@ -177,14 +190,18 @@ in
     else
       set background=dark
     endif
-    colorscheme gruvbox
+    colorscheme everforest
+    " Set contrast.
+    " This configuration option should be placed before `colorscheme everforest`.
+    " Available values: 'hard', 'medium'(default), 'soft'
+    let g:everforest_background = 'soft'
 
     " load the plugin and indent settings for the detected filetype
     filetype plugin indent on
     " }}}
 
     " LightLine {{{
-    let g:airline_theme='gruvbox'
+    let g:airline_theme='everforest'
     let g:airline_powerline_fonts = 1
     " }}}
 
@@ -225,7 +242,17 @@ in
       -- Set completeopt to have a better completion experience
       vim.o.completeopt = 'menuone,noselect'
       vim.opt.termguicolors = true
-
+      -- Gitsigns
+      -- See `:help gitsigns.txt`
+      require('gitsigns').setup {
+        signs = {
+          add = { text = '+' },
+          change = { text = '~' },
+          delete = { text = '_' },
+          topdelete = { text = '‾' },
+          changedelete = { text = '~' },
+        },
+      }
       
       -- Turn on status information
       require('fidget').setup()
@@ -272,6 +299,7 @@ in
           { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
+          { name = 'rg' },
         },
       }
     EOF
