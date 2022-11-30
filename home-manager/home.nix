@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, lib, config, pkgs, ... }:
 let
      kubectlPkgs = import (builtins.fetchGit {
          name = "kubectl-1-22";
@@ -12,13 +12,17 @@ in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "davoodi";
-  home.homeDirectory = "/Users/davoodi";
+  home.username = "alizdavoodi";
+  home.homeDirectory = "/home/alizdavoodi";
+
+  # Nicely reload system units when changing configs
+  #systemd.user.startServices = "sd-switch";
 
   home.packages = with pkgs; [
     du-dust
     ripgrep
-    kubectl122
+    kubectl
+    xdg-utils
     pinentry
     awscli2
     delta
@@ -51,10 +55,13 @@ in
   #oh-my-zsh customs theme
   home.file.".oh-my-zsh/custom/themes/dracula.zsh-theme".source = builtins.fetchGit { 
     url = "https://github.com/dracula/zsh.git";
+    ref = "refs/tags/v1.2.5";
+    shallow = true;
+    rev = "1f53554b2a2e3b7d3f0039e095ea84c05c08f064";
   } + "/dracula.zsh-theme";
 
   #oh-my-zsh customs plugins
-  home.file.".oh-my-zsh/custom/plugins/zsh-kubectl-prompt".source =  builtins.fetchGit { url = "https://github.com/superbrothers/zsh-kubectl-prompt.git"; };
+  #home.file.".oh-my-zsh/custom/plugins/zsh-kubectl-prompt".source =  builtins.fetchGit { url = "https://github.com/superbrothers/zsh-kubectl-prompt.git"; };
 
   
   programs.broot.enable = true;
@@ -280,7 +287,7 @@ in
  };
 
  xdg.configFile.nvim = {
-  source = ./config;
+  source = ../config;
   recursive = true;
  };
 
@@ -325,7 +332,7 @@ in
     '' + builtins.readFile
       (builtins.fetchGit {
       url = "https://github.com/ahmetb/kubectl-aliases";
-      ref = "master";
+      rev = "b2ee5dbd3d03717a596d69ee3f6dc6de8b140128"; 
       } + "/.kubectl_aliases");
   };
 }
