@@ -1,4 +1,12 @@
-{ config, pkgs, ... }:
+{ config, ... }:
+
+with import <nixpkgs> {
+  overlays = [
+    (import (builtins.fetchTarball {
+      url = "https://github.com/adgai19/nixpkgs-vim-extra-plugins/archive/main.tar.gz";
+    })).overlays.default
+  ];
+};
 let
      kubectlPkgs = import (builtins.fetchGit {
          name = "kubectl-1-22";
@@ -16,6 +24,7 @@ in
   home.homeDirectory = "/Users/davoodi";
 
   home.packages = with pkgs; [
+    nixFlakes
     du-dust
     ripgrep
     kubectl122
@@ -78,8 +87,8 @@ in
    vimAlias = true;
 
    plugins = with pkgs.vimPlugins; [
+     nerdcommenter
      vim-nix
-     vim-helm
      nvim-cmp
      cmp-nvim-lsp
      cmp-rg
@@ -87,8 +96,11 @@ in
      luasnip
      vim-lua
      cmp-path
+     indent-blankline-nvim
+     sensible
      cmp-buffer
      fidget-nvim
+     #vim-tmux-navigator
      vim-sleuth
      ansible-vim
      fzf-vim
@@ -97,7 +109,10 @@ in
      vim-fugitive
      vim-rhubarb
      gitsigns-nvim
+     vim-gitgutter
      neoformat
+     #vim-surround
+     pkgs.vimExtraPlugins.nvim-ufo
      (nvim-treesitter.withPlugins (plugins: with plugins; [
       tree-sitter-bash
       tree-sitter-c
@@ -131,25 +146,50 @@ in
      telescope-project-nvim
      telescope-fzf-native-nvim
      barbar-nvim
+     vim-polyglot
      {
        plugin = nvim-tree-lua;
        type = "lua";
        config = ''
-            require("nvim-tree").setup({
-              disable_netrw = true,
-              hijack_netrw = true,
-              view = {
-                number = true,
-                relativenumber = true,
-              },
-              filters = {
-                custom = { ".git" },
-              },
-            })
+          vim.g.vim_tree_respect_buf_cwd = 1
 
-            
-            vim.keymap.set('n', '<leader>b', ':NvimTreeToggle<CR>')
-         '';
+          require("nvim-tree").setup({
+            disable_netrw = true,
+            hijack_netrw = true,
+            view = {
+              number = true,
+              relativenumber = true,
+            },
+            filters = {
+              custom = { ".git" },
+            },
+            update_focused_file = {
+              enable = true,
+              update_cwd = true,
+           },
+          })
+          
+          vim.keymap.set('n', '<leader>b', ':NvimTreeToggle<CR>')
+
+          local nvim_tree_events = require('nvim-tree.events')
+          local bufferline_api = require('bufferline.api')
+
+          local function get_tree_size()
+            return require'nvim-tree.view'.View.width
+          end
+
+          nvim_tree_events.subscribe('TreeOpen', function()
+            bufferline_api.set_offset(get_tree_size())
+          end)
+
+          nvim_tree_events.subscribe('Resize', function()
+            bufferline_api.set_offset(get_tree_size())
+          end)
+
+          nvim_tree_events.subscribe('TreeClose', function()
+            bufferline_api.set_offset(0)
+          end)
+        '';
      }
 
      # UI #####
@@ -163,7 +203,7 @@ in
     set encoding=utf-8
     set fileencoding=utf-8
     set termencoding=utf-8
-
+    
     " Whitespace handling {{{
     set nowrap
     set tabstop=2
@@ -183,6 +223,10 @@ in
     au!
     au VimEnter * doautoa Syntax,FileType
     augroup END
+
+    au BufRead,BufNewFile *.j2 set filetype=yaml
+    au BufRead,BufNewFile */ansible/*.yml,*/ansible/*.yaml set filetype=yaml.ansible
+
     " }}}
     " Syntax Highlighting {{{
     if $TERM_BG == "light"
@@ -252,6 +296,13 @@ in
           topdelete = { text = '‾' },
           changedelete = { text = '~' },
         },
+      }
+
+      -- Enable `lukas-reineke/indent-blankline.nvim`
+      -- See `:help indent_blankline.txt`
+      require('indent_blankline').setup {
+        char = '┊',
+        show_trailing_blankline_indent = false,
       }
       
       -- Turn on status information

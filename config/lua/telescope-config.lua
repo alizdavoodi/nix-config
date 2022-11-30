@@ -12,7 +12,7 @@ require('telescope').setup {
   extensions = {
     project = {
       base_dirs = {
-        '~/projects',
+        { path = '~/projects', max_depth = 6 }
       },
       sync_with_nvim_tree = true,
     },

@@ -7,7 +7,7 @@ require('nvim-treesitter.configs').setup {
   withAllGrammars = { enable = true },
   highlight = {
     enable = true,
-    disable = { "yaml" },
+   -- disable = { "yaml" },
     additional_vim_regex_highlighting = false,
   },
   --  indent = { enable = false },

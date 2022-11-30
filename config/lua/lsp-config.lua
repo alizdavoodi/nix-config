@@ -58,6 +58,26 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+require('lspconfig')['ansiblels'].setup {
+  on_attach = on_attach;
+  capabilities = capabilities;
+  settings = {
+    ansible = {
+      path = "ansible"
+    },
+    ansibleLint = {
+      enabled = true,
+      path = "ansible-lint"
+    },
+    executionEnvironment = {
+      enabled = false
+    },
+    python = {
+      interpreterPath = "python"
+    }
+  }
+}
+
 require('lspconfig')['yamlls'].setup {
   on_attach = on_attach;
   capabilities = capabilities;
@@ -125,26 +145,6 @@ require('lspconfig')['yamlls'].setup {
   }
 }
 
-
-require('lspconfig')['ansiblels'].setup {
-  on_attach = on_attach;
-  capabilities = capabilities;
-  settings = {
-    ansible = {
-      path = "ansible"
-    },
-    ansibleLint = {
-      enabled = true,
-      path = "ansible-lint"
-    },
-    executionEnvironment = {
-      enabled = false
-    },
-    python = {
-      interpreterPath = "python"
-    }
-  }
-}
 
 require 'lspconfig'.sumneko_lua.setup {
   on_attach = on_attach;
