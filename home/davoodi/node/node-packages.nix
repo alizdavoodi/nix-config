@@ -4,6 +4,15 @@
 
 let
   sources = {
+    "@ansible/ansible-language-server-1.0.2" = {
+      name = "_at_ansible_slash_ansible-language-server";
+      packageName = "@ansible/ansible-language-server";
+      version = "1.0.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-1.0.2.tgz";
+        sha512 = "z23uIaj9IAdqiB6xHYNOUSrBXJQwQjywMLhKOoejuC7AECXmqLPjYm4cMgiPG3SjO6nmSIe08nq/Qfhu2Bm5ww==";
+      };
+    };
     "@flatten-js/interval-tree-1.0.19" = {
       name = "_at_flatten-js_slash_interval-tree";
       packageName = "@flatten-js/interval-tree";
@@ -85,13 +94,13 @@ let
         sha512 = "v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==";
       };
     };
-    "minimatch-5.1.0" = {
+    "minimatch-5.1.1" = {
       name = "minimatch";
       packageName = "minimatch";
-      version = "5.1.0";
+      version = "5.1.1";
       src = fetchurl {
-        url = "https://registry.npmjs.org/minimatch/-/minimatch-5.1.0.tgz";
-        sha512 = "9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==";
+        url = "https://registry.npmjs.org/minimatch/-/minimatch-5.1.1.tgz";
+        sha512 = "362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==";
       };
     };
     "once-1.4.0" = {
@@ -185,17 +194,12 @@ let
       };
     };
   };
-in
-{
-  "@ansible/ansible-language-server" = nodeEnv.buildNodePackage {
+  args = {
     name = "_at_ansible_slash_ansible-language-server";
     packageName = "@ansible/ansible-language-server";
-    version = "1.0.2";
-    src = fetchurl {
-      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-1.0.2.tgz";
-      sha512 = "z23uIaj9IAdqiB6xHYNOUSrBXJQwQjywMLhKOoejuC7AECXmqLPjYm4cMgiPG3SjO6nmSIe08nq/Qfhu2Bm5ww==";
-    };
+    src = ./.;
     dependencies = [
+      sources."@ansible/ansible-language-server-1.0.2"
       sources."@flatten-js/interval-tree-1.0.19"
       sources."balanced-match-1.0.2"
       sources."brace-expansion-2.0.1"
@@ -205,7 +209,7 @@ in
       sources."inherits-2.0.4"
       sources."ini-3.0.1"
       sources."lodash-4.17.21"
-      sources."minimatch-5.1.0"
+      sources."minimatch-5.1.1"
       sources."once-1.4.0"
       sources."uuid-8.3.2"
       sources."vscode-jsonrpc-6.0.0"
@@ -219,12 +223,28 @@ in
     ];
     buildInputs = globalBuildInputs;
     meta = {
-      description = "Ansible language server";
-      homepage = "https://github.com/ansible/ansible-language-server#readme";
-      license = "MIT";
     };
     production = true;
     bypassCache = true;
     reconstructLock = true;
   };
+in
+{
+  args = args;
+  sources = sources;
+  tarball = nodeEnv.buildNodeSourceDist args;
+  package = nodeEnv.buildNodePackage args;
+  shell = nodeEnv.buildNodeShell args;
+  nodeDependencies = nodeEnv.buildNodeDependencies (lib.overrideExisting args {
+    src = stdenv.mkDerivation {
+      name = args.name + "-package-json";
+      src = nix-gitignore.gitignoreSourcePure [
+        "*"
+        "!package.json"
+        "!package-lock.json"
+      ] args.src;
+      dontBuild = true;
+      installPhase = "mkdir -p $out; cp -r ./* $out;";
+    };
+  });
 }
