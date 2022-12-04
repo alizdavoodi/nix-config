@@ -140,7 +140,8 @@
         "mason-nvim": "mason-nvim",
         "nixpkgs": "nixpkgs",
         "nvim-ufo": "nvim-ufo",
-        "promise-async": "promise-async"
+        "promise-async": "promise-async",
+        "yaml-companion": "yaml-companion"
       }
     },
     "utils": {
@@ -155,6 +156,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "yaml-companion": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667727779,
+        "narHash": "sha256-9c+9oxrCNFMlAsRaamsimYbrYYXHpR4APljYMsjlrzY=",
+        "owner": "someone-stole-my-name",
+        "repo": "yaml-companion.nvim",
+        "rev": "03f66e5e9c8b26a35b14593f24697f9a3bc64e48",
+        "type": "github"
+      },
+      "original": {
+        "owner": "someone-stole-my-name",
+        "repo": "yaml-companion.nvim",
         "type": "github"
       }
     }

@@ -36,6 +36,10 @@
       url = "github:williamboman/mason-lspconfig.nvim";
       flake = false;
     };
+    yaml-companion = {
+      url = "github:someone-stole-my-name/yaml-companion.nvim";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -64,6 +68,11 @@
           pname = "mason-lspconfig-nvim";
           version = "main";
           src = inputs.mason-lspconfig-nvim;
+        };
+        yaml-companion = darwin.vimUtils.buildVimPluginFrom2Nix {
+          pname = "yaml-companion";
+          version = "main";
+          src = inputs.yaml-companion;
         };
       };
 

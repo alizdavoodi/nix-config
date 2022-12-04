@@ -97,6 +97,7 @@ in
      nvimCustomPlugins.promise-async
      nvimCustomPlugins.mason-nvim
      nvimCustomPlugins.mason-lspconfig-nvim
+     nvimCustomPlugins.yaml-companion
      nerdcommenter
      vim-nix
      nvim-cmp
@@ -112,7 +113,7 @@ in
      fidget-nvim
      #vim-tmux-navigator
      vim-sleuth
-     ansible-vim
+     #ansible-vim
      fzf-vim
      nvim-web-devicons
      plenary-nvim
