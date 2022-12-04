@@ -1,4 +1,4 @@
-{  config, pkgs,  ... }:
+{  config, pkgs, ... }:
 
 let
      kubectlPkgs = import (builtins.fetchGit {
