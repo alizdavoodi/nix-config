@@ -1,4 +1,4 @@
-{  config, pkgs,  ... }:
+{  config, pkgs, system, ... }:
 
 let
      kubectlPkgs = import (builtins.fetchGit {
@@ -6,8 +6,9 @@ let
          url = "https://github.com/NixOS/nixpkgs/";
          ref = "refs/heads/nixpkgs-unstable";
          rev = "6d02a514db95d3179f001a5a204595f17b89cb32";
-       }) {};
-     extraNodePackages = import ./node/default.nix {};
+       }) {
+        inherit system;
+       };
      kubectl122 = kubectlPkgs.kubectl;
 in
 {
@@ -25,9 +26,10 @@ in
     nodejs
     dogdns
     ripgrep
-    kubectl
+    kubectl122
     xdg-utils
     pinentry
+    nil
     awscli2
     delta
     ansible
@@ -122,6 +124,7 @@ in
      gitsigns-nvim
      vim-gitgutter
      neoformat
+     nvim-neoclip-lua
      #vim-surround
      (nvim-treesitter.withPlugins (plugins: with plugins; [
       tree-sitter-bash
@@ -158,51 +161,9 @@ in
      barbar-nvim
      vim-polyglot
      nvim-hlslens
-     {
-       plugin = nvim-tree-lua;
-       type = "lua";
-       config = ''
-          vim.g.vim_tree_respect_buf_cwd = 1
+    nvim-tree-lua
 
-          require("nvim-tree").setup({
-            disable_netrw = true,
-            hijack_netrw = true,
-            view = {
-              number = true,
-              relativenumber = true,
-            },
-            filters = {
-              custom = { ".git" },
-            },
-            update_focused_file = {
-              enable = true,
-              update_cwd = true,
-           },
-          })
-          
-          vim.keymap.set('n', '<leader>b', ':NvimTreeToggle<CR>')
-
-          local nvim_tree_events = require('nvim-tree.events')
-          local bufferline_api = require('bufferline.api')
-
-          local function get_tree_size()
-            return require'nvim-tree.view'.View.width
-          end
-
-          nvim_tree_events.subscribe('TreeOpen', function()
-            bufferline_api.set_offset(get_tree_size())
-          end)
-
-          nvim_tree_events.subscribe('Resize', function()
-            bufferline_api.set_offset(get_tree_size())
-          end)
-
-          nvim_tree_events.subscribe('TreeClose', function()
-            bufferline_api.set_offset(0)
-          end)
-        '';
-     }
-
+    vim-commentary 
      # UI #####
      gruvbox
      everforest 
@@ -294,17 +255,6 @@ in
       -- Set completeopt to have a better completion experience
       vim.o.completeopt = 'menuone,noselect'
       vim.opt.termguicolors = true
-      -- Gitsigns
-      -- See `:help gitsigns.txt`
-      require('gitsigns').setup {
-        signs = {
-          add = { text = '+' },
-          change = { text = '~' },
-          delete = { text = '_' },
-          topdelete = { text = '‾' },
-          changedelete = { text = '~' },
-        },
-      }
 
       -- Enable `lukas-reineke/indent-blankline.nvim`
       -- See `:help indent_blankline.txt`

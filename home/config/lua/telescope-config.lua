@@ -25,10 +25,12 @@ require('telescope').setup {
   }
 }
 
+require('neoclip').setup()
 -- Enable telescope fzf native, if installed
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('project')
 require('telescope').load_extension('yaml_schema')
+require('telescope').load_extension('neoclip')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })

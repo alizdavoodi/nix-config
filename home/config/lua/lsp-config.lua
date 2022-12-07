@@ -206,5 +206,9 @@ require 'lspconfig'.sumneko_lua.setup {
   },
 }
 
+require'lspconfig'.nil_ls.setup{
+  on_attach = on_attach;
+  capabilities = capabilities;
+}
 require 'lspconfig'.terraformls.setup {}
 require 'lspconfig'.tflint.setup {}
