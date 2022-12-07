@@ -24,6 +24,10 @@ inputs = {
         url = "github:someone-stole-my-name/yaml-companion.nvim";
         flake = false;
       };
+      inc-rename = {
+        url = "github:smjonas/inc-rename.nvim";
+        flake = false;
+      };
   };
   outputs = inputs:
     let
@@ -47,6 +51,10 @@ inputs = {
         yaml-companion = pkgs.vimUtils.buildVimPluginFrom2Nix {
           name = "yaml-companion";
           src = inputs.yaml-companion;
+        };
+        inc-rename = pkgs.vimUtils.buildVimPluginFrom2Nix {
+          name = "inc-rename";
+          src = inputs.inc-rename;
         };
       };
     in

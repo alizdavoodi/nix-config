@@ -157,6 +157,7 @@ in
      telescope-fzf-native-nvim
      barbar-nvim
      vim-polyglot
+     nvim-hlslens
      {
        plugin = nvim-tree-lua;
        type = "lua";
@@ -263,9 +264,6 @@ in
     lua << EOF
       -- [[ Setting options ]]
       -- See `:help vim.o`
-
-      -- Set highlight on search
-      vim.o.hlsearch = false
 
       -- Make line numbers default
       vim.wo.number = true
