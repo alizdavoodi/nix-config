@@ -51,14 +51,30 @@
         "type": "github"
       }
     },
+    "inc-rename": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667603369,
+        "narHash": "sha256-uL+OlBBPeCOUXiB1Y7xmjx6nOGQ5hcq4yeO0Ear8SWI=",
+        "owner": "smjonas",
+        "repo": "inc-rename.nvim",
+        "rev": "48c4aa2be19f79e79b465a9bb37ee9fbe6c606f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "smjonas",
+        "repo": "inc-rename.nvim",
+        "type": "github"
+      }
+    },
     "mason-lspconfig-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1669975430,
-        "narHash": "sha256-YSDKFXSwIf1wvU3qSZwNXNvffqgtRZnRRd/GRRxFNCk=",
+        "lastModified": 1670453010,
+        "narHash": "sha256-BHUw/LUVxfw5XWjW5EYMAyTmnRpuvt+duoOkHjJO878=",
         "owner": "williamboman",
         "repo": "mason-lspconfig.nvim",
-        "rev": "4674ed145fd0e72c9bfdb32b647f968b221bf2f2",
+        "rev": "e8bd50153b94cc5bbfe3f59fc10ec7c4902dd526",
         "type": "github"
       },
       "original": {
@@ -70,11 +86,11 @@
     "mason-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1670258914,
-        "narHash": "sha256-x001GmWxHwf/FVCv4MmoLiDupTWSuROUip+Cvf8zvtY=",
+        "lastModified": 1670493785,
+        "narHash": "sha256-1lcKjXMW6j9Rt/hDEuRmHgcq5Ss9CjoVP9WvqeUl2Xc=",
         "owner": "williamboman",
         "repo": "mason.nvim",
-        "rev": "2381f507189e3e10a43c3932a3ec6c2847180abc",
+        "rev": "01464927921c97d4e5ddbd985c6d27b29b927c17",
         "type": "github"
       },
       "original": {
@@ -85,11 +101,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1670152712,
-        "narHash": "sha256-LJttwIvJqsZIj8u1LxVRv82vwUtkzVqQVi7Wb8gxPS4=",
+        "lastModified": 1670242877,
+        "narHash": "sha256-jBLh7dRHnbfvPPA9znOC6oQfKrCPJ0El8Zoe0BqnCjQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "14ddeaebcbe9a25748221d1d7ecdf98e20e2325e",
+        "rev": "6e51c97f1c849efdfd4f3b78a4870e6aa2da4198",
         "type": "github"
       },
       "original": {
@@ -157,6 +173,7 @@
     },
     "vim-plugins": {
       "inputs": {
+        "inc-rename": "inc-rename",
         "mason-lspconfig-nvim": "mason-lspconfig-nvim",
         "mason-nvim": "mason-nvim",
         "nvim-ufo": "nvim-ufo",
@@ -165,7 +182,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-/YA2vjUCytAjc2FAX7nMiADb6Em2IwLV4BGi6j688Xk=",
+        "narHash": "sha256-oCsUel6iOmaxvkd4cT4NWlVvKSGWCdiwP9KeVY1y7dc=",
         "path": "./modules",
         "type": "path"
       },

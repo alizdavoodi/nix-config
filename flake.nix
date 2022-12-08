@@ -18,7 +18,6 @@
     
     vim-plugins = {
       url = "path:./modules";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
