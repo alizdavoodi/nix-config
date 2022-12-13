@@ -62,7 +62,7 @@
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs outputs; system="aarch64-darwin"; }; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
-        modules = [ ./home/davoodi/default.nix 
+        modules = [ ./profiles/home-manager/davoodi/default.nix
           home-common
         ];
       };

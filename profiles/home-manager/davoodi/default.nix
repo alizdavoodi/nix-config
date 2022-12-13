@@ -14,7 +14,7 @@ in
 {
   
   imports = [
-    ../cli
+    ../../../home-manager/cli
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -324,7 +324,7 @@ in
  };
 
  xdg.configFile.nvim = {
-  source = ../config;
+  source = ../../../home-manager/config;
   recursive = true;
  };
 
