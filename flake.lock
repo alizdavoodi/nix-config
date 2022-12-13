@@ -153,7 +153,24 @@
         "hardware": "hardware",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "tmux-conf": "tmux-conf",
         "vim-plugins": "vim-plugins"
+      }
+    },
+    "tmux-conf": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1667700840,
+        "narHash": "sha256-3tdaiUzn/zQvbmrC8TRR5Mc+uzQxQA+oc6mJglU7rzg=",
+        "owner": "gpakosz",
+        "repo": ".tmux",
+        "rev": "5641d3b3f5f9c353c58dfcba4c265df055a05b6b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gpakosz",
+        "repo": ".tmux",
+        "type": "github"
       }
     },
     "utils": {

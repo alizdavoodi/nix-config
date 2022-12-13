@@ -12,6 +12,11 @@ let
      kubectl122 = kubectlPkgs.kubectl;
 in
 {
+  
+  imports = [
+    ../cli
+  ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "davoodi";
@@ -85,8 +90,8 @@ in
   programs.bat = {
     enable = true;
     config = {
-      theme = "GitHub";
-      italic-text = "always";
+      theme = "TwoDark";
+	    color = "always";
     };
   };
 

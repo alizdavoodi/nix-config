@@ -20,15 +20,20 @@
       url = "path:./modules";
     };
 
+    tmux-conf = {
+      url = "github:gpakosz/.tmux";
+      flake = false;
+    };
+
   };
 
-  outputs = { self, nixpkgs, vim-plugins, home-manager, flake-utils, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
   let
     inherit (self) outputs;
     home-common = { lib, ...}:
     {
       nixpkgs.overlays = [
-          vim-plugins.overlay
+          inputs.vim-plugins.overlay
       ];
     };
   in
