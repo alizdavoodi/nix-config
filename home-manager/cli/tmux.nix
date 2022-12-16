@@ -1,5 +1,4 @@
 { config, lib, pkgs, inputs, ... }: {
-  #home.file.".tmux.conf" = { source = "${inputs.tmux-conf}/.tmux.conf"; };
 
   programs.tmux = {
     enable = true;

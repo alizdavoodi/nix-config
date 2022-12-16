@@ -10,10 +10,14 @@ require("nvim-tree").setup({
     filters = {
         custom = { ".git" },
     },
+
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     update_focused_file = {
         enable = true,
-       -- update_cwd = true,
+        update_cwd = true,
     },
+
 })
 
 vim.keymap.set('n', '<leader>b', ':NvimTreeToggle<CR>')

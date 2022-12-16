@@ -91,7 +91,7 @@ in
     enable = true;
     config = {
       theme = "TwoDark";
-	    color = "always";
+      color = "always";
     };
   };
 
@@ -160,8 +160,8 @@ in
       tree-sitter-typescript
       tree-sitter-yaml
     ]))
-     telescope-nvim
-     telescope-project-nvim
+    telescope-nvim
+    project-nvim
      telescope-fzf-native-nvim
      barbar-nvim
      vim-polyglot
@@ -365,7 +365,9 @@ in
       export GPG_TTY=$TTY
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
-
+      
+      # enable flake
+      export NIX_CONFIG="experimental-features = nix-command flakes"
     '' + builtins.readFile
       (builtins.fetchGit {
       url = "https://github.com/ahmetb/kubectl-aliases";
