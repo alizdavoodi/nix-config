@@ -21,7 +21,20 @@ in
   # paths it should manage.
   home.username = "davoodi";
   home.homeDirectory = "/Users/davoodi";
-
+  
+  # Starship Prompt
+  programs.starship = {
+    enable = true;
+    settings = {
+      kubernetes = {
+        format = "on [⛵$context \($namespace\)](dimmed green)";
+        disabled = false;
+      };
+      aws = {
+        disabled = true;
+      };
+    };
+  };
   # Nicely reload system units when changing configs
   #systemd.user.startServices = "sd-switch";
 
@@ -71,19 +84,19 @@ in
   
   
   #oh-my-zsh customs theme
-  home.file.".oh-my-zsh/custom/themes/dracula.zsh-theme".source = builtins.fetchGit { 
-    url = "https://github.com/dracula/zsh.git";
-    ref = "refs/tags/v1.2.5";
-    shallow = true;
-    rev = "1f53554b2a2e3b7d3f0039e095ea84c05c08f064";
-  } + "/dracula.zsh-theme";
+  # home.file.".oh-my-zsh/custom/themes/dracula.zsh-theme".source = builtins.fetchGit { 
+  #   url = "https://github.com/dracula/zsh.git";
+  #   ref = "refs/tags/v1.2.5";
+  #   shallow = true;
+  #   rev = "1f53554b2a2e3b7d3f0039e095ea84c05c08f064";
+  # } + "/dracula.zsh-theme";
 
   #oh-my-zsh customs plugins
-  home.file.".oh-my-zsh/custom/plugins/zsh-kubectl-prompt".source =  builtins.fetchGit { 
-    url = "https://github.com/superbrothers/zsh-kubectl-prompt.git"; 
-    ref = "refs/heads/master";
-    rev = "eb31775d6196d008ba2a34e5d99fb981b5b3092d";
-  };
+  # home.file.".oh-my-zsh/custom/plugins/zsh-kubectl-prompt".source =  builtins.fetchGit { 
+  #   url = "https://github.com/superbrothers/zsh-kubectl-prompt.git"; 
+  #   ref = "refs/heads/master";
+  #   rev = "eb31775d6196d008ba2a34e5d99fb981b5b3092d";
+  # };
 
   
   programs.broot.enable = true;
@@ -344,14 +357,14 @@ in
     };
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "dirhistory" "colorize" "colored-man-pages" "fzf" "kubectl" "zsh-kubectl-prompt"];
-      theme = "dracula";
+      plugins = ["git" "dirhistory" "colorize" "colored-man-pages" "fzf" "kubectl"];
+      theme = "";
       custom = "$HOME/.oh-my-zsh/custom";
     };
     
     initExtra = ''
       ## Kubectl prompt
-      RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+      ## RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
       export AWS_PROFILE=companyinfo
       export KUBECONFIG=~/.kube/kubeconfig
