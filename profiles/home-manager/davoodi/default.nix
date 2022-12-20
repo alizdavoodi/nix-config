@@ -17,6 +17,100 @@ in
     ../../../home-manager/cli
   ];
 
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      env.TERM = "xterm-256color";
+      startup_mode = "SimpleFullscreen";
+      shell = {
+        program = "tmux";
+        args = [
+          "new-session"
+          "-A"
+          "-D"
+          "-s"
+          "main"
+        ];
+      };
+      scrolling = {
+        history = 10000;
+        multiplier = 3;
+      };
+      font = {
+        size = 13;
+        normal = {
+          family = "FiraCode Nerd Font Mono";
+          style = "Regular";
+        };
+        bold = {
+          family = "FiraCode Nerd Font Mono";
+          style = "Bold";
+        };
+        italic = {
+          family = "Menlo";
+          style = "Italic";
+        };
+      };
+      use_thin_strokes = true;
+      # Offset is the extra space around each character. `offset.y` can be thought of
+      # as modifying the line spacing, and `offset.x` as modifying the letter spacing
+      # I've given in 14 spacing which fits really well with my fonts, you may change it
+      # to your convenience but make sure to adjust 'glyph_offset' appropriately post that
+      offset = {
+        x =  0;
+        y = 0;
+      };
+      # Note: This requires RESTART
+      # By default when you change the offset above you'll see an issue, where the texts are bottom
+      # aligned with the cursor, this is to make sure they center align.
+      # This offset should usually be 1/2 of the above offset-y being set.
+      glyph_offset = {
+        x =  0;
+        y = 0;
+      };
+      # Colors (Dracula)
+      # themes: https://github.com/eendroroy/alacritty-theme
+      colors = {
+        # Default colors
+        primary = {
+          background = "0x282a36";
+          foreground = "0xf8f8f2";
+        };
+        # Normal colors
+        normal = {
+          black = "0x000000";
+          red = "0xff5555";
+          green = "0x50fa7b";
+          yellow = "0xf1fa8c";
+          blue = "0xbd93f9";
+          magenta = "0xff79c6";
+          cyan = "0x8be9fd";
+          white = "0xbbbbbb";
+        };
+        # Bright colors
+        bright = {
+          black = "0x555555";
+          red = "0xff5555";
+          green = "0x50fa7b";
+          yellow = "0xf1fa8c";
+          blue = "0xcaa9fa";
+          magenta = "0xff79c6";
+          cyan = "0x8be9fd";
+          white = "0xffffff";
+        };
+      };
+    };
+  };
+
+  programs.mcfly = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableLightTheme = false;
+    fuzzySearchFactor = 3;
+    keyScheme = "vim";
+  };
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "davoodi";
@@ -360,7 +454,7 @@ in
     };
     oh-my-zsh = {
       enable = true;
-      plugins = ["git" "dirhistory" "colorize" "colored-man-pages" "fzf" "kubectl"];
+      plugins = ["git" "dirhistory" "colorize" "colored-man-pages" "kubectl"];
       theme = "";
       custom = "$HOME/.oh-my-zsh/custom";
     };
