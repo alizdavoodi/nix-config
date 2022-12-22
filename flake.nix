@@ -14,7 +14,7 @@
 
     comma.url = "github:nix-community/comma";
     vim-plugins = {
-      url = "path:./modules";
+      url = "path:./modules/nvim/plugins";
     };
 
     tmux-conf = {
@@ -29,9 +29,24 @@
     inherit (self) outputs;
     home-common = { lib, ...}:
     {
+
+      programs.home-manager.enable = true;
+      home.stateVersion = "22.05";
+
+      imports = [
+        ./modules
+        ./modules/cli
+        ./modules/nvim
+      ];
+
       nixpkgs.overlays = [
           inputs.vim-plugins.overlay
       ];
+    };
+
+    work-macbook = {
+      home.username = "davoodi";
+      home.homeDirectory = "/Users/davoodi"; 
     };
   in
   {
@@ -50,8 +65,8 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs outputs; };
         # > Our main home-manager configuration file <
-        modules = [ ./home/davoodi/default.nix
-            home-common
+        modules = [
+          home-common
         ];
       };
 
@@ -59,8 +74,9 @@
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = { inherit inputs outputs; system="aarch64-darwin"; }; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
-        modules = [ ./profiles/home-manager/davoodi/default.nix
+        modules = [
           home-common
+          work-macbook
         ];
       };
     };
