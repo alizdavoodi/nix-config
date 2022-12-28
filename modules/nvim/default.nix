@@ -1,98 +1,40 @@
-{ inputs, lib, config, pkgs, ... }:
-let
-     kubectlPkgs = import (builtins.fetchGit {
-         name = "kubectl-1-22";
-         url = "https://github.com/NixOS/nixpkgs/";
-         ref = "refs/heads/nixpkgs-unstable";
-         rev = "6d02a514db95d3179f001a5a204595f17b89cb32";
-     }) {};
-
-     kubectl122 = kubectlPkgs.kubectl;
-in
+{ pkgs, ...}:
 {
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "alizdavoodi";
-  home.homeDirectory = "/home/alizdavoodi";
-
-  # Nicely reload system units when changing configs
-  #systemd.user.startServices = "sd-switch";
-
-  home.packages = with pkgs; [
-    du-dust
-    ripgrep
-    kubectl
-    xdg-utils
-    pinentry
-    awscli2
-    delta
-    tmux
-    fzf
-    powerline-fonts
-    ghq
-    nerdfonts
-    kubectx
-    kubernetes-helm
-    sumneko-lua-language-server
-    nodePackages.yaml-language-server
-    nodePackages.prettier
-  ];
-
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.05";
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-  
-  
-  #oh-my-zsh customs theme
-  home.file.".oh-my-zsh/custom/themes/dracula.zsh-theme".source = builtins.fetchGit { 
-    url = "https://github.com/dracula/zsh.git";
-    ref = "refs/tags/v1.2.5";
-    shallow = true;
-    rev = "1f53554b2a2e3b7d3f0039e095ea84c05c08f064";
-  } + "/dracula.zsh-theme";
-
-  #oh-my-zsh customs plugins
-  #home.file.".oh-my-zsh/custom/plugins/zsh-kubectl-prompt".source =  builtins.fetchGit { url = "https://github.com/superbrothers/zsh-kubectl-prompt.git"; };
-
-  
-  programs.broot.enable = true;
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "GitHub";
-      italic-text = "always";
-    };
-  };
-
   programs.neovim = {
    enable = true;
    vimAlias = true;
 
-   plugins = with pkgs.vimPlugins; [
+    plugins = with pkgs.vimPlugins; [
+     nvim-ufo
+     promise-async
+     mason-nvim
+     mason-lspconfig-nvim
+     yaml-companion
+     nerdcommenter
      vim-nix
-     vim-helm
      nvim-cmp
      cmp-nvim-lsp
+     cmp-rg
      nvim-lspconfig
      luasnip
      vim-lua
      cmp-path
+     indent-blankline-nvim
+     sensible
      cmp-buffer
      fidget-nvim
      vim-sleuth
+     #ansible-vim
      fzf-vim
      nvim-web-devicons
      plenary-nvim
+     vim-fugitive
+     vim-rhubarb
+     gitsigns-nvim
+     vim-gitgutter
      neoformat
+     nvim-neoclip-lua
+     #vim-surround
      (nvim-treesitter.withPlugins (plugins: with plugins; [
       tree-sitter-bash
       tree-sitter-c
@@ -122,33 +64,18 @@ in
       tree-sitter-typescript
       tree-sitter-yaml
     ]))
-     telescope-nvim
-     telescope-project-nvim
+    telescope-nvim
+    project-nvim
      telescope-fzf-native-nvim
      barbar-nvim
-     {
-       plugin = nvim-tree-lua;
-       type = "lua";
-       config = ''
-            require("nvim-tree").setup({
-              disable_netrw = true,
-              hijack_netrw = true,
-              view = {
-                number = true,
-                relativenumber = true,
-              },
-              filters = {
-                custom = { ".git" },
-              },
-            })
+     vim-polyglot
+     nvim-hlslens
+    nvim-tree-lua
 
-            
-            vim.keymap.set('n', '<leader>b', ':NvimTreeToggle<CR>')
-         '';
-     }
-
+    vim-commentary 
      # UI #####
      gruvbox
+     everforest 
      vim-airline
      vim-airline-themes
    ];
@@ -157,6 +84,8 @@ in
     set encoding=utf-8
     set fileencoding=utf-8
     set termencoding=utf-8
+    " Copy yank to system clipboard
+    set clipboard=unnamedplus
 
     " Whitespace handling {{{
     set nowrap
@@ -177,6 +106,10 @@ in
     au!
     au VimEnter * doautoa Syntax,FileType
     augroup END
+
+    au BufRead,BufNewFile *.j2 set filetype=yaml
+    au BufRead,BufNewFile */ansible/*.yml,*/ansible/*.yaml set filetype=yaml.ansible
+
     " }}}
     " Syntax Highlighting {{{
     if $TERM_BG == "light"
@@ -184,24 +117,24 @@ in
     else
       set background=dark
     endif
-    colorscheme gruvbox
+    colorscheme everforest
+    " Set contrast.
+    " This configuration option should be placed before `colorscheme everforest`.
+    " Available values: 'hard', 'medium'(default), 'soft'
+    let g:everforest_background = 'soft'
 
     " load the plugin and indent settings for the detected filetype
     filetype plugin indent on
     " }}}
 
     " LightLine {{{
-    let g:airline_theme='gruvbox'
+    let g:airline_theme='everforest'
     let g:airline_powerline_fonts = 1
     " }}}
-
 
     lua << EOF
       -- [[ Setting options ]]
       -- See `:help vim.o`
-
-      -- Set highlight on search
-      vim.o.hlsearch = false
 
       -- Make line numbers default
       vim.wo.number = true
@@ -233,7 +166,13 @@ in
       vim.o.completeopt = 'menuone,noselect'
       vim.opt.termguicolors = true
 
-      
+      -- Enable `lukas-reineke/indent-blankline.nvim`
+      -- See `:help indent_blankline.txt`
+      require('indent_blankline').setup {
+        char = '┊',
+        show_trailing_blankline_indent = false,
+      }
+      require('telescope-config')
       -- Turn on status information
       require('fidget').setup()
       
@@ -279,60 +218,19 @@ in
           { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
+          { name = 'rg' },
         },
       }
+
     EOF
-    :luafile ~/.config/nvim/lua/init.lua
+    luafile ${builtins.toString ./init_lua.lua}
    '';
- };
-
- xdg.configFile.nvim = {
-  source = ../config;
-  recursive = true;
- };
-
- programs.zsh = {
-    enable = true;
-    autocd = true;
-    history = {
-      ignoreSpace = true;
-      size = 50000;
-      save = 50000;
-      expireDuplicatesFirst = true;
+   };
+    xdg.configFile = {
+      "nvim/lua" = {
+        source = ./lua;
+        recursive = true;
     };
-    sessionVariables = {
-      colorterm = "truecolor";
-      term = "xterm-256color";
-      editor = "vim";
-    };
-    oh-my-zsh = {
-      enable = true;
-      plugins = ["git" "dirhistory" "colorize" "colored-man-pages" "fzf" "kubectl" "zsh-kubectl-prompt"];
-      theme = "dracula";
-      custom = "$HOME/.oh-my-zsh/custom";
-    };
-    
-    initExtra = ''
-      ## Kubectl prompt
-      RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
-
-      export AWS_PROFILE=companyinfo
-      export KUBECONFIG=~/.kube/kubeconfig
-
-      if type rg &> /dev/null; then
-        export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs --hidden'
-        export FZF_DEFAULT_OPTS='-m --height 50% --border'
-      fi
-
-      # yubikey gpg
-      export GPG_TTY=$TTY
-      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-      gpgconf --launch gpg-agent
-
-    '' + builtins.readFile
-      (builtins.fetchGit {
-      url = "https://github.com/ahmetb/kubectl-aliases";
-      rev = "b2ee5dbd3d03717a596d69ee3f6dc6de8b140128"; 
-      } + "/.kubectl_aliases");
+    "nvim/init_lua.lua".source = ./init_lua.lua;
   };
 }

@@ -10,12 +10,6 @@ require('telescope').setup {
     },
   },
   extensions = {
-    project = {
-      base_dirs = {
-        '~/projects',
-      },
-      sync_with_nvim_tree = true,
-    },
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
       override_generic_sorter = true,  -- override the generic sorter
@@ -25,9 +19,16 @@ require('telescope').setup {
   }
 }
 
+require('neoclip').setup()
+require('project_nvim').setup {
+    patterns = { ".git"}
+}
+
 -- Enable telescope fzf native, if installed
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('project')
+require('telescope').load_extension('projects')
+require('telescope').load_extension('yaml_schema')
+require('telescope').load_extension('neoclip')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -46,4 +47,4 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
-vim.keymap.set('n', '<leader>fp', ':Telescope project<CR>')
+vim.keymap.set('n', '<leader>fp', ':Telescope projects<CR>')
