@@ -127,6 +127,7 @@ in
   home.packages = with pkgs; [
     nixFlakes
     du-dust
+    comma
     nodejs
     dogdns
     ripgrep
@@ -203,9 +204,6 @@ in
     };
     
     initExtra = ''
-      ## Kubectl prompt
-      ## RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
-
       export AWS_PROFILE=companyinfo
       export KUBECONFIG=~/.kube/kubeconfig
 

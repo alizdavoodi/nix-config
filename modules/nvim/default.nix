@@ -23,7 +23,6 @@
      sensible
      cmp-buffer
      fidget-nvim
-     #vim-tmux-navigator
      vim-sleuth
      #ansible-vim
      fzf-vim
