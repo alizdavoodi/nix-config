@@ -35,8 +35,6 @@
 
       imports = [
         ./modules
-        ./modules/cli
-        ./modules/nvim
       ];
 
       nixpkgs.overlays = [

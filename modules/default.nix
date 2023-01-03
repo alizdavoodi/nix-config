@@ -12,7 +12,10 @@ let
      kubectl122 = kubectlPkgs.kubectl;
 in
 {
-  
+  imports = [
+    ./cli
+    ./nvim
+  ];
 
   programs.alacritty = {
     enable = true;
@@ -101,8 +104,13 @@ in
     enableBashIntegration = true;
     enableZshIntegration = true;
     enableLightTheme = false;
-    fuzzySearchFactor = 3;
+    fuzzySearchFactor = 1;
     keyScheme = "vim";
+
+  };
+
+  home.sessionVariables = {
+    MCFLY_RESULTS_SORT = "LAST_RUN";
   };
 
   # Starship Prompt
@@ -123,6 +131,12 @@ in
   };
   # Nicely reload system units when changing configs
   #systemd.user.startServices = "sd-switch";
+
+  programs.zoxide = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
 
   home.packages = with pkgs; [
     nixFlakes

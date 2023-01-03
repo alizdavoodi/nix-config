@@ -54,11 +54,11 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1671631481,
-        "narHash": "sha256-LP6NvQQNKdqDpXngECo6oCiWfYRb0KPGM5+D5lu7mPw=",
+        "lastModified": 1672644464,
+        "narHash": "sha256-RYlvRMcQNT7FDoDkViijQBHg9g+blsB+U6AvL/gAsPI=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "9577ab1eaf01a738b015a7a7ab2a4616e158b6cd",
+        "rev": "ca29e25c39b8e117d4d76a81f1e229824a9b3a26",
         "type": "github"
       },
       "original": {
@@ -75,11 +75,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1671578428,
-        "narHash": "sha256-YmbpBcPaGz9KE2bC4xPvSdgCSMk0BmS/L3ePvy9TR/M=",
+        "lastModified": 1672688183,
+        "narHash": "sha256-3sNEWKTg3XXVDnvzVatdyetiUQWL+ibJ1YkvxSk3PuM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0f8bf4f92efa3c6168705b49a6788abb3612033a",
+        "rev": "c1a830c8fabb13f95f51ecf48552f0a794d8718a",
         "type": "github"
       },
       "original": {
@@ -107,11 +107,11 @@
     "mason-lspconfig-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1671475142,
-        "narHash": "sha256-ABEjjmrqgTWN3nDIUSb4o10bZZPJaWWTu9jxF/RI4ak=",
+        "lastModified": 1672421309,
+        "narHash": "sha256-By3Rom8dinWF6+SRcPePz2wX2dBtbiSqsI/mTFya1t8=",
         "owner": "williamboman",
         "repo": "mason-lspconfig.nvim",
-        "rev": "5bea0e851b8f48479d2cb927cd26733b4058b2b3",
+        "rev": "aa25b4153d2f2636c3b3a8c8360349d2b29e7ae3",
         "type": "github"
       },
       "original": {
@@ -123,11 +123,11 @@
     "mason-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1671626650,
-        "narHash": "sha256-X/xzPZ+EM7zxKkO2kKIWSZyr0lHR81X7mVSlAW+u+78=",
+        "lastModified": 1672743143,
+        "narHash": "sha256-K6fBEFDfb2z9wFiMHxAIB/NP7U3V+H5SoipO5kM0QPA=",
         "owner": "williamboman",
         "repo": "mason.nvim",
-        "rev": "28408c857a8f821ff504c9383c96af22b7ca66d9",
+        "rev": "4b8fc830fa111c22e9ceb313689b3b35cccb6779",
         "type": "github"
       },
       "original": {
@@ -176,11 +176,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1671359686,
-        "narHash": "sha256-3MpC6yZo+Xn9cPordGz2/ii6IJpP2n8LE8e/ebUXLrs=",
+        "lastModified": 1672525397,
+        "narHash": "sha256-WASDnyxHKWVrEe0dIzkpH+jzKlCKAk0husv0f/9pyxg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "04f574a1c0fde90b51bf68198e2297ca4e7cccf4",
+        "rev": "8ba56d7c0d7490680f2d51ba46a141eca7c46afa",
         "type": "github"
       },
       "original": {
@@ -193,11 +193,11 @@
     "nvim-ufo": {
       "flake": false,
       "locked": {
-        "lastModified": 1671185981,
-        "narHash": "sha256-zc8PZD9C7wjTJ2Q240RcAf6foWH6Zh6ePAC4tWKSELQ=",
+        "lastModified": 1672329851,
+        "narHash": "sha256-ngzE4Bv3Xp30TZTuApanHqZnLnglKd5Jsx+otUHt2SQ=",
         "owner": "kevinhwang91",
         "repo": "nvim-ufo",
-        "rev": "de599450c6970828fd66ecd5f2a5cfc063d03968",
+        "rev": "4d10f5fe4ac42c2e23b914ab21db9cce7b5e534e",
         "type": "github"
       },
       "original": {
@@ -209,11 +209,11 @@
     "promise-async": {
       "flake": false,
       "locked": {
-        "lastModified": 1663648586,
-        "narHash": "sha256-rGbi5nCCz1qO6CzoWxbze8iKWP6baqIZBd/Je2LU6jw=",
+        "lastModified": 1671802738,
+        "narHash": "sha256-JV3QwK4o4rCpi4Q+ZAGBLN4OoYTHV5nBjTG3wSiM5ns=",
         "owner": "kevinhwang91",
         "repo": "promise-async",
-        "rev": "70b09063cdf029079b25c7925e4494e7416ee995",
+        "rev": "25ac2ddb577bbc1bda2402e6dd6bd33d52cec398",
         "type": "github"
       },
       "original": {
@@ -302,11 +302,11 @@
     "yaml-companion": {
       "flake": false,
       "locked": {
-        "lastModified": 1667727779,
-        "narHash": "sha256-9c+9oxrCNFMlAsRaamsimYbrYYXHpR4APljYMsjlrzY=",
+        "lastModified": 1672613468,
+        "narHash": "sha256-PULe7A3kTDNY8YCAl/mbGhT3Kn2owl5/PSJ3g4vlOS4=",
         "owner": "someone-stole-my-name",
         "repo": "yaml-companion.nvim",
-        "rev": "03f66e5e9c8b26a35b14593f24697f9a3bc64e48",
+        "rev": "da5ca6a1544c8839b044e9a6aafde1017e18b121",
         "type": "github"
       },
       "original": {
