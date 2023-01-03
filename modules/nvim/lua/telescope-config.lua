@@ -20,13 +20,13 @@ require('telescope').setup {
 }
 
 require('neoclip').setup()
-require('project_nvim').setup {
-    patterns = { ".git"}
-}
+-- require('project_nvim').setup {
+--     patterns = { ".git"}
+-- }
 
 -- Enable telescope fzf native, if installed
 require('telescope').load_extension('fzf')
-require('telescope').load_extension('projects')
+-- require('telescope').load_extension('projects')
 require('telescope').load_extension('yaml_schema')
 require('telescope').load_extension('neoclip')
 

@@ -102,10 +102,10 @@
     " Syntax and FileType autocmds don't get run all for the first file specified
     " on the command line.  hack sidesteps that and makes sure we get a chance to
     " get started. See https://github.com/neovim/neovim/issues/2953
-    augroup nvim
-    au!
-    au VimEnter * doautoa Syntax,FileType
-    augroup END
+    " augroup nvim
+    " au!
+    " au VimEnter * doautoa Syntax,FileType
+    " augroup END
 
     au BufRead,BufNewFile *.j2 set filetype=yaml
     au BufRead,BufNewFile */ansible/*.yml,*/ansible/*.yaml set filetype=yaml.ansible

@@ -1,9 +1,9 @@
 vim.g.nvim_tree_respect_buf_cwd = 1
 
 require("nvim-tree").setup({
-    disable_netrw = true,
-    hijack_netrw = true,
-    hijack_unnamed_buffer_when_opening = false;
+    -- disable_netrw = true,
+    -- hijack_netrw = true,
+    hijack_unnamed_buffer_when_opening = false,
     view = {
         number = true,
         relativenumber = true,
@@ -12,12 +12,12 @@ require("nvim-tree").setup({
         custom = { ".git" },
     },
 
-    -- sync_root_with_cwd = false,
-    -- respect_buf_cwd = false,
-    -- update_focused_file = {
-    --     enable = false,
-    --     update_root = false
-    -- },
+    sync_root_with_cwd = true,
+    respect_buf_cwd = true,
+    update_focused_file = {
+        enable = true,
+        update_root = true
+    },
 
 })
 
