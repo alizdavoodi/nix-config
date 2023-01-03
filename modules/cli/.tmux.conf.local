@@ -397,6 +397,9 @@ bind r source-file ~/.config/tmux/tmux.conf \; display '~/.config/tmux/tmux.conf
 # clear both screen and history
 bind -n C-l send-keys C-l \; run 'sleep 0.2'
 
+# maximize current pane
+bind + run 'cut -c3- ~/.config/tmux/tmux.conf | sh -s _maximize_pane "#{session_name}" #D'
+
 run 'cut -c3- ~/.config/tmux/tmux.conf | sh -s _apply_configuration'
 
 # -- custom variables ----------------------------------------------------------
