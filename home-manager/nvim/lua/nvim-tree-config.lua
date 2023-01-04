@@ -1,9 +1,8 @@
 vim.g.nvim_tree_respect_buf_cwd = 1
 
 require("nvim-tree").setup({
-    -- disable_netrw = true,
-    -- hijack_netrw = true,
-    hijack_unnamed_buffer_when_opening = false,
+    disable_netrw = true,
+    hijack_netrw = true,
     view = {
         number = true,
         relativenumber = true,

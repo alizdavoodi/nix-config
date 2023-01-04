@@ -34,7 +34,7 @@
       home.stateVersion = "22.05";
 
       imports = [
-        ./modules
+        ./home-manager
       ];
 
       nixpkgs.overlays = [
