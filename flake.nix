@@ -14,7 +14,7 @@
 
     comma.url = "github:nix-community/comma";
     vim-plugins = {
-      url = "path:./modules/nvim/plugins";
+      url = "path:./home-manager/nvim/plugins";
     };
 
     tmux-conf = {
@@ -46,6 +46,10 @@
       home.username = "davoodi";
       home.homeDirectory = "/Users/davoodi"; 
     };
+    home-pc = {
+      home.username = "alizdavoodi";
+      home.homeDirectory = "/home/alizdavoodi";
+    };
   in
   {
     
@@ -61,10 +65,11 @@
     homeConfigurations = {
       "alizdavoodi@nixos" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs outputs; };
+        extraSpecialArgs = { inherit inputs outputs; system="x86_64-linux";};
         # > Our main home-manager configuration file <
         modules = [
           home-common
+          home-pc
         ];
       };
 

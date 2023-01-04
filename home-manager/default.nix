@@ -41,7 +41,9 @@ in
   home.packages = with pkgs; [
     nixFlakes
     du-dust
+    cargo
     comma
+    unzip
     nodejs
     dogdns
     ripgrep
@@ -63,6 +65,7 @@ in
     ansible-lint
     tflint
     terraform-ls
+    sumneko-lua-language-server
 
   ];
 
