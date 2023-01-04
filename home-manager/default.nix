@@ -20,10 +20,17 @@ in
     ./starship
   ];
 
-
-
   # Nicely reload system units when changing configs
   #systemd.user.startServices = "sd-switch";
+
+  programs.broot.enable = true;
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "TwoDark";
+      color = "always";
+    };
+  };
 
   programs.zoxide = {
     enable = true;
@@ -56,18 +63,9 @@ in
     ansible-lint
     tflint
     terraform-ls
-    sumneko-lua-language-server
 
   ];
 
-  programs.broot.enable = true;
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "TwoDark";
-      color = "always";
-    };
-  };
 
   #oh-my-zsh customs theme
   # home.file.".oh-my-zsh/custom/themes/dracula.zsh-theme".source = builtins.fetchGit { 
