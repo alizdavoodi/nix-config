@@ -21,7 +21,7 @@ in
   ];
 
   # Nicely reload system units when changing configs
-  #systemd.user.startServices = "sd-switch";
+  systemd.user.startServices = "sd-switch";
 
   programs.broot.enable = true;
   programs.bat = {
@@ -44,6 +44,7 @@ in
     cargo
     comma
     unzip
+    urlview
     nodejs
     dogdns
     ripgrep
@@ -52,6 +53,7 @@ in
     pinentry
     nil
     awscli2
+    lftp
     delta
     ansible
     python
@@ -66,6 +68,7 @@ in
     tflint
     terraform-ls
     sumneko-lua-language-server
+    nodePackages.prettier
 
   ];
 

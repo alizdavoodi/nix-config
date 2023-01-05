@@ -400,6 +400,10 @@ bind -n C-l send-keys C-l \; run 'sleep 0.2'
 # maximize current pane
 bind + run 'cut -c3- ~/.config/tmux/tmux.conf | sh -s _maximize_pane "#{session_name}" #D'
 
+# -- urlview -------------------------------------------------------------------
+
+bind U run "cut -c3- ~/.config/tmux/tmux.conf | sh -s _urlview #{pane_id}"
+
 run 'cut -c3- ~/.config/tmux/tmux.conf | sh -s _apply_configuration'
 
 # -- custom variables ----------------------------------------------------------

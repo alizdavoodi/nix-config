@@ -8,11 +8,11 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.inputs.utils.follows = "flake-utils";
 
     hardware.url = "github:nixos/nixos-hardware";
     flake-utils.url = "github:numtide/flake-utils";
 
-    comma.url = "github:nix-community/comma";
     vim-plugins = {
       url = "path:./home-manager/nvim/plugins";
     };
