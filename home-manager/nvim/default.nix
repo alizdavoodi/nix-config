@@ -17,6 +17,7 @@
      diffview-nvim
      nvim-cmp
      cmp-nvim-lsp
+     neogit
      cmp-rg
      nvim-lspconfig
      luasnip
