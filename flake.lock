@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "delta": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1670179761,
+        "narHash": "sha256-HbJZbxNyecSHCaDpDV8hhMKKVzzfblctNvC8spFahuE=",
+        "owner": "dandavison",
+        "repo": "delta",
+        "rev": "5cef3872999f1084cb13013b002a6421c4aa3f15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dandavison",
+        "repo": "delta",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -151,6 +167,7 @@
     },
     "root": {
       "inputs": {
+        "delta": "delta",
         "flake-utils": "flake-utils",
         "hardware": "hardware",
         "home-manager": "home-manager",

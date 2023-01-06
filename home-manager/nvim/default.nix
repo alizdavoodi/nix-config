@@ -11,7 +11,10 @@
      mason-lspconfig-nvim
      yaml-companion
      nerdcommenter
+     zen-mode-nvim
      vim-nix
+     nvim-notify
+     diffview-nvim
      nvim-cmp
      cmp-nvim-lsp
      cmp-rg

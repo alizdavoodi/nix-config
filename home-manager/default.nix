@@ -1,4 +1,4 @@
-{  config, pkgs, system, ... }:
+{  config, pkgs, system, inputs, ... }:
 
 let
      kubectlPkgs = import (builtins.fetchGit {
@@ -18,6 +18,7 @@ in
     ./alacritty
     ./macfly
     ./starship
+    ./git
   ];
 
   # Nicely reload system units when changing configs
@@ -60,7 +61,6 @@ in
     jq
     fzf
     powerline-fonts
-    ghq
     nerdfonts
     kubectx
     kubernetes-helm
