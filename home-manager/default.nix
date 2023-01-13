@@ -16,7 +16,7 @@ in
     ./cli
     ./nvim
     ./alacritty
-    ./macfly
+    #./macfly
     ./starship
     ./git
   ];
@@ -59,7 +59,6 @@ in
     ansible
     python
     jq
-    fzf
     powerline-fonts
     nerdfonts
     kubectx

@@ -54,6 +54,9 @@
       }
     ];
   };
-
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   home.file.".tmux.conf.local" = { source = ./.tmux.conf.local; };
 }
