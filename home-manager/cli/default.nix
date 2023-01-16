@@ -34,7 +34,7 @@
       export GPG_TTY=$TTY
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
-      
+
       # enable flake
       export NIX_CONFIG="experimental-features = nix-command flakes"
     '' + builtins.readFile

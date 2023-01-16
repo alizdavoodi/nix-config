@@ -59,7 +59,6 @@
     };
   in
   {
-    
     nixosConfigurations = {
       "alizdavoodi@nixos" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config

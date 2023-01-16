@@ -79,12 +79,13 @@
     vim-commentary 
      # UI #####
      gruvbox
-     everforest 
+     everforest
+     kanagawa-nvim
      vim-airline
      vim-airline-themes
    ];
 
-   extraConfig = ''    
+   extraConfig = ''
     set encoding=utf-8
     set fileencoding=utf-8
     set termencoding=utf-8
@@ -121,11 +122,12 @@
     else
       set background=dark
     endif
-    colorscheme everforest
+
     " Set contrast.
     " This configuration option should be placed before `colorscheme everforest`.
     " Available values: 'hard', 'medium'(default), 'soft'
-    let g:everforest_background = 'soft'
+    " let g:everforest_background = 'medium'
+    " colorscheme everforest
 
     " load the plugin and indent settings for the detected filetype
     filetype plugin indent on
@@ -160,6 +162,9 @@
       vim.o.updatetime = 250
       vim.wo.signcolumn = 'yes'
 
+      vim.o.background = "dark" -- or "light" for light mode
+      vim.cmd([[colorscheme kanagawa]])
+
       -- [[ Basic Keymaps ]]
       -- Set <space> as the leader key
       -- See `:help mapleader`
@@ -175,11 +180,13 @@
       require('indent_blankline').setup {
         char = '┊',
         show_trailing_blankline_indent = false,
+        show_end_of_line = true,
+        space_char_blankline = " ",
       }
       require('telescope-config')
       -- Turn on status information
       require('fidget').setup()
-      
+
       -- nvim-cmp setup
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
