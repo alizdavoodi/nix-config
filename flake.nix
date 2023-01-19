@@ -3,10 +3,10 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.11-darwin";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.utils.follows = "flake-utils";
 
@@ -46,8 +46,12 @@
 
       nixpkgs.overlays = [
           inputs.vim-plugins.overlay
-      ];
-    };
+        ];
+
+      # nixpkgs.config.permittedInsecurePackages = [
+      #     "python-2.7.18.6"
+      #   ];
+      };
 
     work-macbook = {
       home.username = "davoodi";
