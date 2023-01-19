@@ -29,7 +29,8 @@
      fidget-nvim
      vim-sleuth
      #ansible-vim
-     fzf-vim
+     #fzf-vim
+     fzf-lua
      nvim-web-devicons
      plenary-nvim
      vim-fugitive
@@ -70,19 +71,20 @@
     ]))
     telescope-nvim
     project-nvim
-     telescope-fzf-native-nvim
-     barbar-nvim
-     vim-polyglot
-     nvim-hlslens
+    telescope-fzf-native-nvim
+    barbar-nvim
+    vim-polyglot
+    nvim-hlslens
     nvim-tree-lua
 
-    vim-commentary 
-     # UI #####
-     gruvbox
-     everforest
-     kanagawa-nvim
-     vim-airline
-     vim-airline-themes
+    vim-commentary
+    # UI #####
+    gruvbox
+    everforest
+    kanagawa-nvim
+    vim-airline
+    vim-airline-themes
+    mini-nvim
    ];
 
    extraConfig = ''
@@ -233,6 +235,11 @@
         },
       }
 
+      -- mini.nvim configuration
+
+      require('mini.indentscope').setup()
+      require('mini.pairs').setup()
+      require('mini.trailspace').setup()
     EOF
     luafile ${builtins.toString ./init_lua.lua}
    '';

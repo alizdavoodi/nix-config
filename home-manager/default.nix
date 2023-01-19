@@ -1,15 +1,15 @@
 {  config, pkgs, system, inputs, ... }:
 
 let
-     kubectlPkgs = import (builtins.fetchGit {
-         name = "kubectl-1-22";
-         url = "https://github.com/NixOS/nixpkgs/";
-         ref = "refs/heads/nixpkgs-unstable";
-         rev = "6d02a514db95d3179f001a5a204595f17b89cb32";
-       }) {
-        inherit system;
-       };
-     kubectl122 = kubectlPkgs.kubectl;
+   kubectlPkgs = import (builtins.fetchGit {
+       name = "kubectl-1-22";
+       url = "https://github.com/NixOS/nixpkgs/";
+       ref = "refs/heads/nixpkgs-unstable";
+       rev = "6d02a514db95d3179f001a5a204595f17b89cb32";
+     }) {
+      inherit system;
+     };
+   kubectl122 = kubectlPkgs.kubectl;
 in
 {
   imports = [
