@@ -102,6 +102,10 @@ local cfg = require("yaml-companion").setup({
       --  name = "Kubernetes 1.22.4",
       --  uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.22.4-standalone-strict/all.json",
       --},
+      -- {
+      --   name = "Gitlab-ci",
+      --   url = "https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"
+      -- }
     },
   },
 
