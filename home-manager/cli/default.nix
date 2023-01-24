@@ -49,8 +49,29 @@
     extraConfig = builtins.readFile "${inputs.tmux-conf}/.tmux.conf";
     plugins = with pkgs; [
       {
+        plugin = tmuxPlugins.mkTmuxPlugin {
+            name = "tmux-window-name";
+            pluginName = "tmux-window-name";
+            src = fetchFromGitHub {
+              owner = "ofirgall";
+              repo = "tmux-window-name";
+              rev = "a10a0d7d9ff1eaafdfd8054a1af0b53b6016d75a";
+              sha256 = "6Uunqizl4NY7YcS4ygJusRYysTrbXyKlSDsiryvBSFU=";
+            };
+          };
+      }
+      {
         plugin = tmuxPlugins.resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      }
+      {
+        plugin = tmuxPlugins.fzf-tmux-url;
+      }
+      {
+        plugin = tmuxPlugins.tmux-fzf;
+      }
+      {
+        plugin = tmuxPlugins.tmux-thumbs;
       }
     ];
   };

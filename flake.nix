@@ -29,6 +29,10 @@
       flake = false; 
     };
 
+    neovim-nightly = {
+      url = "github:neovim/neovim?dir=contrib";
+    };
+
   };
 
   outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
@@ -45,7 +49,8 @@
       ];
 
       nixpkgs.overlays = [
-          inputs.vim-plugins.overlay
+        inputs.vim-plugins.overlay
+        inputs.neovim-nightly.overlay
         ];
 
       # nixpkgs.config.permittedInsecurePackages = [

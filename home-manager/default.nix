@@ -14,13 +14,13 @@ in
 {
   imports = [
     ./cli
-    ./nvim
+    #./nvim
     ./alacritty
     #./macfly
     ./starship
     ./git
   ];
-
+  
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
@@ -44,7 +44,9 @@ in
     du-dust
     cargo
     comma
+    neovim
     unzip
+    terraform
     urlview
     nodejs
     dogdns
@@ -57,7 +59,7 @@ in
     lftp
     delta
     ansible
-    python
+    lazygit
     jq
     powerline-fonts
     nerdfonts
@@ -68,7 +70,8 @@ in
     terraform-ls
     sumneko-lua-language-server
     nodePackages.prettier
-
+    python3Packages.libtmux
+    python3Packages.packaging
   ];
 
 
