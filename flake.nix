@@ -44,19 +44,16 @@
       programs.home-manager.enable = true;
       home.stateVersion = "22.05";
 
-      imports = [
-        ./home-manager
-      ];
-
       nixpkgs.overlays = [
         inputs.vim-plugins.overlay
         inputs.neovim-nightly.overlay
         ];
 
-      # nixpkgs.config.permittedInsecurePackages = [
-      #     "python-2.7.18.6"
-      #   ];
-      };
+      imports = [
+        ./home-manager
+      ];
+
+    };
 
     work-macbook = {
       home.username = "davoodi";

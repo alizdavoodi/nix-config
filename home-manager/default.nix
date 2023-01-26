@@ -15,6 +15,7 @@ in
   imports = [
     ./cli
     #./nvim
+    ./nvim/lazyvim
     ./alacritty
     #./macfly
     ./starship
@@ -44,7 +45,6 @@ in
     du-dust
     cargo
     comma
-    neovim
     unzip
     terraform
     urlview
@@ -52,6 +52,7 @@ in
     dogdns
     ripgrep
     kubectl122
+    neovim
     xdg-utils
     pinentry
     nil
