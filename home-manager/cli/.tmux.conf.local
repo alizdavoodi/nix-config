@@ -391,6 +391,7 @@ tmux_conf_uninstall_plugins_on_reload=true
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
 
+set -g @tmux_window_name_ignored_programs "['/Users/davoodi/.nix-profile/bin/nvim']"
 
 # reload configuration
 bind r source-file ~/.config/tmux/tmux.conf \; display '~/.config/tmux/tmux.conf sourced'
