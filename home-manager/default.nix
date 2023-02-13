@@ -42,6 +42,7 @@ in
 
   home.packages = with pkgs; [
     nixFlakes
+    ascii-image-converter
     du-dust
     cargo
     comma
