@@ -33,12 +33,17 @@
       url = "github:neovim/neovim?dir=contrib";
     };
 
+    alacritty = {
+      url = "path:./home-manager/alacritty/alacritty-nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
   let
     inherit (self) outputs;
-    home-common = { lib, ...}:
+    home-common = { lib, system, ...}:
     {
 
       programs.home-manager.enable = true;
@@ -47,6 +52,7 @@
       nixpkgs.overlays = [
         inputs.vim-plugins.overlay
         inputs.neovim-nightly.overlay
+        inputs.alacritty.overlay.${system}
         ];
 
       imports = [

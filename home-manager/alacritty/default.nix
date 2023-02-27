@@ -8,7 +8,7 @@
         window = {
         # Spread additional padding evenly around the terminal content.
           dynamic_padding =  true;
-
+          option_as_alt = "OnlyLeft";
           # Startup Mode (changes require restart)
           startup_mode = "Fullscreen";
         };
