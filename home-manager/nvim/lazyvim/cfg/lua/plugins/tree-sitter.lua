@@ -13,6 +13,7 @@ return {
         "markdown_inline",
         "python",
         "query",
+        "go",
         "regex",
         "tsx",
         "typescript",

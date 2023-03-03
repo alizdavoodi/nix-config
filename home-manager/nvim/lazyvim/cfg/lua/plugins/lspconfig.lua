@@ -3,6 +3,9 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = { { "someone-stole-my-name/yaml-companion.nvim" } },
     opts = {
+      diagnostics = {
+        virtual_text = false,
+      },
       setup = {
         yamlls = function()
           local cfg = require("yaml-companion").setup({

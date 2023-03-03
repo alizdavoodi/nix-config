@@ -53,6 +53,7 @@
             mkdir $out/Applications
             cp -r extra/osx/Alacritty.app $out/Applications
             ln -s $out/bin $out/Applications/Alacritty.app/Contents/MacOS
+            ln -s $out/bin $out/Applications/Alacritty.app/Contents/MacOS
           '';
         });
       };
@@ -63,7 +64,7 @@
       /* packages.alacritty-ligature = naersk-lib.buildPackage (attrsForNaersk // { src = alacritty-ligature-src; }); */
 
       /* defaultPackage = packages.alacritty-nightly; */
-
+      packages.default = packages.alacritty-nightly;
       overlay = final: prev: {
         alacritty = packages.alacritty-nightly;
         /* alacritty-ligature = packages.alacritty-ligature; */

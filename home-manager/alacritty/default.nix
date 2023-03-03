@@ -3,6 +3,7 @@
 {
   programs.alacritty = {
       enable = true;
+      package = pkgs.alacritty;
       settings = {
         env.TERM = "xterm-256color";
         window = {
@@ -27,11 +28,11 @@
         font = {
           size = 15;
           normal = {
-            family = "FiraCode Nerd Font Mono";
+            family = "CaskaydiaCove Nerd Font";
             style = "Regular";
           };
           bold = {
-            family = "FiraCode Nerd Font Mono";
+            family = "CaskaydiaCove Nerd Font";
             style = "Bold";
           };
           italic = {

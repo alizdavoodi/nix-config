@@ -54,6 +54,7 @@ in
     ripgrep
     kubectl122
     neovim
+    go
     xdg-utils
     pinentry
     nil
@@ -65,6 +66,7 @@ in
     jq
     powerline-fonts
     nerdfonts
+    cascadia-code
     kubectx
     kubernetes-helm
     ansible-lint
