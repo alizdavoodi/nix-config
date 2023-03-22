@@ -55,6 +55,7 @@ in
     kubectl122
     neovim
     go
+    mtr
     xdg-utils
     pinentry
     nil
@@ -74,6 +75,7 @@ in
     terraform-ls
     sumneko-lua-language-server
     nodePackages.prettier
+    nodePackages.web-ext
     python3Packages.libtmux
     python3Packages.packaging
   ];

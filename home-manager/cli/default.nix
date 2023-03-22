@@ -55,7 +55,7 @@
             src = fetchFromGitHub {
               owner = "ofirgall";
               repo = "tmux-window-name";
-              rev = "a10a0d7d9ff1eaafdfd8054a1af0b53b6016d75a";
+              rev = "43ed4885a0663a70bb2aaff434945ebd09b06f44";
               sha256 = "6Uunqizl4NY7YcS4ygJusRYysTrbXyKlSDsiryvBSFU=";
             };
           };
