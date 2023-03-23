@@ -20,6 +20,7 @@ in
     #./macfly
     ./starship
     ./git
+    ./lazygit
   ];
   
   # Nicely reload system units when changing configs
@@ -63,7 +64,6 @@ in
     lftp
     delta
     ansible
-    lazygit
     jq
     powerline-fonts
     nerdfonts
