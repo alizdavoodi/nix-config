@@ -1,12 +1,19 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    dependencies = { { "someone-stole-my-name/yaml-companion.nvim" } },
+    dependencies = { { "someone-stole-my-name/yaml-companion.nvim", "valentjn/ltex-ls" } },
     opts = {
       diagnostics = {
         virtual_text = false,
       },
       setup = {
+        ltex_ls = function()
+          require("lspconfig")["ltex"]({
+            filetypes = { "markdown", "text", "norg", "plaintex", "tex" },
+            flags = { debounce_text_changes = 300 },
+          })
+          return true
+        end,
         yamlls = function()
           local cfg = require("yaml-companion").setup({
 

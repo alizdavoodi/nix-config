@@ -55,7 +55,9 @@ in
     ripgrep
     kubectl122
     neovim
+    openjdk
     go
+    fd
     mtr
     xdg-utils
     pinentry
