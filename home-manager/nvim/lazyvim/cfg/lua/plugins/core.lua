@@ -5,4 +5,12 @@ return {
       colorscheme = "catppuccin",
     },
   },
+  {
+    "zbirenbaum/copilot.lua",
+    opts = {
+      filetypes = {
+        yaml = true,
+      },
+    },
+  },
 }
