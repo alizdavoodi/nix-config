@@ -2,14 +2,15 @@
 
 let
    kubectlPkgs = import (builtins.fetchGit {
-       name = "kubectl-1-22";
+       name = "kubectl-1-23";
        url = "https://github.com/NixOS/nixpkgs/";
        ref = "refs/heads/nixpkgs-unstable";
-       rev = "6d02a514db95d3179f001a5a204595f17b89cb32";
+       rev = "611bf8f183e6360c2a215fa70dfd659943a9857f";
      }) {
       inherit system;
      };
-   kubectl122 = kubectlPkgs.kubectl;
+  /* Use default kubectl */
+   /* kubectl122 = kubectlPkgs.kubectl; */
 in
 {
   imports = [
@@ -53,8 +54,9 @@ in
     nodejs
     dogdns
     ripgrep
-    kubectl122
+    /* kubectl122 */
     neovim
+    kubectl
     openjdk
     go
     fd

@@ -26,6 +26,7 @@ return {
         config = {
           workspaces = {
             notes = "~/projects/notes",
+            todos = "~/projects/todos",
           },
         },
       },
