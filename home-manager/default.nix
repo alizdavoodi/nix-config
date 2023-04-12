@@ -77,6 +77,7 @@ in
     xdg-utils
     pinentry
     nil
+    sshuttle
     awscli2
     lftp
     delta

@@ -29,6 +29,12 @@ return {
           require("telescope").load_extension("yaml_schema")
         end,
       },
+      {
+        "debugloop/telescope-undo.nvim",
+        config = function()
+          require("telescope").load_extension("undo")
+        end,
+      },
     },
     opts = {
       defaults = {
