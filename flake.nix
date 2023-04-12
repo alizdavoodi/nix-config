@@ -3,19 +3,15 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.11-darwin";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.utils.follows = "flake-utils";
 
     hardware.url = "github:nixos/nixos-hardware";
     flake-utils.url = "github:numtide/flake-utils";
-
-    vim-plugins = {
-      url = "path:./home-manager/nvim/plugins";
-    };
 
     tmux-conf = {
       url = "github:gpakosz/.tmux";
@@ -29,9 +25,11 @@
       flake = false; 
     };
 
-    neovim-nightly = {
-      url = "github:neovim/neovim?dir=contrib";
-    };
+    /* neovim-nightly = { */
+    /*   url = "github:neovim/neovim?dir=contrib"; */
+    /*   inputs.nixpkgs.follows = "nixpkgs"; */
+    /*   inputs.flake-utils.follows = "flake-utils"; */
+    /* }; */
 
     alacritty = {
       url = "path:./home-manager/alacritty/alacritty-nightly";
@@ -50,8 +48,6 @@
       home.stateVersion = "22.05";
 
       nixpkgs.overlays = [
-        inputs.vim-plugins.overlay
-        inputs.neovim-nightly.overlay
         inputs.alacritty.overlay.${system}
         ];
 

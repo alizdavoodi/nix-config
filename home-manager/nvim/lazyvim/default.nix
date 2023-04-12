@@ -1,11 +1,10 @@
-{  config, pkgs, ... }:
+{  config, neovim9, ... }:
 
 {
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    package = pkgs.neovim;
-
+    package = neovim9;
   };
 
   xdg.configFile.nvim = {

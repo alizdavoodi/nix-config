@@ -30,5 +30,15 @@ return {
         end,
       },
     },
+    opts = {
+      defaults = {
+        path_display = { "smart" },
+      },
+      pickers = {
+        find_files = {
+          path_display = { "truncate" },
+        },
+      },
+    },
   },
 }
