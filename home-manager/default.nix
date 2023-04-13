@@ -1,16 +1,16 @@
 {  config, pkgs, system, inputs, ... }:
 
 let
-   /* kubectlPkgs = import (builtins.fetchGit { */
-   /*     name = "kubectl-1-23"; */
-   /*     url = "https://github.com/NixOS/nixpkgs/"; */
-   /*     ref = "refs/heads/nixpkgs-unstable"; */
-   /*     rev = "611bf8f183e6360c2a215fa70dfd659943a9857f"; */
-   /*   }) { */
-   /*    inherit system; */
-   /*   }; */
-  /* Use default kubectl */
-   /* kubectl122 = kubectlPkgs.kubectl; */
+    kubectlPkgs = import (builtins.fetchGit {
+        name = "kubectl-1-25"; 
+        url = "https://github.com/NixOS/nixpkgs/";
+        ref = "refs/heads/nixpkgs-unstable";
+        rev = "79b3d4bcae8c7007c9fd51c279a8a67acfa73a2a";
+      }) { 
+       inherit system;
+      }; 
+   /*Use default kubectl */
+   kubectl125 = kubectlPkgs.kubectl;
   
   # TODO: use upstream neovim when it fixes the build
   # Just remove this and use neovim-unwrapped
@@ -68,8 +68,7 @@ in
     nodejs
     dogdns
     ripgrep
-    /* kubectl122 */
-    kubectl
+    kubectl125
     openjdk
     go
     fd
