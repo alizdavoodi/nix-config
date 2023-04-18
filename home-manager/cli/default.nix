@@ -34,9 +34,12 @@
       export GPG_TTY=$TTY
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
-
+      # zsh-vi-mode
+      ZVM_LAZY_KEYBINDINGS=false
+      ZVM_VI_ESCAPE_BINDKEY=jk
       # enable flake
       export NIX_CONFIG="experimental-features = nix-command flakes"
+      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '' + builtins.readFile
       (builtins.fetchGit {
       url = "https://github.com/ahmetb/kubectl-aliases";
@@ -56,7 +59,7 @@
               owner = "ofirgall";
               repo = "tmux-window-name";
               rev = "43ed4885a0663a70bb2aaff434945ebd09b06f44";
-              sha256 = "6Uunqizl4NY7YcS4ygJusRYysTrbXyKlSDsiryvBSFU=";
+              sha256 = "53jZQjFWe9xj3MbbfQs/rt3ysxUSi60FOS7Ft/Xj5qE=";
             };
           };
       }

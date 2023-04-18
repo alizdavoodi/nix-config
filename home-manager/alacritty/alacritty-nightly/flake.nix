@@ -1,4 +1,5 @@
 {
+  #Implement Alacritty version 0.12.0.
   description = "alacritty nightly";
 
   inputs = {
@@ -8,7 +9,7 @@
       url = github:nix-community/naersk;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    alacritty-src = { url = github:alacritty/alacritty/9de64a5a2076bc1d94447e209465da54cc1f73ad; flake = false; };
+    alacritty-src = { url = github:alacritty/alacritty?ref=v0.12.0; flake = false; };
     alacritty-ligature-src = { url = github:zenixls2/alacritty/ligature; flake = false; };
   };
 
@@ -53,7 +54,7 @@
             mkdir $out/Applications
             cp -r extra/osx/Alacritty.app $out/Applications
             ln -s $out/bin $out/Applications/Alacritty.app/Contents/MacOS
-            ln -s $out/bin $out/Applications/Alacritty.app/Contents/MacOS
+            ln -s $out/bin /Applications/Alacritty.app/Contents/MacOS
           '';
         });
       };
