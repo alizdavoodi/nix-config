@@ -60,6 +60,7 @@ in
     nixFlakes
     ascii-image-converter
     du-dust
+    yt-dlp
     cargo
     comma
     unzip

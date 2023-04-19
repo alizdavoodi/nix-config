@@ -21,14 +21,12 @@ return {
     { "<leader>as", desc = "summarize text" },
     { "<leader>ag", desc = "generate git message" },
   },
-  config = function()
-    require("neoai").setup({
-      models = {
-        {
-          name = "openai",
-          model = "gpt-4",
-        },
+  opts = {
+    models = {
+      {
+        name = "openai",
+        model = "gpt-4",
       },
-    })
-  end,
+    },
+  },
 }

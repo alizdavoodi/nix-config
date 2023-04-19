@@ -5,9 +5,9 @@ return {
   opts = {
     load = {
       ["core.defaults"] = {}, -- Loads default behaviour
-      ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+      ["core.concealer"] = {}, -- Adds pretty icons to your documents
       ["core.keybinds"] = {},
-      ["core.norg.completion"] = {
+      ["core.completion"] = {
         config = {
           engine = "nvim-cmp",
         },
@@ -22,7 +22,7 @@ return {
           },
         },
       },
-      ["core.norg.dirman"] = { -- Manages Neorg workspaces
+      ["core.dirman"] = { -- Manages Neorg workspaces
         config = {
           workspaces = {
             notes = "~/projects/notes",
