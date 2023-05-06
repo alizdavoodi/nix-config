@@ -108,6 +108,7 @@
   cmake
   cargo
   home-manager
+  wireguard-tools
   (python3.withPackages(ps: with ps; [ libtmux packaging]))
   ];
 
