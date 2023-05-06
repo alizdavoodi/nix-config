@@ -5,6 +5,15 @@
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
 
+# -- session creation ----------------------------------------------------------
+
+# prompt for session name when creating a new session, possible values are:
+#   - true
+#   - false (default)
+#   - disabled (do not modify new-session bindings)
+tmux_conf_new_session_prompt=false
+
+
 # -- windows & pane creation ---------------------------------------------------
 
 # new window retains current path, possible values are:
@@ -12,6 +21,12 @@
 #   - false (default)
 #   - disabled (do not modify new-window bindings)
 tmux_conf_new_window_retain_current_path=false
+
+# new window tries to reconnect ssh sessions, possible values are:
+#   - true
+#   - false (default)
+#   - disabled (do not modify new-window bindings)
+tmux_conf_new_window_reconnect_ssh=false
 
 # new pane retains current path, possible values are:
 #   - true (default)
@@ -24,12 +39,6 @@ tmux_conf_new_pane_retain_current_path=true
 #   - false (default)
 #   - disabled (do not modify split-window bindings)
 tmux_conf_new_pane_reconnect_ssh=false
-
-# prompt for session name when creating a new session, possible values are:
-#   - true
-#   - false (default)
-#   - disabled (do not modify new-session bindings)
-tmux_conf_new_session_prompt=false
 
 
 # -- display -------------------------------------------------------------------
@@ -169,9 +178,9 @@ tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
 tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
 tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_1"
 tmux_conf_theme_window_status_attr="none"
-tmux_conf_theme_window_status_format="#I #W"
-#tmux_conf_theme_window_status_format="#{circled_window_index} #W"
-#tmux_conf_theme_window_status_format="#I #W#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}"
+tmux_conf_theme_window_status_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
+#tmux_conf_theme_window_status_format="#{circled_window_index} #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
+#tmux_conf_theme_window_status_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}"
 
 # window current status style
 #   - built-in variables are:
@@ -186,9 +195,9 @@ tmux_conf_theme_window_status_format="#I #W"
 tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
 tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_4"
 tmux_conf_theme_window_status_current_attr="bold"
-tmux_conf_theme_window_status_current_format="#I #W"
-#tmux_conf_theme_window_status_current_format="#{circled_window_index} #W"
-#tmux_conf_theme_window_status_current_format="#I #W#{?window_zoomed_flag,🔍,}"
+tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
+#tmux_conf_theme_window_status_current_format="#{circled_window_index} #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
+#tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}"
 
 # window activity status style
 tmux_conf_theme_window_status_activity_fg="default"
@@ -344,7 +353,7 @@ tmux_conf_copy_to_os_clipboard=false
 # this is the place to override or undo settings
 
 # increase history size
-set -g history-limit 50000
+set -g history-limit 500000
 
 # start with mouse mode enabled
 set -g mouse on
@@ -380,18 +389,18 @@ set -g mode-keys vi
 # by default, launching tmux will update tpm and all plugins
 #   - true (default)
 #   - false
-tmux_conf_update_plugins_on_launch=false
+tmux_conf_update_plugins_on_launch=true
 
 # by default, reloading the configuration will update tpm and all plugins
 #   - true (default)
 #   - false
-tmux_conf_update_plugins_on_reload=false
+tmux_conf_update_plugins_on_reload=true
 
 # by default, reloading the configuration will uninstall tpm and plugins when no
 # plugins are enabled
 #   - true (default)
 #   - false
-tmux_conf_uninstall_plugins_on_reload=false
+tmux_conf_uninstall_plugins_on_reload=true
 
 # /!\ the tpm bindings differ slightly from upstream:
 #   - installing plugins: <prefix> + I
@@ -409,28 +418,6 @@ tmux_conf_uninstall_plugins_on_reload=false
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
 
-#set -g @tmux_window_name_substitute_sets "[('/Users/davoodi/.nix-profile/bin/vim.+', 'vim'), ('/Users/davoodi/.nix-profile/bin/nvim.+', 'nvim')]"
-TMUX_FZF_LAUNCH_KEY="J"
-TMUX_FZF_PATH="`ls -t /nix/store | rg tmux-fzf | head -1`"
-
-bind-key "C-w" run-shell -b "/nix/store/${TMUX_FZF_PATH}/share/tmux-plugins/tmux-fzf/scripts/window.sh switch"
-
-set -g @tmux_window_name_ignored_programs "['/Users/davoodi/.nix-profile/bin/vim', '/Users/davoodi/.nix-profile/bin/nvim']" # Default is []
-
-# reload configuration
-bind r source-file ~/.config/tmux/tmux.conf \; display '~/.config/tmux/tmux.conf sourced'
-
-# clear both screen and history
-bind -n C-l send-keys C-l \; run 'sleep 0.2'
-
-# maximize current pane
-bind + run 'cut -c3- ~/.config/tmux/tmux.conf | sh -s _maximize_pane "#{session_name}" #D'
-
-# -- urlview -------------------------------------------------------------------
-
-bind U run "cut -c3- ~/.config/tmux/tmux.conf | sh -s _urlview #{pane_id}"
-
-run 'cut -c3- ~/.config/tmux/tmux.conf | sh -s _apply_configuration'
 
 # -- custom variables ----------------------------------------------------------
 
@@ -458,3 +445,4 @@ run 'cut -c3- ~/.config/tmux/tmux.conf | sh -s _apply_configuration'
 #
 # "$@"
 # # /!\ do not remove the previous line
+

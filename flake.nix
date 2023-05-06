@@ -4,11 +4,14 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    #nixpkgs.url = "github:NixOS/nixpkgs/release-22.11";
 
     # Home manager
+    #home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.utils.follows = "flake-utils";
+
 
     hardware.url = "github:nixos/nixos-hardware";
     flake-utils.url = "github:numtide/flake-utils";
@@ -31,10 +34,10 @@
     /*   inputs.flake-utils.follows = "flake-utils"; */
     /* }; */
 
-    alacritty = {
-      url = "path:./home-manager/alacritty/alacritty-nightly";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #alacritty = {
+    #  url = "path:./home-manager/alacritty/alacritty-nightly";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
 
   };
 
@@ -47,9 +50,9 @@
       programs.home-manager.enable = true;
       home.stateVersion = "22.05";
 
-      nixpkgs.overlays = [
-        inputs.alacritty.overlay.${system}
-        ];
+      #nixpkgs.overlays = [
+      #  inputs.alacritty.overlay.${system}
+      #  ];
 
       imports = [
         ./home-manager

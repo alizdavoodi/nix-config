@@ -3,7 +3,6 @@
 {
   programs.alacritty = {
       enable = true;
-      package = pkgs.alacritty;
       settings = {
         env.TERM = "xterm-256color";
         window = {
@@ -13,14 +12,9 @@
           # Startup Mode (changes require restart)
           startup_mode = "Fullscreen";
         };
-        # shell = {
-        #   program = "/Users/davoodi/.nix-profile/bin/zsh";
-        #   args = [
-        #     "l"
-        #     "c"
-        #     "tmux attach -t sessionname || tmux new -s sessionname"
-        #   ];
-        # };
+        shell = {
+           program = "${pkgs.zsh}/bin/zsh";
+         };
         scrolling = {
           history = 10000;
           multiplier = 3;
@@ -36,7 +30,7 @@
             style = "Bold";
           };
           italic = {
-            family = "Menlo";
+            family = "CaskaydiaCove Nerd Font";
             style = "Italic";
           };
 

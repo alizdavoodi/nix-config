@@ -61,9 +61,11 @@ in
     ascii-image-converter
     du-dust
     yt-dlp
-    cargo
     comma
+    gnupg
+    docker-compose
     unzip
+    htop
     terraform
     urlview
     nodejs
@@ -74,6 +76,8 @@ in
     go
     fd
     mtr
+    wget
+    pinentry-curses
     xdg-utils
     pinentry
     nil
@@ -93,7 +97,6 @@ in
     terraform-ls
     sumneko-lua-language-server
     nodePackages.prettier
-    nodePackages.web-ext
     python3Packages.libtmux
     python3Packages.packaging
   ];

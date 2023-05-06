@@ -39,7 +39,6 @@
       ZVM_VI_ESCAPE_BINDKEY=jk
       # enable flake
       export NIX_CONFIG="experimental-features = nix-command flakes"
-      source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
     '' + builtins.readFile
       (builtins.fetchGit {
       url = "https://github.com/ahmetb/kubectl-aliases";
@@ -50,19 +49,8 @@
   programs.tmux = {
     enable = true;
     extraConfig = builtins.readFile "${inputs.tmux-conf}/.tmux.conf";
+    shell = "${pkgs.zsh}/bin/zsh";
     plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.mkTmuxPlugin {
-            name = "tmux-window-name";
-            pluginName = "tmux-window-name";
-            src = fetchFromGitHub {
-              owner = "ofirgall";
-              repo = "tmux-window-name";
-              rev = "43ed4885a0663a70bb2aaff434945ebd09b06f44";
-              sha256 = "53jZQjFWe9xj3MbbfQs/rt3ysxUSi60FOS7Ft/Xj5qE=";
-            };
-          };
-      }
       {
         plugin = tmuxPlugins.resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
@@ -82,5 +70,11 @@
     enable = true;
     enableZshIntegration = true;
   };
-  home.file.".tmux.conf.local" = { source = ./.tmux.conf.local; };
+
+  xdg.configFile.tmux = {
+    target = "tmux/tmux.conf.local";
+    source = ./.tmux.conf.local;
+    recursive = true;
+  };
+
 }
