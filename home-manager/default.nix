@@ -69,6 +69,7 @@ in
     terraform
     urlview
     nodejs
+    gcc
     dogdns
     ripgrep
     kubectl125
