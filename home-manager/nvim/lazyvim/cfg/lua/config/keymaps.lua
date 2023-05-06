@@ -21,6 +21,20 @@ wk.register({
   prefix = "<leader>",
   mode = "v",
 })
+
+-- vim.keymap.set("i", "<C-g>", function()
+--   return vim.fn["codeium#Accept"]()
+-- end, { expr = true })
+-- vim.keymap.set("i", "<c-;>", function()
+--   return vim.fn["codeium#CycleCompletions"](1)
+-- end, { expr = true })
+-- vim.keymap.set("i", "<c-,>", function()
+--   return vim.fn["codeium#CycleCompletions"](-1)
+-- end, { expr = true })
+-- vim.keymap.set("i", "<c-x>", function()
+--   return vim.fn["codeium#Clear"]()
+-- end, { expr = true })
+
 --map copilot#Accept to <C-g>
 -- vim.api.nvim_set_keymap("!", "<C-g>", 'copilot#Accept("<CR>")', { silent = true, expr = true, noremap = true })
 --

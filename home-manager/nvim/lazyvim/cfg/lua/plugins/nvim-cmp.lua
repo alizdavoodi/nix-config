@@ -1,6 +1,8 @@
 return {
   "hrsh7th/nvim-cmp",
-  dependencies = { "lukas-reineke/cmp-rg" },
+  dependencies = {
+    "lukas-reineke/cmp-rg",
+  },
   ---@param opts cmp.ConfigSchema
   opts = function(_, opts)
     local cmp = require("cmp")
