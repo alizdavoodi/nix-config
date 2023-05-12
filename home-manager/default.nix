@@ -12,25 +12,23 @@ let
    /*Use default kubectl */
    kubectl125 = kubectlPkgs.kubectl;
   
-  # TODO: use upstream neovim when it fixes the build
-  # Just remove this and use neovim-unwrapped
-  neovim9Pkgs = import (builtins.fetchGit {
-      name = "neovim-0.9";
-      url = "https://github.com/NixOS/nixpkgs/";
-      ref = "refs/heads/master";
-      rev = "8eb9ed0cd532e776c7cba121c1f900b75980391f";
-      }) {
-          inherit system;
-        
-      };
+  #neovim9Pkgs = import (builtins.fetchGit {
+  #    name = "neovim-0.9";
+  #    url = "https://github.com/NixOS/nixpkgs/";
+  #    ref = "refs/heads/master";
+  #    rev = "8eb9ed0cd532e776c7cba121c1f900b75980391f";
+  #    }) {
+  #        inherit system;
 
-  neovim9 = neovim9Pkgs.neovim-unwrapped;
+  #    };
+
+  #neovim9 = neovim9Pkgs.neovim-unwrapped;
 in
 {
   imports = [
     ./cli
     #./nvim
-    ./nvim/lazyvim { _module.args.neovim9 = neovim9; }
+    ./nvim/lazyvim #{ _module.args.neovim9 = neovim9; }
     ./alacritty
     #./macfly
     ./starship

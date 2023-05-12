@@ -1,4 +1,4 @@
-{  config, neovim9, ... }:
+{  config, ... }:
 
 {
   programs.neovim = {
