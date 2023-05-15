@@ -70,11 +70,15 @@
     enable = true;
     enableZshIntegration = true;
   };
+  
+  home.file."${config.xdg.configHome}/tmux/tsesh.sh".source = ./scripts/tsesh.sh;
 
   xdg.configFile.tmux = {
     target = "tmux/tmux.conf.local";
     source = ./.tmux.conf.local;
     recursive = true;
   };
+
+
 
 }
