@@ -64,6 +64,26 @@
       {
         plugin = tmuxPlugins.tmux-thumbs;
       }
+      {
+          plugin = tmuxPlugins.mkTmuxPlugin rec {
+              pluginName = "tmux-session-wizard";
+              version = "0.1.0";
+              rtpFilePath = "session-wizard.tmux";
+
+              src = fetchFromGitHub {
+                owner = "27medkamal";
+                repo = "tmux-session-wizard";
+                rev = "96918e95b6fd2f73e29fb08bd6f371bec929df32";
+                sha256 = "sha256-GJ9Jz4mpz8ov7kALEZdfxUZciERvuKYAG82LU8HQbUQ=";
+              };
+              meta = with lib; {
+                description = "Creating a new session from a list of recently accessed directories";
+                homepage = "https://github.com/27medkamal/tmux-session-wizard";
+                license = licenses.mit;
+                platforms = platforms.all;
+              };
+            };
+      }
     ];
   };
   programs.fzf = {
