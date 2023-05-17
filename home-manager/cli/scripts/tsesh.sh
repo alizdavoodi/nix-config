@@ -55,7 +55,7 @@ find_directories() {
 	# Responsible for chosing which directories to display
 	possible_options=("$HOME/projects" "$HOME/projects/github.com" "$HOME/projects/gitlab.ci.fdmg.org")
 	for option in "${possible_options[@]}"; do
-		find "$option" -type d -name ".git" -maxdepth 3 -exec dirname '{}' \;
+		fd -t d -d 5 -H '^.git$' "$option" --exec dirname '{}' \;
 	done
 }
 
@@ -90,7 +90,7 @@ tabulate() {
 # if no cmd line args are provided
 if [[ $# -eq 1 ]]; then
 	selected=$1
-	sesh_name=$(basename $selected)
+	sesh_name=$(basename "$selected")
 	if [[ ! -d $selected ]]; then
 		selected=$HOME
 	fi
@@ -103,7 +103,7 @@ else
 	fi
 	selected=$(find_directories | tabulate | column -t -s' ' |
 		sed '1s/^/  /' | $fzf_bin $fzf_args)
-	sesh_name=$(echo $selected | awk '{ print $1 }')
+	sesh_name=$(echo $selected | awk '{ print $1 }' | tr '.' '_')
 	selected=$(echo $selected | awk '{ print $2 }')
 fi
 

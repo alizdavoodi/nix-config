@@ -1,6 +1,7 @@
 {  config, pkgs, ... }:
-
-{
+let
+  font-name = "JetBrainsMono Nerd Font";
+in {
   programs.alacritty = {
       enable = true;
       settings = {
@@ -22,15 +23,15 @@
         font = {
           size = 15;
           normal = {
-            family = "CaskaydiaCove Nerd Font";
+            family = "${font-name}";
             style = "Regular";
           };
           bold = {
-            family = "CaskaydiaCove Nerd Font";
+            family = "${font-name}";
             style = "Bold";
           };
           italic = {
-            family = "CaskaydiaCove Nerd Font";
+            family = "${font-name}";
             style = "Italic";
           };
 

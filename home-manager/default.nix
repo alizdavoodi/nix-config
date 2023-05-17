@@ -87,7 +87,6 @@ in
     ansible
     jq
     powerline-fonts
-    nerdfonts
     cascadia-code
     kubectx
     kubernetes-helm
@@ -98,6 +97,7 @@ in
     nodePackages.prettier
     python3Packages.libtmux
     python3Packages.packaging
+    (nerdfonts.override { fonts = [ "Meslo" "Iosevka" "JetBrainsMono"]; })
   ];
 
 
