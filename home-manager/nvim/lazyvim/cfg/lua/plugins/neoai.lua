@@ -28,5 +28,35 @@ return {
         model = "gpt-4",
       },
     },
+    shortcuts = {
+      {
+        name = "textify",
+        key = "<leader>as",
+        desc = "fix text with AI",
+        use_context = true,
+        prompt = [[
+                Please rewrite the text to make it more readable, clear,
+                concise, and fix any grammatical, punctuation, or spelling
+                errors
+            ]],
+        modes = { "v" },
+        strip_function = nil,
+      },
+      {
+        name = "gitcommit",
+        key = "<leader>ag",
+        desc = "generate git commit message",
+        use_context = false,
+        prompt = function()
+          return [[
+                  I want you to act as a commit message generator. 
+                  I will provide you the git diff, and I would like you to generate an appropriate commit message using the conventional commit format. 
+                  Do not write any explanations or other words, just reply with the commit message.
+                ]] .. vim.fn.system("git diff --cached")
+        end,
+        modes = { "n" },
+        strip_function = nil,
+      },
+    },
   },
 }

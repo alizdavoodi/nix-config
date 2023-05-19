@@ -121,7 +121,7 @@ in {
   virtualisation.docker.enable = true;
 
   fonts.fonts = with pkgs; [
-  (nerdfonts.override { fonts = [ "CascadiaCode" "Meslo"]; })
+  (nerdfonts.override { fonts = [ "CascadiaCode" "Meslo" "JetBrainsMono" "Iosevka"]; })
   ];
 
   # List packages installed in system profile. To search, run:
@@ -161,7 +161,15 @@ in {
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 8096 8989 ];
+  #networking.firewall.allowedTCPPorts = [ ];
+  networking.firewall.extraCommands = ''
+  iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 6789 -j nixos-fw-accept
+  iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 6789 -j nixos-fw-accept
+  iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 8096 -j nixos-fw-accept
+  iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 8096 -j nixos-fw-accept
+  iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 8989 -j nixos-fw-accept
+  iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 8989 -j nixos-fw-accept
+  '';
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
