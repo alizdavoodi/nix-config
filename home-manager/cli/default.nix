@@ -1,5 +1,9 @@
 { config, lib, pkgs, inputs, ... }: {
 
+ imports = [
+  ./chatgpt-cli
+ ];
+
  programs.zsh = {
     enable = true;
     autocd = true;
