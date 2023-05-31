@@ -70,6 +70,7 @@ in
     gcc
     dogdns
     ripgrep
+    cargo
     kubectl125
     openjdk
     go

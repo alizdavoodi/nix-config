@@ -28,6 +28,7 @@
       flake = false; 
     };
 
+
     /* neovim-nightly = { */
     /*   url = "github:neovim/neovim?dir=contrib"; */
     /*   inputs.nixpkgs.follows = "nixpkgs"; */
