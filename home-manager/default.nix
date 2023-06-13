@@ -67,13 +67,13 @@ in
     terraform
     urlview
     nodejs
-    gcc
+    inputs.wait4x.packages.${system}.default
     dogdns
     ripgrep
-    cargo
     kubectl125
     openjdk
     go
+    cargo
     fd
     mtr
     wget
