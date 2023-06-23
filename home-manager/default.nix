@@ -11,18 +11,7 @@ let
       }; 
    /*Use default kubectl */
    kubectl125 = kubectlPkgs.kubectl;
-  
-  #neovim9Pkgs = import (builtins.fetchGit {
-  #    name = "neovim-0.9";
-  #    url = "https://github.com/NixOS/nixpkgs/";
-  #    ref = "refs/heads/master";
-  #    rev = "8eb9ed0cd532e776c7cba121c1f900b75980391f";
-  #    }) {
-  #        inherit system;
 
-  #    };
-
-  #neovim9 = neovim9Pkgs.neovim-unwrapped;
 in
 {
   imports = [
@@ -92,7 +81,6 @@ in
     ansible
     jq
     powerline-fonts
-    cascadia-code
     kubectx
     kubernetes-helm
     ansible-lint
@@ -104,22 +92,6 @@ in
     python3Packages.packaging
     (nerdfonts.override { fonts = [ "Meslo" "Iosevka" "JetBrainsMono"]; })
   ];
-
-
-  #oh-my-zsh customs theme
-  # home.file.".oh-my-zsh/custom/themes/dracula.zsh-theme".source = builtins.fetchGit { 
-  #   url = "https://github.com/dracula/zsh.git";
-  #   ref = "refs/tags/v1.2.5";
-  #   shallow = true;
-  #   rev = "1f53554b2a2e3b7d3f0039e095ea84c05c08f064";
-  # } + "/dracula.zsh-theme";
-
-  #oh-my-zsh customs plugins
-  # home.file.".oh-my-zsh/custom/plugins/zsh-kubectl-prompt".source =  builtins.fetchGit { 
-  #   url = "https://github.com/superbrothers/zsh-kubectl-prompt.git"; 
-  #   ref = "refs/heads/master";
-  #   rev = "eb31775d6196d008ba2a34e5d99fb981b5b3092d";
-  # };
 
   
 }
