@@ -63,6 +63,7 @@ in
     inputs.wait4x.packages.${system}.default
     dogdns
     ripgrep
+    rclone
     kubectl125
     openjdk
     go
