@@ -36,3 +36,5 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.api.nvim_buf_set_option(current_buf, "filetype", "terraform")
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = "*.nix", command = ":%!nixfmt" })

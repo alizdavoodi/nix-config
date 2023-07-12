@@ -1,30 +1,27 @@
-{  config, pkgs, system, inputs, ... }:
+{ config, pkgs, system, inputs, ... }:
 
 let
-    kubectlPkgs = import (builtins.fetchGit {
-        name = "kubectl-1-25"; 
-        url = "https://github.com/NixOS/nixpkgs/";
-        ref = "refs/heads/nixpkgs-unstable";
-        rev = "79b3d4bcae8c7007c9fd51c279a8a67acfa73a2a";
-      }) { 
-       inherit system;
-      }; 
-   /*Use default kubectl */
-   kubectl125 = kubectlPkgs.kubectl;
+  kubectlPkgs = import (builtins.fetchGit {
+    name = "kubectl-1-25";
+    url = "https://github.com/NixOS/nixpkgs/";
+    ref = "refs/heads/nixpkgs-unstable";
+    rev = "79b3d4bcae8c7007c9fd51c279a8a67acfa73a2a";
+  }) { inherit system; };
+  # Use default kubectl
+  kubectl125 = kubectlPkgs.kubectl;
 
-in
-{
+in {
   imports = [
     ./cli
     #./nvim
-    ./nvim/lazyvim #{ _module.args.neovim9 = neovim9; }
+    ./nvim/lazyvim # { _module.args.neovim9 = neovim9; }
     ./alacritty
     #./macfly
     ./starship
     ./git
     ./lazygit
   ];
-  
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
@@ -64,6 +61,7 @@ in
     dogdns
     ripgrep
     rclone
+    nixfmt
     kubectl125
     openjdk
     go
@@ -91,8 +89,7 @@ in
     nodePackages.prettier
     python3Packages.libtmux
     python3Packages.packaging
-    (nerdfonts.override { fonts = [ "Meslo" "Iosevka" "JetBrainsMono"]; })
+    (nerdfonts.override { fonts = [ "Meslo" "Iosevka" "JetBrainsMono" ]; })
   ];
 
-  
 }

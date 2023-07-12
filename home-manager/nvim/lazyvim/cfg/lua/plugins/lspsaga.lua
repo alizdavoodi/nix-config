@@ -5,8 +5,10 @@ return {
     --Please make sure you install markdown and markdown_inline parser
     { "nvim-treesitter/nvim-treesitter" },
   },
-  config = function()
-    require("lspsaga").setup({})
-  end,
-  event = "LspAttach",
+  opts = {
+    symbols_in_winbar = {
+      enable = true,
+      sign = true,
+    },
+  },
 }

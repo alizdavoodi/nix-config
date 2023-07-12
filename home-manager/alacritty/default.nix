@@ -1,6 +1,6 @@
 {  config, pkgs, ... }:
 let
-  font-name = "MesloLGS Nerd Font";
+  font-name = "MesloLGM Nerd Font";
 in {
   programs.alacritty = {
       enable = true;
