@@ -21,6 +21,7 @@ return {
       dashboard.button("n", "  New file", "<cmd>ene <CR>"),
       dashboard.button("f", "󰱼  Find file", "<Cmd>FzfLua files<cr>"),
       dashboard.button("t", "  Find tags", "<Cmd>FzfLua tags<cr>"),
+      dashboard.button("r", "󰦛  Restore session", "<cmd>lua require('persistence').load({ last = true })<cr>"),
       dashboard.button("g", "󱎸  Find word", "<Cmd>Telescope live_grep<cr>"),
       dashboard.button("b", "  Jump to bookmarks", "<Cmd>Telescope vim_bookmarks all<cr>"),
       dashboard.button("q", "  Exit", ":q<cr>"),
