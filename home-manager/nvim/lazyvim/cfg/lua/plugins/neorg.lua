@@ -7,6 +7,7 @@ return {
       ["core.defaults"] = {}, -- Loads default behaviour
       ["core.concealer"] = {}, -- Adds pretty icons to your documents
       ["core.keybinds"] = {},
+      ["core.summary"] = {},
       ["core.completion"] = {
         config = {
           engine = "nvim-cmp",
