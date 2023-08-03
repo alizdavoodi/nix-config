@@ -1,7 +1,9 @@
 return {
-  { "nvim-neotest/neotest-go" },
   {
     "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/neotest-go",
+    },
     opts = { adapters = { "neotest-go" } },
   },
 }
