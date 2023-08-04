@@ -71,9 +71,20 @@
       home.username = "davoodi";
       home.homeDirectory = "/Users/davoodi"; 
     };
-    home-pc = {
+    home-server = { pkgs, ...}:
+    {
       home.username = "alizdavoodi";
       home.homeDirectory = "/home/alizdavoodi";
+
+      # packages specific for my home server
+      home.packages = with pkgs; [
+        gcc-arm-embedded
+        wally-cli
+        qmk
+        gtk3
+        libusb1
+        webkitgtk
+      ];
     };
   in
   {
@@ -93,7 +104,7 @@
         # > Our main home-manager configuration file <
         modules = [
           home-common
-          home-pc
+          home-server
         ];
       };
 

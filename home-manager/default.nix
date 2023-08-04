@@ -73,11 +73,14 @@ in
     pinentry-curses
     xdg-utils
     pinentry
+    gcc
     nil
     sshuttle
     awscli2
     lftp
     delta
+    gnumake
+    rclone
     ansible
     jq
     powerline-fonts
