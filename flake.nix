@@ -11,7 +11,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-
     hardware.url = "github:nixos/nixos-hardware";
     flake-utils.url = "github:numtide/flake-utils";
 
@@ -20,50 +19,46 @@
       flake = false;
     };
 
-# Delta is a syntax-highlighting pager for git, diff, and grep output.
-# NOTE: Include just for "themes.gitconfig" file 
-    delta = { 
+    # Delta is a syntax-highlighting pager for git, diff, and grep output.
+    # NOTE: Include just for "themes.gitconfig" file 
+    delta = {
       url = "github:dandavison/delta";
-      flake = false; 
+      flake = false;
     };
 
-
-    /* neovim-nightly = { */
-    /*   url = "github:neovim/neovim?dir=contrib"; */
-    /*   inputs.nixpkgs.follows = "nixpkgs"; */
-    /*   inputs.flake-utils.follows = "flake-utils"; */
-    /* }; */
+    # neovim-nightly = {
+    # url = "github:neovim/neovim?dir=contrib";
+    # inputs.nixpkgs.follows = "nixpkgs";
+    # inputs.flake-utils.follows = "flake-utils";
+    # };
 
     #alacritty = {
     #  url = "path:./home-manager/alacritty/alacritty-nightly";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
     wait4x = {
-        url = "github:atkrad/wait4x";
-        inputs = { 
-          nixpkgs.follows = "nixpkgs"; 
-          flake-utils.follows = "flake-utils";
-        };
+      url = "github:atkrad/wait4x";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
       };
+    };
 
   };
 
   outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
-  let
-    inherit (self) outputs;
-    home-common = { lib, system, ...}:
-    {
+    let
+      inherit (self) outputs;
+      home-common = { lib, system, ... }: {
 
-      programs.home-manager.enable = true;
-      home.stateVersion = "22.05";
+        programs.home-manager.enable = true;
+        home.stateVersion = "22.05";
 
-      #nixpkgs.overlays = [
-      #  inputs.alacritty.overlay.${system}
-      #  ];
+        #nixpkgs.overlays = [
+        #  inputs.alacritty.overlay.${system}
+        #  ];
 
-      imports = [
-        ./home-manager
-      ];
+        imports = [ ./home-manager ];
 
     };
 
@@ -107,6 +102,7 @@
           home-server
         ];
       };
+    };
 
       "davoodi@MC220424" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
@@ -118,5 +114,4 @@
         ];
       };
     };
-  };
 }

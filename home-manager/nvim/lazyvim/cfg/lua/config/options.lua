@@ -8,9 +8,9 @@ vim.o.foldenable = true
 vim.o.foldcolumn = "0"
 
 -- Using lsp_lines instead of lsp_diagnostics
--- vim.diagnostic.config({
---   virtual_text = false,
--- })
+vim.diagnostic.config({
+  virtual_text = false,
+})
 
 -- copilot assume mapped
 -- vim.g.copilot_assume_mapped = true
