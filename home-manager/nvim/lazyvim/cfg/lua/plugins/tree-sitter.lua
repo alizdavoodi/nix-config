@@ -6,6 +6,8 @@ return {
         "bash",
         "vimdoc",
         "html",
+        "help",
+        "c",
         "javascript",
         "json",
         "lua",
