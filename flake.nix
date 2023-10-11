@@ -60,58 +60,60 @@
 
         imports = [ ./home-manager ];
 
-    };
-
-    work-macbook = {
-      home.username = "davoodi";
-      home.homeDirectory = "/Users/davoodi"; 
-    };
-    home-server = { pkgs, ...}:
-    {
-      home.username = "alizdavoodi";
-      home.homeDirectory = "/home/alizdavoodi";
-
-      # packages specific for my home server
-      home.packages = with pkgs; [
-        gcc-arm-embedded
-        wally-cli
-        qmk
-        gtk3
-        libusb1
-        webkitgtk
-      ];
-    };
-  in
-  {
-    nixosConfigurations = {
-      "alizdavoodi@nixos" = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-        #nix.settings.experimental-features = [ "nix-command" "flakes" ];
-        # > Our main nixos configuration file <
-        modules = [ ./nixos/configuration.nix ];
       };
-    };
 
-    homeConfigurations = {
-      "alizdavoodi@nixos" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs outputs; system="x86_64-linux";};
-        # > Our main home-manager configuration file <
-        modules = [
-          home-common
-          home-server
+      work-macbook = {
+        home.username = "davoodi";
+        home.homeDirectory = "/Users/davoodi";
+      };
+      home-server = { pkgs, ... }: {
+        home.username = "alizdavoodi";
+        home.homeDirectory = "/home/alizdavoodi";
+
+        # packages specific for my home server
+        home.packages = with pkgs; [
+          gcc-arm-embedded
+          wally-cli
+          kubo
+          calibre
+          qmk
+          gtk3
+          libusb1
+          webkitgtk
         ];
       };
-    };
+    in {
+      nixosConfigurations = {
+        "alizdavoodi@nixos" = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          #nix.settings.experimental-features = [ "nix-command" "flakes" ];
+          # > Our main nixos configuration file <
+          modules = [ ./nixos/configuration.nix ];
+        };
+      };
+
+      homeConfigurations = {
+        "alizdavoodi@nixos" = home-manager.lib.homeManagerConfiguration {
+          pkgs =
+            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            system = "x86_64-linux";
+          };
+          # > Our main home-manager configuration file <
+          modules = [ home-common home-server ];
+        };
+      };
 
       "davoodi@MC220424" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = { inherit inputs outputs; system="aarch64-darwin"; }; # Pass flake inputs to our config
+        pkgs =
+          nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          system = "aarch64-darwin";
+        }; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
-        modules = [
-          home-common
-          work-macbook
-        ];
+        modules = [ home-common work-macbook ];
       };
     };
 }
