@@ -418,7 +418,7 @@ tmux_conf_uninstall_plugins_on_reload=true
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
 
-TMUX_FZF_LAUNCH_KEY="C-b"
+TMUX_FZF_LAUNCH_KEY="C-y"
 bind -n C-l send-keys C-l \; run 'sleep 0.2' \;
 bind Tab run-shell "~/.config/tmux/tsesh.sh --popup"
 # -- custom variables ----------------------------------------------------------
