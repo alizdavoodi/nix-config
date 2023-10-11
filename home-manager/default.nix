@@ -50,6 +50,7 @@ in {
     du-dust
     yt-dlp
     comma
+    sshuttle
     gnupg
     docker-compose
     unzip
@@ -71,6 +72,8 @@ in {
     wget
     pinentry-curses
     xdg-utils
+    sops
+    age
     pinentry
     gcc
     nil

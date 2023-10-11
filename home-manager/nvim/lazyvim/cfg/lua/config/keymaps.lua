@@ -7,21 +7,9 @@ vim.api.nvim_set_keymap("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>",
 
 local wk = require("which-key")
 local chatgpt = require("chatgpt")
-wk.register({
-  p = {
-    name = "ChatGPT",
-    e = {
-      function()
-        chatgpt.edit_with_instructions()
-      end,
-      "Edit with instructions",
-    },
-  },
-}, {
-  prefix = "<leader>",
-  mode = "v",
-})
-
+-- wk.register({
+--   ["<leader>dl"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show cursor diagnostics with Lspsaga" },
+-- })
 -- vim.keymap.set("i", "<C-g>", function()
 --   return vim.fn["codeium#Accept"]()
 -- end, { expr = true })

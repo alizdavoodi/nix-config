@@ -10,5 +10,8 @@ return {
       enable = true,
       sign = true,
     },
+    diagnostic = {
+      diagnostic_only_current = true,
+    },
   },
 }
