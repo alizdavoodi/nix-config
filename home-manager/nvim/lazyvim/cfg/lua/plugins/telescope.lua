@@ -37,14 +37,14 @@ return {
       },
     },
     opts = {
-      defaults = {
-        path_display = { "smart" },
-      },
-      pickers = {
-        find_files = {
-          path_display = { "smart" },
-        },
-      },
+      -- defaults = {
+      --   path_display = { "smart" },
+      -- },
+      -- pickers = {
+      --   find_files = {
+      --     path_display = { "smart" },
+      --   },
+      -- },
     },
   },
 }
