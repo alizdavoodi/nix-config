@@ -50,6 +50,7 @@ in {
     du-dust
     yt-dlp
     comma
+    krew
     sshuttle
     gnupg
     docker-compose

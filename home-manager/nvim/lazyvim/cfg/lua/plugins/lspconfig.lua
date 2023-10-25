@@ -53,6 +53,7 @@ return {
                 yaml = {
                   validate = true,
                   format = { enable = true },
+                  singleQuote = false,
                   hover = true,
                   schemaStore = {
                     enable = true,

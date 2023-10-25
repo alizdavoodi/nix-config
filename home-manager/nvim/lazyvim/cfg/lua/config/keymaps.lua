@@ -3,10 +3,11 @@
 -- Add any additional keymaps here
 
 --map("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { desc = "Open fzf-lua" })
-vim.api.nvim_set_keymap("n", "<c-P>", "<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>lua require('fzf-lua').buffers()<CR>", { noremap = true, silent = true })
 
-local wk = require("which-key")
-local chatgpt = require("chatgpt")
+-- local wk = require("which-key")
+-- local chatgpt = require("chatgpt")
 -- wk.register({
 --   ["<leader>dl"] = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Show cursor diagnostics with Lspsaga" },
 -- })
