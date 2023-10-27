@@ -17,7 +17,6 @@ in {
     ./nvim/lazyvim # { _module.args.neovim9 = neovim9; }
     ./alacritty
     #./macfly
-    ./starship
     ./git
     ./lazygit
   ];
