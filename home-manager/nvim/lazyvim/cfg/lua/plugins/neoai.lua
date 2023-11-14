@@ -25,7 +25,7 @@ return {
     models = {
       {
         name = "openai",
-        model = "gpt-4",
+        model = "gpt-4-1106-preview",
       },
     },
     shortcuts = {
