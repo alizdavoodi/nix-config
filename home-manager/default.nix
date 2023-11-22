@@ -92,7 +92,9 @@ in {
     nodePackages.prettier
     python3Packages.libtmux
     python3Packages.packaging
-    (nerdfonts.override { fonts = [ "Meslo" "Iosevka" "JetBrainsMono" ]; })
+    (nerdfonts.override {
+      fonts = [ "Meslo" "Iosevka" "JetBrainsMono" "VictorMono" ];
+    })
   ];
 
 }
