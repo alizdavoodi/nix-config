@@ -17,7 +17,6 @@ in {
     ./nvim/lazyvim # { _module.args.neovim9 = neovim9; }
     ./alacritty
     #./macfly
-    ./starship
     ./git
     ./lazygit
   ];
@@ -96,7 +95,9 @@ in {
     nodePackages.prettier
     python3Packages.libtmux
     python3Packages.packaging
-    (nerdfonts.override { fonts = [ "Meslo" "Iosevka" "JetBrainsMono" ]; })
+    (nerdfonts.override {
+      fonts = [ "Meslo" "Iosevka" "JetBrainsMono" "VictorMono" ];
+    })
   ];
 
 }
