@@ -62,6 +62,26 @@ in {
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
+  # Run cron
+  systemd.timers."get-most-treaided" = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "5m";
+      OnUnitActiveSec = "5m";
+      Unit = "hello-world.service";
+    };
+  };
+
+  systemd.services."hello-world" = {
+    script = ''
+      set -eu
+      ${pkgs.coreutils}/bin/echo "Hello World"
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -92,6 +112,19 @@ in {
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns = false;
+    openFirewall = true;
+  };
+  # settings from avahi-daemon.nix where mdns is replaced with mdns4
+  system.nssModules =
+    pkgs.lib.optional (!config.services.avahi.nssmdns) pkgs.nssmdns;
+  system.nssDatabases.hosts = with pkgs.lib;
+    optionals (!config.services.avahi.nssmdns) (mkMerge [
+      (mkBefore [ "mdns4_minimal [NOTFOUND=return]" ]) # before resolve
+      (mkAfter [ "mdns4" ]) # after dns
+    ]);
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -131,10 +164,11 @@ in {
   virtualisation.docker.enable = true;
   # hardware.keyboard.zsa.enable = true;
 
-  fonts.packages = with pkgs;
+  fonts.fonts = with pkgs;
     [
       (nerdfonts.override {
-        fonts = [ "CascadiaCode" "Meslo" "JetBrainsMono" "Iosevka" ];
+        fonts =
+          [ "CascadiaCode" "Meslo" "JetBrainsMono" "Iosevka" "VictorMono" ];
       })
     ];
 
@@ -146,6 +180,7 @@ in {
     cmake
     cargo
     home-manager
+    hplip
     google-chrome
     pkgconfig
     openssl
@@ -188,6 +223,8 @@ in {
     iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 8096 -j nixos-fw-accept
     iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 8989 -j nixos-fw-accept
     iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 8989 -j nixos-fw-accept
+    iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 7878 -j nixos-fw-accept
+    iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 7878 -j nixos-fw-accept
   '';
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
