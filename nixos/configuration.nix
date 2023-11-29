@@ -185,6 +185,7 @@ in {
     pkgconfig
     openssl
     wireguard-tools
+    openboard
     trezor-suite
     (python3.withPackages (ps: with ps; [ libtmux packaging ]))
   ];
