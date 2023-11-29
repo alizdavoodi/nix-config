@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-let font-name = "VictorMono Nerd Font";
+let font-name = "JetBrainsMono Nerd Font";
 in {
   programs.alacritty = {
     enable = true;
@@ -21,7 +21,7 @@ in {
         size = 16;
         normal = {
           family = "${font-name}";
-          style = "Medium";
+          style = "Regular";
         };
         bold = {
           family = "${font-name}";
