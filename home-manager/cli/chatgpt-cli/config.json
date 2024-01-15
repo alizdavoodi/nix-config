@@ -14,10 +14,10 @@
   },
   "conversation": {
     "prompt": "default",
-    "context_length": 6,
+    "context_length": 3,
     "model": "gpt-4",
     "stream": true,
-    "temperature": 0.1,
-    "max_tokens": 8000
+    "temperature": 0,
+    "max_tokens": 2048
   }
 }

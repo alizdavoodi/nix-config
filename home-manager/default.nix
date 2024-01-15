@@ -56,7 +56,7 @@ in {
     unzip
     htop
     terraform
-    urlview
+    extract_url
     nodejs
     inputs.wait4x.packages.${system}.default
     dogdns
