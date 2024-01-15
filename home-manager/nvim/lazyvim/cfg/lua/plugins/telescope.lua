@@ -35,16 +35,22 @@ return {
           require("telescope").load_extension("undo")
         end,
       },
+      {
+        "nvim-telescope/telescope-file-browser.nvim",
+        config = function()
+          require("telescope").load_extension("file_browser")
+        end,
+      },
     },
-    opts = {
-      -- defaults = {
-      --   path_display = { "smart" },
-      -- },
-      -- pickers = {
-      --   find_files = {
-      --     path_display = { "smart" },
-      --   },
-      -- },
-    },
+    -- opts = {
+    -- defaults = {
+    --   path_display = { "smart" },
+    -- },
+    -- pickers = {
+    --   find_files = {
+    --     path_display = { "smart" },
+    --   },
+    -- },
+    -- },
   },
 }
