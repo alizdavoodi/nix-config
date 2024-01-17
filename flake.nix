@@ -3,12 +3,12 @@
 
   inputs = {
     # Nixpkgs
-    # nixpkgs.url = "nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-    # home-manager.url = "github:nix-community/home-manager";
+    # home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     hardware.url = "github:nixos/nixos-hardware";
@@ -51,6 +51,7 @@
       inherit (self) outputs;
       home-common = { lib, system, ... }: {
 
+        nixpkgs = { config = { allowUnfree = true; }; };
         programs.home-manager.enable = true;
         home.stateVersion = "22.05";
 

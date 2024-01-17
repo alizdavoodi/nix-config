@@ -12,9 +12,9 @@
       expireDuplicatesFirst = true;
     };
     sessionVariables = {
-      colorterm = "truecolor";
-      term = "xterm-256color";
-      editor = "vim";
+      # colorterm = "truecolor";
+      # term = "xterm-256color";
+      editor = "nvim";
     };
     oh-my-zsh = {
       enable = true;
