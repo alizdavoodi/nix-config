@@ -10,10 +10,11 @@
       kubernetes = {
         format = "on [⛵$context ($namespace)](dimmed green)";
         disabled = false;
-        context_aliases = {
-          ".*eks:(?P<var_region>[\\w-]+).*:cluster/(?P<var_cluster>[\\w-]+)" =
-            "$var_region:$var_cluster";
-        };
+        contexts = [{
+          context_pattern =
+            ".*eks:(?P<var_region>[\\w-]+).*:cluster/(?P<var_cluster>[\\w-]+)";
+          context_alias = "$var_region:$var_cluster";
+        }];
       };
       aws = { disabled = true; };
     };
