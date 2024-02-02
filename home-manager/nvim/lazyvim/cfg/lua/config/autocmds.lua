@@ -49,6 +49,19 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = "*.nix", command = ":
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = "markdown",
   callback = function()
-    vim.b.colorcolumn = 80
+    vim.opt_local.colorcolumn = "80"
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = "*",
+  callback = function()
+    local o = vim.o
+    local fn = vim.fn
+    if not o.binary and o.filetype ~= "diff" then
+      local current_view = fn.winsaveview()
+      vim.cmd([[keeppatterns %s/\s\+$//e]])
+      fn.winrestview(current_view)
+    end
   end,
 })

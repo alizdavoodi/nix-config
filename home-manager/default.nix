@@ -70,6 +70,7 @@ in {
     fd
     mtr
     wget
+    aiac
     pinentry-curses
     xdg-utils
     sops
