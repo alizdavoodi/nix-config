@@ -8,6 +8,7 @@ vim.o.foldenable = true
 vim.o.foldcolumn = "0"
 
 vim.o.colorcolumn = "120"
+vim.o.conceallevel = 2
 
 -- Using lsp_lines instead of lsp_diagnostics
 vim.diagnostic.config({

@@ -8,6 +8,10 @@ vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>lua require('fzf-lua').buffers()<CR>
 
 vim.api.nvim_set_keymap("n", "<space>fr", ":Telescope file_browser<CR>", { noremap = true })
 
+-- center screen after jumping
+vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
+
 -- local wk = require("which-key")
 -- local chatgpt = require("chatgpt")
 -- wk.register({
