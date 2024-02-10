@@ -58,7 +58,6 @@ in {
     terraform
     extract_url
     nodejs
-    inputs.wait4x.packages.${system}.default
     dogdns
     ripgrep
     rclone

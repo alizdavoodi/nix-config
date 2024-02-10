@@ -36,14 +36,6 @@
     #  url = "path:./home-manager/alacritty/alacritty-nightly";
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
-    wait4x = {
-      url = "github:atkrad/wait4x";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-      };
-    };
-
   };
 
   outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:

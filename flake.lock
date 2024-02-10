@@ -91,8 +91,7 @@
         "hardware": "hardware",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "tmux-conf": "tmux-conf",
-        "wait4x": "wait4x"
+        "tmux-conf": "tmux-conf"
       }
     },
     "systems": {
@@ -123,29 +122,6 @@
       "original": {
         "owner": "gpakosz",
         "repo": ".tmux",
-        "type": "github"
-      }
-    },
-    "wait4x": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1685857967,
-        "narHash": "sha256-ORjRTlE+SZ/E/ubDMBtMrkxiIDLS7HQLMiFyiJBNIjM=",
-        "owner": "atkrad",
-        "repo": "wait4x",
-        "rev": "7ed908efee091ea9435b58549f61934762f3d705",
-        "type": "github"
-      },
-      "original": {
-        "owner": "atkrad",
-        "repo": "wait4x",
         "type": "github"
       }
     }
