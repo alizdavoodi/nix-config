@@ -20,7 +20,7 @@
     };
 
     # Delta is a syntax-highlighting pager for git, diff, and grep output.
-    # NOTE: Include just for "themes.gitconfig" file 
+    # NOTE: Include just for "themes.gitconfig" file
     delta = {
       url = "github:dandavison/delta";
       flake = false;
@@ -79,6 +79,8 @@
           calibre
           qmk
           gtk3
+          marksman
+          stylua
           libusb1
           webkitgtk
         ];
