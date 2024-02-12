@@ -50,9 +50,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = "markdown",
   callback = function()
     vim.opt_local.colorcolumn = "80"
+    vim.opt_local.wrap = true
+    vim.opt_local.textwidth = 80
   end,
 })
 
+-- Remove trailing whitespace on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = "*",
   callback = function()
