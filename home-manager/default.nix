@@ -75,7 +75,6 @@ in {
     sops
     age
     pinentry
-    gcc
     nil
     sshuttle
     awscli2
