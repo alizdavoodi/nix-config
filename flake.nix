@@ -1,6 +1,10 @@
 {
   description = "Your new nix config";
-
+  nixConfig = {
+    substituters = [ "https://cache.nixos.org" ];
+    trusted-public-keys =
+      [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+  };
   inputs = {
     # Nixpkgs
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
@@ -41,6 +45,7 @@
   outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
     let
       inherit (self) outputs;
+
       home-common = { lib, system, ... }: {
 
         nixpkgs = { config = { allowUnfree = true; }; };
@@ -77,6 +82,7 @@
           webkitgtk
         ];
       };
+
     in {
       nixosConfigurations = {
         "alizdavoodi@nixos" = nixpkgs.lib.nixosSystem {

@@ -6,6 +6,8 @@ return {
         virtual_text = false,
       },
       servers = {
+        -- Nix lsp server
+        nil_ls = {},
         yamlls = {
           settings = {
             yaml = {

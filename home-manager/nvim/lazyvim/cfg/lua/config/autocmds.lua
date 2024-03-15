@@ -44,8 +44,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = "*.nix", command = ":%!nixfmt" })
-
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = "markdown",
   callback = function()
