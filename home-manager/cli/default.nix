@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, ... }: {
 
-  imports = [ ./chatgpt-cli ./starship ];
+  imports = [ ./chatgpt-cli ./starship ./terminal ];
 
   programs.zsh = {
     enable = true;
@@ -60,7 +60,7 @@
       { plugin = tmuxPlugins.tmux-fzf; }
       { plugin = tmuxPlugins.tmux-thumbs; }
       {
-        plugin = tmuxPlugins.mkTmuxPlugin rec {
+        plugin = tmuxPlugins.mkTmuxPlugin {
           pluginName = "tmux-session-wizard";
           version = "0.1.0";
           rtpFilePath = "session-wizard.tmux";

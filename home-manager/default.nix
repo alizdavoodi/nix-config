@@ -50,6 +50,7 @@ in {
     yt-dlp
     comma
     krew
+    sox
     sshuttle
     gnupg
     docker-compose
