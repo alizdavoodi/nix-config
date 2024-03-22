@@ -1,11 +1,10 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
-local padding = 0
+local padding = 3
 
 -- Define configuration.
 -- Body and display.
 config.enable_tab_bar = false
-config.line_height = 1.0
 config.window_padding = {
 	top = padding,
 	left = padding,
@@ -17,19 +16,22 @@ config.default_cursor_style = "SteadyBar"
 
 -- Font.
 config.font = wezterm.font("JetBrainsMono Nerd Font")
-config.font_size = 12.5
--- config.freetype_load_target = "Normal"
+config.font_size = 14.5
+config.freetype_load_target = "Normal"
+-- config.freetype_load_flags = "NO_HINTING"
+-- config.front_end = "OpenGL"
 
 -- Theme.
-config.color_scheme = "ayu"
--- config.colors = {
--- 	background = "#0B1015",
--- 	foreground = "#FCFCFC",
--- 	selection_bg = "#202c3e",
--- 	selection_fg = "#fcfcfc",
--- 	cursor_bg = "#344866",
--- 	cursor_fg = "#fcfcfc",
--- }
+config.color_scheme = "Builtin Pastel Dark"
+config.colors = {
+	background = "#000000",
+	foreground = "#ffffff",
+	selection_bg = "#333333",
+	selection_fg = "#ffffff",
+	cursor_bg = "#ffffff",
+	cursor_border = "#ffffff",
+	cursor_fg = "#000000",
+}
 -- Specific to macos
 config.native_macos_fullscreen_mode = true
 
