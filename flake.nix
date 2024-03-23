@@ -87,9 +87,15 @@
       nixosConfigurations = {
         "alizdavoodi@nixos" = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          #nix.settings.experimental-features = [ "nix-command" "flakes" ];
+          # nix.settings.experimental-features = [ "nix-command" "flakes" ];
           # > Our main nixos configuration file <
           modules = [ ./nixos/configuration.nix ];
+        };
+
+        "alizdavoodi-pc@nixos" = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+          modules = [ ./nixos/pc-alizdavoodi/configuration.nix ];
         };
       };
 

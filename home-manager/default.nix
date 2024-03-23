@@ -61,12 +61,14 @@ in {
     dogdns
     ripgrep
     rclone
+    gcc
     nixfmt
     kubectl127
     openjdk
     go
     cargo
     fd
+    fzf
     mtr
     wget
     aiac
