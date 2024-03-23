@@ -4,13 +4,13 @@ return {
   { "rebelot/kanagawa.nvim" },
   {
     "rose-pine/neovim",
-    -- config = function()
-    --   require("rose-pine").setup({
-    --     styles = {
-    --       transparency = true,
-    --     },
-    --   })
-    -- end,
+    config = function()
+      require("rose-pine").setup({
+        styles = {
+          transparency = true,
+        },
+      })
+    end,
   },
   -- Configure LazyVim to load gruvbox
   {
