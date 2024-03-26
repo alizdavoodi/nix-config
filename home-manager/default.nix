@@ -73,14 +73,13 @@ in {
     mtr
     wget
     aiac
-    pinentry-curses
     xdg-utils
     sops
     age
     pinentry
     nil
     sshuttle
-    awscli2
+    # awscli2
     lftp
     delta
     gnumake
