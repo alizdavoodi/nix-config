@@ -76,7 +76,6 @@ in {
     xdg-utils
     sops
     age
-    pinentry
     nil
     sshuttle
     # awscli2

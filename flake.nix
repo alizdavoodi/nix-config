@@ -79,6 +79,7 @@
           marksman
           stylua
           libusb1
+          pinentry
           webkitgtk
         ];
       };
