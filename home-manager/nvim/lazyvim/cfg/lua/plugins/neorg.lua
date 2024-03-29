@@ -1,6 +1,5 @@
 return {
   "nvim-neorg/neorg",
-  build = ":Neorg sync-parsers",
   config = true,
   opts = {
     load = {
@@ -33,5 +32,11 @@ return {
       },
     },
   },
-  dependencies = { { "nvim-lua/plenary.nvim" } },
+  dependencies = {
+    { "nvim-lua/plenary.nvim" },
+
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- We'd like this plugin to load first out of the rest
+    config = true, -- This automatically runs `require("luarocks-nvim").setup()`
+  },
 }
