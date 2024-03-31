@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local padding = 3
 
+config.default_prog = { "zsh" }
 -- Define configuration.
 -- Body and display.
 config.enable_tab_bar = false
