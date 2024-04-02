@@ -41,6 +41,17 @@
       ZVM_VI_ESCAPE_BINDKEY=jk
       # enable flake
       export NIX_CONFIG="experimental-features = nix-command flakes"
+      # Fix the issue with the `clear` command not working properly in zsh
+      # https://vrongmeal.com/blog/clear-screen-preserve-buffer
+      my-clear() {
+        for i in {3..$(tput lines)}
+        do
+          printf '\n'
+        done
+        zle clear-screen
+      }
+      zle -N my-clear
+      bindkey '^L' my-clear
     '' + builtins.readFile (builtins.fetchGit {
       url = "https://github.com/ahmetb/kubectl-aliases";
       rev = "b2ee5dbd3d03717a596d69ee3f6dc6de8b140128";
