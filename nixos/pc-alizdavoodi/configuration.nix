@@ -81,18 +81,21 @@
   users.users.alizdavoodi = {
     isNormalUser = true;
     description = "alizdavoodi";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs;
-      [
-        firefox
-        #  thunderbird
-      ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    packages = with pkgs; [
+      firefox
+      docker
+      #  thunderbird
+    ];
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -129,6 +132,8 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  # services.ollama.enable = true;
+  # services.ollama.acceleration = "rocm";
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
