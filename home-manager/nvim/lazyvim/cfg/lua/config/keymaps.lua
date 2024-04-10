@@ -6,11 +6,44 @@
 vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-b>", "<cmd>lua require('fzf-lua').buffers()<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<space>fr", ":Telescope file_browser<CR>", { noremap = true })
+-- Neogit
+-- I'm using the function by LazyVim
+vim.keymap.set("n", "<leader>gg", function()
+  require("neogit").open()
+end, { noremap = true, silent = true, desc = "Open Neogit" })
+
+-- Telescope
+vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope file_browser<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>bb", ":Telescope buffers<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader><space>", ":Telescope find_files<CR>", { noremap = true, silent = true })
 
 -- center screen after jumping
 vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
+
+-- Harpoon
+local harpoon = require("harpoon")
+vim.keymap.set("n", "<leader>ha", function()
+  harpoon:list():add()
+end)
+
+vim.keymap.set("n", "<leader>hh", function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { noremap = true, desc = "Toggle Harpoon Menu" })
+
+vim.keymap.set("n", "<leader>1", function()
+  harpoon:list():select(1)
+end)
+vim.keymap.set("n", "<leader>2", function()
+  harpoon:list():select(2)
+end)
+vim.keymap.set("n", "<leader>3", function()
+  harpoon:list():select(3)
+end)
+vim.keymap.set("n", "<leader>4", function()
+  harpoon:list():select(4)
+end)
+--
 
 -- recommended mappings smart-splits
 -- resizing splits
