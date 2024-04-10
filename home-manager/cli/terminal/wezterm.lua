@@ -40,11 +40,15 @@ config.scrollback_lines = 50000
 config.tab_bar_at_bottom = true
 
 -- Font.
+-- config.font = wezterm.font("Fira Code")
+-- config.font = wezterm.font_with_fallback({
+-- 	"Fira Code",
+-- 	"JetBrains Mono",
+-- })
 config.font_size = 15
 config.freetype_load_target = "Normal"
--- config.freetype_load_flags = "NO_HINTING"
 config.line_height = 1.1
-config.front_end = "OpenGL"
+config.front_end = "WebGpu"
 
 -- Theme.
 config.color_scheme = "Dracula (Official)"
