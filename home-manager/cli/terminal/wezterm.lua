@@ -48,10 +48,10 @@ config.tab_bar_at_bottom = true
 config.font_size = 15
 config.freetype_load_target = "Normal"
 config.line_height = 1.1
-config.front_end = "WebGpu"
+--config.front_end = "WebGpu"
 
 -- Theme.
-config.color_scheme = "Dracula (Official)"
+config.color_scheme = "Rosé Pine (Gogh)"
 
 -- Specific to macos
 config.native_macos_fullscreen_mode = true

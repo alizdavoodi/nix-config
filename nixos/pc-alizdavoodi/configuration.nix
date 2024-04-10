@@ -104,6 +104,7 @@
     home-manager
     hplip
     google-chrome
+    xclip
     pkg-config
     openssl
     wireguard-tools
