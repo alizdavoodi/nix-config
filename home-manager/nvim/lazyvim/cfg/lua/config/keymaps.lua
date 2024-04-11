@@ -22,27 +22,27 @@ vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
 
 -- Harpoon
-local harpoon = require("harpoon")
-vim.keymap.set("n", "<leader>ha", function()
-  harpoon:list():add()
-end)
-
-vim.keymap.set("n", "<leader>hh", function()
-  harpoon.ui:toggle_quick_menu(harpoon:list())
-end, { noremap = true, desc = "Toggle Harpoon Menu" })
-
-vim.keymap.set("n", "<leader>1", function()
-  harpoon:list():select(1)
-end)
-vim.keymap.set("n", "<leader>2", function()
-  harpoon:list():select(2)
-end)
-vim.keymap.set("n", "<leader>3", function()
-  harpoon:list():select(3)
-end)
-vim.keymap.set("n", "<leader>4", function()
-  harpoon:list():select(4)
-end)
+-- local harpoon = require("harpoon")
+-- vim.keymap.set("n", "<leader>ha", function()
+--   harpoon:list():add()
+-- end)
+--
+-- vim.keymap.set("n", "<leader>hh", function()
+--   harpoon.ui:toggle_quick_menu(harpoon:list())
+-- end, { noremap = true, desc = "Toggle Harpoon Menu" })
+--
+-- vim.keymap.set("n", "<leader>1", function()
+--   harpoon:list():select(1)
+-- end)
+-- vim.keymap.set("n", "<leader>2", function()
+--   harpoon:list():select(2)
+-- end)
+-- vim.keymap.set("n", "<leader>3", function()
+--   harpoon:list():select(3)
+-- end)
+-- vim.keymap.set("n", "<leader>4", function()
+--   harpoon:list():select(4)
+-- end)
 --
 
 -- recommended mappings smart-splits

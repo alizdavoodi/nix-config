@@ -78,6 +78,7 @@ in {
     age
     nil
     sshuttle
+    yazi
     # awscli2
     lftp
     delta
