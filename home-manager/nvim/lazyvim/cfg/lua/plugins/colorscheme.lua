@@ -3,6 +3,14 @@ return {
   { "projekt0n/github-nvim-theme" },
   { "rebelot/kanagawa.nvim" },
   {
+    "ellisonleao/gruvbox.nvim",
+    -- config = function()
+    --   require("gruvbox").setup({
+    --     transparent_mode = true,
+    --   })
+    -- end,
+  },
+  {
     "rose-pine/neovim",
     config = function()
       require("rose-pine").setup({

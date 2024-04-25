@@ -66,3 +66,11 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "/home/alizdavoodi/.local/share/nvim/gp/*",
+  callback = function()
+    -- Disable diagnostics for the current buffer
+    vim.diagnostic.disable(0)
+  end,
+})

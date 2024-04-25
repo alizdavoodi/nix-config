@@ -1,14 +1,14 @@
 { config, pkgs, system, inputs, ... }:
 
 let
-  kubectlPkgs = import (builtins.fetchGit {
-    name = "kubectl-1-27";
-    url = "https://github.com/NixOS/nixpkgs/";
-    ref = "refs/heads/nixpkgs-unstable";
-    rev = "976fa3369d722e76f37c77493d99829540d43845";
-  }) { inherit system; };
-  # Use default kubectl
-  kubectl127 = kubectlPkgs.kubectl;
+  # kubectlPkgs = import (builtins.fetchGit {
+  #   name = "kubectl-1-27";
+  #   url = "https://github.com/NixOS/nixpkgs/";
+  #   ref = "refs/heads/nixpkgs-unstable";
+  #   rev = "976fa3369d722e76f37c77493d99829540d43845";
+  # }) { inherit system; };
+  # # Use default kubectl
+  # kubectl127 = kubectlPkgs.kubectl;
 
 in {
   imports = [
@@ -64,7 +64,6 @@ in {
     rclone
     gcc
     nixfmt
-    kubectl127
     openjdk
     go
     cargo
