@@ -53,6 +53,9 @@ config.line_height = 1.1
 -- Theme.
 config.color_scheme = "Rosé Pine (Gogh)"
 
+-- config.colors = {
+-- 	background = "black",
+-- }
 -- Specific to macos
 config.native_macos_fullscreen_mode = true
 

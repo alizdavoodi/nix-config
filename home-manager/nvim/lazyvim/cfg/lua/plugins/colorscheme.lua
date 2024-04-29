@@ -4,11 +4,27 @@ return {
   { "rebelot/kanagawa.nvim" },
   {
     "ellisonleao/gruvbox.nvim",
+    config = function()
+      require("gruvbox").setup({
+        transparent_mode = true,
+      })
+    end,
+  },
+  {
+    "sainnhe/gruvbox-material",
     -- config = function()
     --   require("gruvbox").setup({
     --     transparent_mode = true,
     --   })
     -- end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    config = function()
+      require("kanagawa").setup({
+        transparent = true,
+      })
+    end,
   },
   {
     "rose-pine/neovim",

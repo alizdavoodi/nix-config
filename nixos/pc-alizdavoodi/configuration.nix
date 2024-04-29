@@ -126,7 +126,11 @@
     packages = with pkgs; [
       firefox
       docker
-      #  thunderbird
+      obsidian
+      #Python nvim
+      ruff-lsp
+      yarn
+      ruff
     ];
   };
 
@@ -178,7 +182,12 @@
   # services.openssh.enable = true;
   services.ollama.enable = true;
   services.ollama.acceleration = "cuda";
-
+  services.openvpn.servers = {
+    officeVPN = {
+      config = "config /home/alizdavoodi/Downloads/alireza.davoodi.ovpn";
+      updateResolvConf = true;
+    };
+  };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
