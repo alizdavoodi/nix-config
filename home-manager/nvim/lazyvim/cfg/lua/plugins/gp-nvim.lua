@@ -1,6 +1,6 @@
 return {
   "robitx/gp.nvim",
-  branch = "copilot",
+  -- branch = "copilot",
   config = function()
     local config = {
       agents = {
@@ -27,7 +27,7 @@ return {
           provider = "ollama",
           command = false,
           -- string with model name or table with model name and parameters
-          model = { model = "llama2:13b" },
+          model = { model = "llama3:8b" },
           -- system prompt (use this to specify the persona/role of the AI)
           system_prompt = "You are a general AI assistant.\n\n"
             .. "The user provided the additional info about how they would like you to respond:\n\n"
