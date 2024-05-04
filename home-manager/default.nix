@@ -44,9 +44,10 @@ in {
   };
 
   home.packages = with pkgs; [
-    nixFlakes
     ascii-image-converter
     du-dust
+    yubikey-personalization
+    yubikey-manager
     yt-dlp
     comma
     krew
@@ -57,6 +58,7 @@ in {
     unzip
     htop
     terraform
+    yarn
     extract_url
     nodejs
     dogdns

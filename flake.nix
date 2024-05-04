@@ -63,9 +63,10 @@
       };
 
       work-macbook = {
-        home.username = "davoodi";
-        home.homeDirectory = "/Users/davoodi";
+        home.username = "alirezadavoodi";
+        home.homeDirectory = "/Users/alirezadavoodi";
       };
+
       home-server = { pkgs, ... }: {
         home.username = "alizdavoodi";
         home.homeDirectory = "/home/alizdavoodi";
@@ -114,7 +115,7 @@
           modules = [ home-common home-server ];
         };
 
-        "davoodi@MC220424" = home-manager.lib.homeManagerConfiguration {
+        "alizdavoodi@work" = home-manager.lib.homeManagerConfiguration {
           pkgs =
             nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
