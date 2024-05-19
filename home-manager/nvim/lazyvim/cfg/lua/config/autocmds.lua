@@ -10,11 +10,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
+-- Disable LSP diagnostics for markdown files in ~/gp/chats
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*/ansible/*.yml", "*/ansible/*.yaml" },
+  pattern = { vim.fn.expand("~") .. "/.local/share/nvim/gp/chats/*.md" },
   callback = function()
-    local current_buf = vim.api.nvim_get_current_buf()
-    vim.api.nvim_buf_set_option(current_buf, "filetype", "yaml.ansible")
+    local bufnr = vim.api.nvim_get_current_buf()
+    -- Disable LSP diagnostics for the current buffer
+    vim.diagnostic.enable(false, { bufnr = bufnr })
   end,
 })
 

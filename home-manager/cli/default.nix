@@ -24,7 +24,7 @@
     };
 
     initExtra = ''
-      export AWS_PROFILE=companyinfo
+      export AWS_PROFILE=InfraOps-sympower
       export KUBECONFIG=~/.kube/kubeconfig
 
       if type rg &> /dev/null; then

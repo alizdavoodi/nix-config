@@ -7,7 +7,7 @@ return {
       },
       servers = {
         -- Nix lsp server
-        nil_ls = {},
+        -- nil_ls = {},
         yamlls = {
           settings = {
             yaml = {

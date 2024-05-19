@@ -1,9 +1,7 @@
 { inputs, lib, config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    ghq
-  ];
+  home.packages = with pkgs; [ ghq ];
 
   programs.git = {
     enable = true;
@@ -46,15 +44,13 @@
       };
     };
     includes = [
+      { path = "${inputs.delta}/themes.gitconfig"; }
       {
-        path = "${inputs.delta}/themes.gitconfig";
-      }
-      {
-        condition = "gitdir:~/projects/gitlab.ci.fdmg.org/";
+        condition = "gitdir:~/projects";
         contents = {
           user = {
             name = "Alireza Davoodi";
-            email = "alireza.davoodi@company.info";
+            email = "alireza.davoodi@sympower.net";
             signingKey = "0x7CC14AB284E9B569";
           };
         };

@@ -48,6 +48,7 @@ in {
     du-dust
     yubikey-personalization
     yubikey-manager
+    awscli2
     yt-dlp
     comma
     krew
@@ -92,6 +93,7 @@ in {
     kubernetes-helm
     ansible-lint
     tflint
+    libfido2
     terraform-ls
     sumneko-lua-language-server
     nodePackages.prettier

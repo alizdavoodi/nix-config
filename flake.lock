@@ -3,11 +3,11 @@
     "delta": {
       "flake": false,
       "locked": {
-        "lastModified": 1711107274,
-        "narHash": "sha256-L2r3h/IfjqKZ0AUQbbj2A/oCse92mEcKihtWVZV9AqQ=",
+        "lastModified": 1715360729,
+        "narHash": "sha256-MfQj+rfEoJk0WtmCP3mhffV131k6qq1cWSzDUOuuf1M=",
         "owner": "dandavison",
         "repo": "delta",
-        "rev": "3c6c50e4f5a515f17240a8205e2e6941809dcdff",
+        "rev": "0f8a2f0786d56e9395b7e7f244f356bfdab562e8",
         "type": "github"
       },
       "original": {
@@ -36,11 +36,11 @@
     },
     "hardware": {
       "locked": {
-        "lastModified": 1714746424,
-        "narHash": "sha256-Jdyw7VcM+jQ0uSXgjFj8UdXZ229yOvPNlYkKyKyHA4s=",
+        "lastModified": 1716034089,
+        "narHash": "sha256-QBfab6V4TeQ6Y4NiXVrEATdQuhCNFNaXt/L1K/Zw+zc=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "3f017311191fe6d501ca2496a835d012f656ee9c",
+        "rev": "b55712de78725c8fcde422ee0a0fe682046e73c3",
         "type": "github"
       },
       "original": {
@@ -56,11 +56,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714679908,
-        "narHash": "sha256-KzcXzDvDJjX34en8f3Zimm396x6idbt+cu4tWDVS2FI=",
+        "lastModified": 1715930644,
+        "narHash": "sha256-W9pyM3/vePxrffHtzlJI6lDS3seANQ+Nqp+i58O46LI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9036fe9ef8e15a819fa76f47a8b1f287903fb848",
+        "rev": "e3ad5108f54177e6520535768ddbf1e6af54b59d",
         "type": "github"
       },
       "original": {
@@ -71,11 +71,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1714750952,
-        "narHash": "sha256-oOUdvPrO8CbupgDSaPou+Jv6GL+uQA2QlE33D7OLzkM=",
+        "lastModified": 1716062047,
+        "narHash": "sha256-OhysviwHQz4p2HZL4g7XGMLoUbWMjkMr/ogaR3VUYNA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5fd8536a9a5932d4ae8de52b7dc08d92041237fc",
+        "rev": "02923630b89aa1ab36ef8e422501a6f4fd4b2016",
         "type": "github"
       },
       "original": {
@@ -112,11 +112,11 @@
     "tmux-conf": {
       "flake": false,
       "locked": {
-        "lastModified": 1714552068,
-        "narHash": "sha256-Dg94ZMAxaF9okoNWFJymOY+NrNkfjugMZ8P66Se78yU=",
+        "lastModified": 1716109359,
+        "narHash": "sha256-J07v0H0YZk0GrGereispSiI1IFQ4fjvxjGXxv6cFQXQ=",
         "owner": "gpakosz",
         "repo": ".tmux",
-        "rev": "8e3b90c6c8d0eea022cbcb007dc518503a823765",
+        "rev": "dc88d389a21b55858a7a5e013222acb840290dbd",
         "type": "github"
       },
       "original": {

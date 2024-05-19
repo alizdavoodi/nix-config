@@ -48,7 +48,7 @@
     let
       inherit (self) outputs;
 
-      home-common = { lib, system, ... }: {
+      home-common = { lib, system, pkgs, ... }: {
 
         nixpkgs = { config = { allowUnfree = true; }; };
         programs.home-manager.enable = true;
@@ -62,9 +62,11 @@
 
       };
 
-      work-macbook = {
+      work-macbook = { pkgs, ... }: {
         home.username = "alirezadavoodi";
         home.homeDirectory = "/Users/alirezadavoodi";
+
+        home.packages = with pkgs; [ fuse macfuse-stubs openssh docker ];
       };
 
       home-server = { pkgs, ... }: {

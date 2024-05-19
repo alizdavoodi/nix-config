@@ -18,7 +18,7 @@ in {
         multiplier = 3;
       };
       font = {
-        size = 16;
+        size = 17;
         normal = {
           family = "${font-name}";
           style = "Regular";
@@ -42,35 +42,94 @@ in {
           y = 0;
         };
       };
-      # Colors (Dracula)
-      # themes: https://github.com/eendroroy/alacritty-theme
+      # Colors section of "Alacritty - TOML configuration file format"
+      # https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
       colors = {
-        # Default colors
         primary = {
-          background = "0x282a36";
-          foreground = "0xf8f8f2";
+          foreground = "#e0def4";
+          background = "#191724";
+          dim_foreground = "#908caa";
+          bright_foreground = "#e0def4";
         };
-        # Normal colors
+
+        cursor = {
+          text = "#e0def4";
+          cursor = "#524f67";
+        };
+
+        vi_mode_cursor = {
+          text = "#e0def4";
+          cursor = "#524f67";
+        };
+
+        search = {
+          matches = {
+            foreground = "#908caa";
+            background = "#26233a";
+          };
+          focused_match = {
+            foreground = "#191724";
+            background = "#ebbcba";
+          };
+        };
+
+        hints = {
+          start = {
+            foreground = "#908caa";
+            background = "#1f1d2e";
+          };
+          end = {
+            foreground = "#6e6a86";
+            background = "#1f1d2e";
+          };
+        };
+
+        line_indicator = {
+          foreground = "None";
+          background = "None";
+        };
+
+        footer_bar = {
+          foreground = "#e0def4";
+          background = "#1f1d2e";
+        };
+
+        selection = {
+          text = "#e0def4";
+          background = "#403d52";
+        };
+
         normal = {
-          black = "0x000000";
-          red = "0xff5555";
-          green = "0x50fa7b";
-          yellow = "0xf1fa8c";
-          blue = "0xbd93f9";
-          magenta = "0xff79c6";
-          cyan = "0x8be9fd";
-          white = "0xbbbbbb";
+          black = "#26233a";
+          red = "#eb6f92";
+          green = "#31748f";
+          yellow = "#f6c177";
+          blue = "#9ccfd8";
+          magenta = "#c4a7e7";
+          cyan = "#ebbcba";
+          white = "#e0def4";
         };
-        # Bright colors
+
         bright = {
-          black = "0x555555";
-          red = "0xff5555";
-          green = "0x50fa7b";
-          yellow = "0xf1fa8c";
-          blue = "0xcaa9fa";
-          magenta = "0xff79c6";
-          cyan = "0x8be9fd";
-          white = "0xffffff";
+          black = "#6e6a86";
+          red = "#eb6f92";
+          green = "#31748f";
+          yellow = "#f6c177";
+          blue = "#9ccfd8";
+          magenta = "#c4a7e7";
+          cyan = "#ebbcba";
+          white = "#e0def4";
+        };
+
+        dim = {
+          black = "#6e6a86";
+          red = "#eb6f92";
+          green = "#31748f";
+          yellow = "#f6c177";
+          blue = "#9ccfd8";
+          magenta = "#c4a7e7";
+          cyan = "#ebbcba";
+          white = "#e0def4";
         };
       };
     };
