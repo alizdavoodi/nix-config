@@ -4,7 +4,41 @@
 
 { config, pkgs, ... }:
 
-{
+let
+  trezor-rules = pkgs.writeTextFile {
+    name = "51-trezor.rules";
+    text = ''
+      # Trezor: The Original Hardware Wallet
+      # https://trezor.io/
+      #
+      # Put this file into /etc/udev/rules.d
+      #
+      # If you are creating a distribution package,
+      # put this into /usr/lib/udev/rules.d or /lib/udev/rules.d
+      # depending on your distribution
+
+      # Trezor
+              SUBSYSTEM=="usb", ATTR{idVendor}=="534c", ATTR{idProduct}=="0001", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
+              KERNEL=="hidraw*", ATTRS{idVendor}=="534c", ATTRS{idProduct}=="0001", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
+
+      # Trezor v2
+              SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c0", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
+              SUBSYSTEM=="usb", ATTR{idVendor}=="1209", ATTR{idProduct}=="53c1", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl", SYMLINK+="trezor%n"
+              KERNEL=="hidraw*", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="53c1", MODE="0660", GROUP="plugdev", TAG+="uaccess", TAG+="udev-acl"
+
+      # Rules for Oryx web flashing and live training
+              KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+              KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+        # Rule for all ZSA keyboards
+              SUBSYSTEM=="usb", ATTR{idVendor}=="3297", GROUP="plugdev"
+
+      # Wally Flashing rules for the Moonlander and Planck EZ
+              SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
+
+    '';
+    destination = "/etc/udev/rules.d/51-trezor.rules";
+  };
+in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -56,6 +90,7 @@
     xkbVariant = "";
   };
 
+  services.udev.packages = [ trezor-rules ];
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
