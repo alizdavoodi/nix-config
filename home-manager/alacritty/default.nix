@@ -8,9 +8,11 @@ in {
       window = {
         # Spread additional padding evenly around the terminal content.
         dynamic_padding = true;
-        option_as_alt = "OnlyLeft";
+        option_as_alt = "Both";
         # Startup Mode (changes require restart)
         startup_mode = "Fullscreen";
+
+        decorations = "None";
       };
       shell = { program = "${pkgs.zsh}/bin/zsh"; };
       scrolling = {

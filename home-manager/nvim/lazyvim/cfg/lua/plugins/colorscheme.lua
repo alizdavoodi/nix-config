@@ -10,6 +10,8 @@ return {
       })
     end,
   },
+  { "diegoulloao/neofusion.nvim", priority = 1000, config = true },
+  { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
   {
     "sainnhe/gruvbox-material",
     -- config = function()
@@ -28,19 +30,54 @@ return {
   },
   {
     "rose-pine/neovim",
-    config = function()
-      require("rose-pine").setup({
-        styles = {
-          transparency = true,
+    -- config = function()
+    --   require("rose-pine").setup({
+    --     styles = {
+    --       transparency = true,
+    --     },
+    --   })
+    -- end,
+  },
+  {
+    "tjdevries/colorbuddy.nvim",
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    opts = {
+      no_italic = true,
+      term_colors = true,
+      transparent_background = false,
+      styles = {
+        comments = {},
+        conditionals = {},
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+      },
+      color_overrides = {
+        mocha = {
+          base = "#000000",
+          mantle = "#000000",
+          crust = "#000000",
         },
-      })
-    end,
+      },
+    },
   },
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine",
+      colorscheme = function()
+        require("catppuccin").load()
+      end,
     },
   },
 }

@@ -31,5 +31,13 @@ return {
     opts.experimental = {
       ghost_text = false,
     }
+
+    -- Setup up vim-dadbod
+    cmp.setup.filetype({ "sql" }, {
+      sources = {
+        { name = "vim-dadbod-completion" },
+        { name = "buffer" },
+      },
+    })
   end,
 }

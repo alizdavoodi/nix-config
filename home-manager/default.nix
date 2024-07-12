@@ -85,6 +85,8 @@ in {
     lftp
     delta
     gnumake
+    postgresql
+    gh
     rclone
     ansible
     jq

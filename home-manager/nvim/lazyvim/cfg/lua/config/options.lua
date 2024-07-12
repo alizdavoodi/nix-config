@@ -10,6 +10,7 @@ vim.o.foldcolumn = "0"
 vim.o.colorcolumn = "120"
 vim.o.conceallevel = 2
 
+vim.o.background = "dark"
 -- Using lsp_lines instead of lsp_diagnostics
 vim.diagnostic.config({
   virtual_text = false,

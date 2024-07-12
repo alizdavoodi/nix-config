@@ -52,6 +52,10 @@
       }
       zle -N my-clear
       bindkey '^L' my-clear
+
+      #Jump world with alt + arrow
+      bindkey "^[[1;3C" forward-word
+      bindkey "^[[1;3D" backward-word
     '' + builtins.readFile (builtins.fetchGit {
       url = "https://github.com/ahmetb/kubectl-aliases";
       rev = "b2ee5dbd3d03717a596d69ee3f6dc6de8b140128";
@@ -105,6 +109,27 @@
     target = "tmux/tmux.conf.local";
     source = ./.tmux.conf.local;
     recursive = true;
+  };
+
+  programs.gh-dash = {
+    enable = true;
+    settings = {
+      repoPaths = { # configure where to locate repos when checking out PRs
+        ":owner/:repo" =
+          "~/projects/github.com/:owner/:repo"; # template if you always clone github repos in a consistent location
+      };
+      # keybindings = {
+      #   prs = [{
+      #     key = "c";
+      #     command = ''
+      #       tmux new-window -c {{.RepoPath}} '
+      #         gh pr checkout {{.PrNumber}} &&
+      #         nvim -c ":DiffviewOpen master...{{.HeadRefName}}"
+      #       '
+      #     '';
+      #   }];
+      # };
+    };
   };
 
 }

@@ -32,6 +32,9 @@
       flake = false;
     };
 
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     # neovim-nightly = {
     # url = "github:neovim/neovim?dir=contrib";
     # inputs.nixpkgs.follows = "nixpkgs";
@@ -125,7 +128,11 @@
             system = "aarch64-darwin";
           }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
-          modules = [ home-common work-macbook ];
+          modules = [
+            inputs.sops-nix.homeManagerModules.sops
+            home-common
+            work-macbook
+          ];
         };
       };
     };
