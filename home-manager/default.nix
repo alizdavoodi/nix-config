@@ -43,6 +43,8 @@ in {
     enableAliases = true;
   };
 
+  xdg.enable = true;
+
   home.packages = with pkgs; [
     ascii-image-converter
     du-dust
@@ -99,8 +101,17 @@ in {
     terraform-ls
     sumneko-lua-language-server
     nodePackages.prettier
-    python3Packages.libtmux
-    python3Packages.packaging
+    (python310.withPackages (ps:
+      with ps; [
+        libtmux
+        packaging
+        pyyaml
+        colorama
+        boto3
+        jinja2
+        cryptography
+        pyjwt
+      ]))
     (nerdfonts.override {
       fonts = [ "Meslo" "Iosevka" "JetBrainsMono" "VictorMono" ];
     })

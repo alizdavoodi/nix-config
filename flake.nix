@@ -128,11 +128,7 @@
             system = "aarch64-darwin";
           }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
-          modules = [
-            inputs.sops-nix.homeManagerModules.sops
-            home-common
-            work-macbook
-          ];
+          modules = [ home-common work-macbook ];
         };
       };
     };

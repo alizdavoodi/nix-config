@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, ... }: {
 
-  imports = [ ./chatgpt-cli ./starship ./terminal ];
+  imports = [ ./chatgpt-cli ./starship ./terminal ./sops ];
 
   programs.zsh = {
     enable = true;
@@ -21,6 +21,11 @@
       plugins = [ "git" "dirhistory" "colorize" "colored-man-pages" "kubectl" ];
       theme = "";
       custom = "$HOME/.oh-my-zsh/custom";
+    };
+
+    shellAliases = {
+      gramm = "chatgpt -p grammarly";
+      gramm2 = "chatgpt -p grammarly2";
     };
 
     initExtra = ''
@@ -53,6 +58,9 @@
       zle -N my-clear
       bindkey '^L' my-clear
 
+
+      export ANTHROPIC_API_KEY=$(cat ${config.sops.secrets.anthropic_api_key.path})
+      export OPENAI_API_KEY=$(cat ${config.sops.secrets.openai_api_key_work.path})
       #Jump world with alt + arrow
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;3D" backward-word
