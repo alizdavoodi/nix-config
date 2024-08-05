@@ -107,8 +107,27 @@
         "hardware": "hardware",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "secrets": "secrets",
         "sops-nix": "sops-nix",
         "tmux-conf": "tmux-conf"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1722846471,
+        "narHash": "sha256-a8NYUF+64m0ZjM7uHNI0l5Xz3BelPlpeJHY5ivD/Ymw=",
+        "ref": "main",
+        "rev": "ea8d680122cfc43556d5f83bfbc5370836c2eb25",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/alizdavoodi/secrets.git"
+      },
+      "original": {
+        "ref": "main",
+        "shallow": true,
+        "type": "git",
+        "url": "ssh://git@github.com/alizdavoodi/secrets.git"
       }
     },
     "sops-nix": {

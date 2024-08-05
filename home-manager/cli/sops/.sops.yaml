@@ -1,8 +1,0 @@
-keys:
-  - &user_aliz_yubi "3AA685909D63AB5D9E9DDB6CE977613530FE0CE8"
-
-creation_rules:
-  - path_regex: secrets.yaml$
-    key_groups:
-      - pgp:
-          - *user_aliz_yubi

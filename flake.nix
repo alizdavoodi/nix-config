@@ -32,6 +32,12 @@
       flake = false;
     };
 
+    secrets = {
+      url =
+        "git+ssh://git@github.com/alizdavoodi/secrets.git?ref=main&shallow=1";
+      flake = false;
+    };
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 

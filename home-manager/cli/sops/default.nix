@@ -1,10 +1,12 @@
-{ inputs, config, ... }: {
+{ inputs, config, ... }:
+let secretpath = builtins.toString inputs.secrets;
+in {
 
   imports = [ inputs.sops-nix.homeManagerModules.sops ];
 
   sops = {
-    defaultSopsFile = ./secrets.yaml;
-    # validateSopsFiles = false;
+    defaultSopsFile = "${secretpath}/secrets.yaml";
+    validateSopsFiles = false;
 
     gnupg.home = "${config.home.homeDirectory}/.gnupg";
     # age = {
