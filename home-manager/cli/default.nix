@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, ... }: {
 
-  imports = [ ./chatgpt-cli ./starship ./terminal ./sops ];
+  imports = [ ./chatgpt-cli ./starship ./terminal ./sops ./gpg-agent ];
 
   programs.zsh = {
     enable = true;
@@ -15,6 +15,9 @@
       # colorterm = "truecolor";
       # term = "xterm-256color";
       editor = "nvim";
+      ANTHROPIC_API_KEY =
+        "$(cat ${config.sops.secrets.anthropic_api_key.path})";
+      OPENAI_API_KEY = "$(cat ${config.sops.secrets.openai_api_key_work.path})";
     };
     oh-my-zsh = {
       enable = true;
@@ -37,15 +40,10 @@
         export FZF_DEFAULT_OPTS='-m --height 50% --border'
       fi
 
-      # yubikey gpg
-      export GPG_TTY=$TTY
-      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-      gpgconf --launch gpg-agent
       # zsh-vi-mode
       ZVM_LAZY_KEYBINDINGS=false
       ZVM_VI_ESCAPE_BINDKEY=jk
-      # enable flake
-      export NIX_CONFIG="experimental-features = nix-command flakes"
+
       # Fix the issue with the `clear` command not working properly in zsh
       # https://vrongmeal.com/blog/clear-screen-preserve-buffer
       my-clear() {
@@ -59,8 +57,6 @@
       bindkey '^L' my-clear
 
 
-      export ANTHROPIC_API_KEY=$(cat ${config.sops.secrets.anthropic_api_key.path})
-      export OPENAI_API_KEY=$(cat ${config.sops.secrets.openai_api_key_work.path})
       #Jump world with alt + arrow
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;3D" backward-word
