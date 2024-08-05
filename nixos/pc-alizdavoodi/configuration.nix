@@ -92,11 +92,11 @@ in {
 
   services.udev.packages = [ trezor-rules ];
   # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+  # hardware.opengl = {
+  #   enable = true;
+  #   driSupport = true;
+  #   driSupport32Bit = true;
+  # };
 
   hardware.nvidia = {
 
@@ -217,6 +217,7 @@ in {
   # services.openssh.enable = true;
   services.ollama.enable = true;
   services.ollama.acceleration = "cuda";
+  services.ollama.host = "0.0.0.0";
   services.openvpn.servers = {
     officeVPN = {
       config = "config /home/alizdavoodi/Downloads/alireza.davoodi.ovpn";
@@ -224,11 +225,15 @@ in {
     };
   };
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 11434 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  # Open ports in the firewall.
+  # networking.firewall.extracommands = ''
+  #   iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 11434 -j nixos-fw-accept
+  # '';
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

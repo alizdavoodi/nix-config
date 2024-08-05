@@ -216,17 +216,17 @@ in {
   };
 
   # Open ports in the firewall.
-  #networking.firewall.allowedTCPPorts = [ ];
-  networking.firewall.extraCommands = ''
-    iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 6789 -j nixos-fw-accept
-    iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 6789 -j nixos-fw-accept
-    iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 8096 -j nixos-fw-accept
-    iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 8096 -j nixos-fw-accept
-    iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 8989 -j nixos-fw-accept
-    iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 8989 -j nixos-fw-accept
-    iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 7878 -j nixos-fw-accept
-    iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 7878 -j nixos-fw-accept
-    iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 5055 -j nixos-fw-accept
+  networking.firewall.extracommands = ''
+      iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 6789 -j nixos-fw-accept
+      iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 6789 -j nixos-fw-accept
+      iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 8096 -j nixos-fw-accept
+      iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 8096 -j nixos-fw-accept
+      iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 8989 -j nixos-fw-accept
+      iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 8989 -j nixos-fw-accept
+      iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 7878 -j nixos-fw-accept
+      iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 7878 -j nixos-fw-accept
+    #networking.firewall.allowedTCPPorts = [ ];
+      iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 5055 -j nixos-fw-accept
   '';
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
