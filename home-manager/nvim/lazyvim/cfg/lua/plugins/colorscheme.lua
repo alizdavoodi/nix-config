@@ -41,6 +41,7 @@ return {
   {
     "tjdevries/colorbuddy.nvim",
   },
+  { "EdenEast/nightfox.nvim" },
   {
     "catppuccin/nvim",
     name = "catppuccin",

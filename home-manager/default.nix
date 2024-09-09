@@ -10,6 +10,7 @@ let
   # # Use default kubectl
   # kubectl127 = kubectlPkgs.kubectl;
 
+  nil = inputs.nil.packages.${system}.default;
 in {
   imports = [
     ./cli
@@ -93,6 +94,7 @@ in {
     ansible
     jq
     powerline-fonts
+    wireguard-tools
     kubectx
     kubernetes-helm
     ansible-lint
