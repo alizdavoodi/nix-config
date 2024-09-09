@@ -179,7 +179,6 @@ in {
     #  wget
     cmake
     cargo
-    home-manager
     hplip
     google-chrome
     pkgconfig

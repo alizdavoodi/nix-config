@@ -46,7 +46,12 @@ in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    trusted-substituters = [ "https://devenv.cachix.org" ];
+    trusted-public-keys =
+      [ "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=" ];
+  };
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -134,7 +139,7 @@ in {
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -177,12 +182,15 @@ in {
     enable = true;
     enableOnBoot = false;
   };
+
+  # PC/SC smartcard daemon
+  services.pcscd.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     cmake
     cargo
-    home-manager
     hplip
     google-chrome
     telegram-desktop
@@ -217,7 +225,7 @@ in {
   # services.openssh.enable = true;
   services.ollama.enable = true;
   services.ollama.acceleration = "cuda";
-  services.ollama.host = "0.0.0.0";
+  # services.ollama.host = "0.0.0.0";
   services.openvpn.servers = {
     officeVPN = {
       config = "config /home/alizdavoodi/Downloads/alireza.davoodi.ovpn";
