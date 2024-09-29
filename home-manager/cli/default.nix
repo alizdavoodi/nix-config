@@ -56,6 +56,11 @@
       zle -N my-clear
       bindkey '^L' my-clear
 
+      # To launch gpg-agent for use by SSH, use the gpg-connect-agent /bye or gpgconf --launch gpg-agent commands.
+      export GPG_TTY="$(tty)"
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+      gpgconf --launch gpg-agent
+      gpg-connect-agent updatestartuptty /bye > /dev/null
 
       #Jump world with alt + arrow
       bindkey "^[[1;3C" forward-word
