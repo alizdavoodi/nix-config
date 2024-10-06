@@ -68,10 +68,8 @@
         programs.home-manager.enable = true;
         home.stateVersion = "22.05";
 
-        #nixpkgs.overlays = [
-        #  inputs.alacritty.overlay.${system}
-        #  ];
-
+        nixpkgs.overlays =
+          [ (import ./home-manager/overlay/aider-overlay.nix) ];
         imports = [ ./home-manager ];
 
       };

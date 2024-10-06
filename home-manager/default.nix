@@ -17,6 +17,7 @@ in {
     #./nvim
     ./nvim/lazyvim # { _module.args.neovim9 = neovim9; }
     ./alacritty
+    ./kitty
     #./macfly
     ./git
     ./lazygit
@@ -47,7 +48,6 @@ in {
   xdg.enable = true;
 
   home.packages = with pkgs; [
-    ascii-image-converter
     du-dust
     yubikey-personalization
     yubikey-manager
@@ -103,7 +103,8 @@ in {
     terraform-ls
     sumneko-lua-language-server
     nodePackages.prettier
-    (python310.withPackages (ps:
+    aider-chat
+    (python3.withPackages (ps:
       with ps; [
         libtmux
         packaging
@@ -113,6 +114,8 @@ in {
         jinja2
         cryptography
         pyjwt
+        libtmux
+        packaging
       ]))
     (nerdfonts.override {
       fonts = [ "Meslo" "Iosevka" "JetBrainsMono" "VictorMono" ];

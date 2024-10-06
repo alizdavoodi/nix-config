@@ -53,17 +53,14 @@ in {
           dim_foreground = "#908caa";
           bright_foreground = "#e0def4";
         };
-
         cursor = {
           text = "#e0def4";
           cursor = "#524f67";
         };
-
         vi_mode_cursor = {
           text = "#e0def4";
           cursor = "#524f67";
         };
-
         search = {
           matches = {
             foreground = "#908caa";
@@ -74,7 +71,6 @@ in {
             background = "#ebbcba";
           };
         };
-
         hints = {
           start = {
             foreground = "#908caa";
@@ -85,22 +81,18 @@ in {
             background = "#1f1d2e";
           };
         };
-
         line_indicator = {
           foreground = "None";
           background = "None";
         };
-
         footer_bar = {
           foreground = "#e0def4";
           background = "#1f1d2e";
         };
-
         selection = {
           text = "#e0def4";
           background = "#403d52";
         };
-
         normal = {
           black = "#26233a";
           red = "#eb6f92";
@@ -111,7 +103,6 @@ in {
           cyan = "#ebbcba";
           white = "#e0def4";
         };
-
         bright = {
           black = "#6e6a86";
           red = "#eb6f92";
@@ -122,7 +113,6 @@ in {
           cyan = "#ebbcba";
           white = "#e0def4";
         };
-
         dim = {
           black = "#6e6a86";
           red = "#eb6f92";

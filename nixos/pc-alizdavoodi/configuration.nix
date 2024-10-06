@@ -200,7 +200,7 @@ in {
     wireguard-tools
     openboard
     trezor-suite
-    (python3.withPackages (ps: with ps; [ libtmux packaging ]))
+    # (python3.withPackages (ps: with ps; [ libtmux packaging ]))
   ];
 
   fonts.packages = with pkgs;
