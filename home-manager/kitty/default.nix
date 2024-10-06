@@ -1,12 +1,16 @@
 { config, pkgs, ... }:
 
-{
+let font-name = "JetBrainsMono Nerd Font";
+in {
   programs.kitty = {
     enable = true;
     font = {
-      family = "monospace";
-      size = 12;
+      name = font-name;
+      size = 13;
     };
-    # Add additional configuration options here
+    themeFile = "rose-pine";
+    shellIntegration = { enableZshIntegration = true; };
+    scrollback_lines = 10000;
+
   };
 }
