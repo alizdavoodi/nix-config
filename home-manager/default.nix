@@ -85,6 +85,7 @@ in {
     sshuttle
     yazi
     # awscli2
+    just
     lftp
     delta
     gnumake

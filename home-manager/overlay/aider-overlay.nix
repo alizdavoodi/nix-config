@@ -15,7 +15,7 @@ in {
       owner = "paul-gauthier";
       repo = "aider";
       rev = "main";
-      hash = "sha256-5uf+bHvAYNBca8kCo1H5h0kW71P4o0UD2DBlYescCGA=";
+      hash = "sha256-yWPkad1EC5MTuy8tFZOmZMiIA1nukcDNDYxnHOowkbI=";
     };
 
     # Explicitly set the 'name' attribute

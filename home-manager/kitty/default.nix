@@ -1,17 +1,18 @@
 { config, pkgs, ... }:
 
-let font-name = "JetBrainsMono Nerd Font";
+let font-name = "FiraCode Nerd Font Mono";
 in {
   programs.kitty = {
     enable = true;
     font = {
       name = font-name;
-      size = 13;
+      size = 15;
     };
     themeFile = "rose-pine";
     shellIntegration = { enableZshIntegration = true; };
     settings = {
       scrollback_lines = 50000;
+      background = "#000000";
       shell =
         "zsh --login -c 'if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi'";
       hide_window_decorations = "yes";
