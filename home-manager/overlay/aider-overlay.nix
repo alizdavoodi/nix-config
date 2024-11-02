@@ -15,13 +15,14 @@ in {
       owner = "paul-gauthier";
       repo = "aider";
       rev = "main";
-      hash = "sha256-yWPkad1EC5MTuy8tFZOmZMiIA1nukcDNDYxnHOowkbI=";
+      hash = "sha256-VztbRkeXa2LJ6ZEv4/qbtAQPFqtprLNIkfrO3XfSOb4=";
     };
 
     # Explicitly set the 'name' attribute
     name = "${oldAttrs.pname}";
 
     # Append new dependencies to the existing list
-    dependencies = oldAttrs.dependencies ++ (with python3.pkgs; [ pydub ]);
+    dependencies = oldAttrs.dependencies
+      ++ (with python3.pkgs; [ pydub propcache ]);
   });
 }

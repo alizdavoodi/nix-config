@@ -90,13 +90,12 @@
           gcc-arm-embedded
           wally-cli
           kubo
-          calibre
+          # calibre
           qmk
           gtk3
           marksman
           stylua
           libusb1
-          pinentry
           webkitgtk
         ];
       };

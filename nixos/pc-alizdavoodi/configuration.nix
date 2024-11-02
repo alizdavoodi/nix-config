@@ -90,9 +90,9 @@ in {
   services.xserver.videoDrivers = [ "nvidia" ];
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   services.udev.packages = [ trezor-rules ];
@@ -225,11 +225,11 @@ in {
   # services.openssh.enable = true;
   services.ollama.enable = true;
   services.ollama.acceleration = "cuda";
-  # services.ollama.host = "0.0.0.0";
-  services.open-webui = {
-    enable = true;
-    environment.OLLAMA_API_BASE_URL = "http://localhost:11434";
-  };
+  services.ollama.host = "0.0.0.0";
+  # services.open-webui = {
+  #   enable = true;
+  #   environment.OLLAMA_API_BASE_URL = "http://localhost:11434";
+  # };
   services.openvpn.servers = {
     officeVPN = {
       config = "config /home/alizdavoodi/Downloads/alireza.davoodi.ovpn";
