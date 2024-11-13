@@ -21,6 +21,24 @@ return {
           system_prompt = require("gp.defaults").chat_system_prompt,
         },
         {
+          name = "ChatGPTo1",
+          chat = true,
+          command = false,
+          -- string with model name or table with model name and parameters
+          model = { model = "o1-preview", temperature = 0.4, top_p = 1 },
+          -- system prompt (use this to specify the persona/role of the AI)
+          system_prompt = require("gp.defaults").chat_system_prompt,
+        },
+        {
+          name = "CodeGPT4o",
+          chat = false,
+          command = true,
+          -- string with model name or table with model name and parameters
+          model = { model = "gpt-4o", temperature = 0.4, top_p = 1 },
+          -- system prompt (use this to specify the persona/role of the AI)
+          system_prompt = require("gp.defaults").code_system_prompt,
+        },
+        {
           name = "ChatOllama",
           chat = true,
           provider = "ollama",
@@ -41,20 +59,11 @@ return {
           system_prompt = require("gp.defaults").chat_system_prompt,
         },
         {
-          name = "CodeGPT4o",
-          chat = false,
-          command = true,
-          -- string with model name or table with model name and parameters
-          model = { model = "gpt-4o", temperature = 0.4, top_p = 1 },
-          -- system prompt (use this to specify the persona/role of the AI)
-          system_prompt = require("gp.defaults").code_system_prompt,
-        },
-        {
           provider = "anthropic",
           name = "ChatClaude-3-5-Sonnet",
           chat = true,
           command = false,
-          model = { model = "claude-3-5-sonnet-20240620", temperature = 0.5, top_p = 1 },
+          model = { model = "claude-3-5-sonnet-20241022", temperature = 0.4, top_p = 1 },
           system_prompt = require("gp.defaults").chat_system_prompt,
         },
         {
@@ -63,7 +72,7 @@ return {
           chat = false,
           command = true,
           -- string with model name or table with model name and parameters
-          model = { model = "claude-3-5-sonnet-20240620", temperature = 0.5, top_p = 1 },
+          model = { model = "claude-3-5-sonnet-20241022", temperature = 0.4, top_p = 1 },
           system_prompt = require("gp.defaults").code_system_prompt,
         },
       },

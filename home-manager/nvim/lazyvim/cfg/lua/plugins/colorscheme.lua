@@ -30,14 +30,15 @@ return {
   },
   {
     "rose-pine/neovim",
-    -- config = function()
-    --   require("rose-pine").setup({
-    --     styles = {
-    --       transparency = true,
-    --     },
-    --   })
-    -- end,
+    config = function()
+      require("rose-pine").setup({
+        styles = {
+          transparency = true,
+        },
+      })
+    end,
   },
+  { "miikanissi/modus-themes.nvim", priority = 1000 },
   {
     "tjdevries/colorbuddy.nvim",
   },
@@ -76,9 +77,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = function()
-        require("catppuccin").load()
-      end,
+      colorscheme = "catppuccin-mocha",
     },
   },
 }

@@ -25,7 +25,7 @@ return {
     models = {
       {
         name = "openai",
-        model = "gpt-4-1106-preview",
+        model = "gpt-4o",
       },
     },
     shortcuts = {
@@ -49,8 +49,8 @@ return {
         use_context = false,
         prompt = function()
           return [[
-                  I want you to act as a commit message generator. 
-                  I will provide you the git diff, and I would like you to generate an appropriate commit message using the conventional commit format. 
+                  I want you to act as a commit message generator.
+                  I will provide you the git diff, and I would like you to generate an appropriate commit message using the conventional commit format.
                   Do not write any explanations or other words, just reply with the commit message.
                 ]] .. vim.fn.system("git diff --cached")
         end,
