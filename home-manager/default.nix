@@ -103,6 +103,7 @@ in {
     libfido2
     terraform-ls
     sumneko-lua-language-server
+    zed-editor
     nodePackages.prettier
     aider-chat
     (python3.withPackages (ps:

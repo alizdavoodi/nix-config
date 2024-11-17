@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 let
   trezor-rules = pkgs.writeTextFile {
@@ -42,6 +42,14 @@ in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+
+  # nixpkgs.overlays = [
+  #   (final: prev: {
+  #     pcsclite = inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.pcsclite;
+  # pcscliteWithPolkit =
+  #   inputs.nixpkgs-stable.legacyPackages.${pkgs.system}.pcscliteWithPolkit;
+  #   })
+  # ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -95,7 +103,7 @@ in {
     variant = "";
   };
 
-  services.udev.packages = [ trezor-rules ];
+  services.udev.packages = [ trezor-rules pkgs.yubikey-personalization ];
   # Enable OpenGL
   # hardware.opengl = {
   #   enable = true;
@@ -184,7 +192,7 @@ in {
   };
 
   # PC/SC smartcard daemon
-  services.pcscd.enable = true;
+  services.pcscd = { enable = true; };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

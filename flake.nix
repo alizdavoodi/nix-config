@@ -11,6 +11,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     # nixpkgs.url = "github:NixOS/nixpkgs/release-23.11";
 
     # Home manager
@@ -90,7 +91,6 @@
           gcc-arm-embedded
           wally-cli
           kubo
-          # calibre
           qmk
           gtk3
           marksman
