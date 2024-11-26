@@ -1,12 +1,12 @@
 { config, pkgs, ... }:
 
-let font-name = "FiraCode Nerd Font Mono";
+let font-name = "JetBrainsMono Nerd Font";
 in {
   programs.kitty = {
     enable = true;
     font = {
       name = font-name;
-      size = 15;
+      size = 16;
     };
     themeFile = "rose-pine";
     shellIntegration = { enableZshIntegration = true; };
@@ -17,6 +17,7 @@ in {
         "zsh --login -c 'if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi'";
       hide_window_decorations = "yes";
       enable_audio_bell = "no";
+      # macos_thicken_font = 0.75;
     };
     extraConfig = ''
       # Kitty's font was more spaced compared to alacritty's, tried font variations

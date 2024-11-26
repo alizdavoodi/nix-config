@@ -14,7 +14,7 @@ in {
 
         decorations = "None";
       };
-      terminal.shell = { program = "${pkgs.zsh}/bin/zsh"; };
+      # terminal = { shell = { program = "${pkgs.zsh}/bin/zsh"; }; };
       scrolling = {
         history = 50000;
         multiplier = 3;

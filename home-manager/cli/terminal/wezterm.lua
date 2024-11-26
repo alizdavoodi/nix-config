@@ -35,20 +35,21 @@ config.window_padding = {
 config.audible_bell = "Disabled"
 config.default_cursor_style = "SteadyBar"
 config.scrollback_lines = 50000
+config.max_fps = 120
 
 -- TabBar
 config.tab_bar_at_bottom = true
 
 -- Font.
--- config.font = wezterm.font("Fira Code")
+config.font = wezterm.font("JetBrains Mono")
 -- config.font = wezterm.font_with_fallback({
 -- 	"Fira Code",
 -- 	"JetBrains Mono",
 -- })
-config.font_size = 15
+config.font_size = 16
 config.freetype_load_target = "Normal"
 config.line_height = 1.1
--- config.front_end = "WebGpu"
+config.front_end = "WebGpu"
 
 -- Theme.
 config.color_scheme = "Rosé Pine (Gogh)"

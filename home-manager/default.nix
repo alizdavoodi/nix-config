@@ -93,6 +93,7 @@ in {
     gh
     rclone
     ansible
+    ruff
     jq
     powerline-fonts
     wireguard-tools
