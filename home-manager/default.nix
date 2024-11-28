@@ -87,6 +87,7 @@ in {
     # awscli2
     just
     lftp
+    uv
     delta
     gnumake
     postgresql
