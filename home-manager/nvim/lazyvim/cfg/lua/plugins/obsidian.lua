@@ -28,6 +28,10 @@ return {
         name = "work",
         path = "~/mnt/gdrive/vaults/work",
       },
+      {
+        name = "work",
+        path = "~/mnt/gdrive/vaults/technical",
+      },
     },
     templates = {
       subdir = "templates",

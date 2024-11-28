@@ -20,7 +20,7 @@ in {
         multiplier = 3;
       };
       font = {
-        size = 17;
+        size = 19;
         normal = {
           family = "${font-name}";
           style = "Regular";
