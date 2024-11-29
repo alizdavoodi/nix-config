@@ -11,8 +11,8 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.loader.grub.configurationLimit = 4;
-  boot.loader.systemd-boot.configurationLimit = 4;
+  boot.loader.grub.configurationLimit = 3;
+  boot.loader.systemd-boot.configurationLimit = 3;
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/4f34b1b5-16c0-43c9-95f7-df6faa6e8de7";
     fsType = "ext4";
