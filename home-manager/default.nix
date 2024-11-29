@@ -87,12 +87,14 @@ in {
     # awscli2
     just
     lftp
+    uv
     delta
     gnumake
     postgresql
     gh
     rclone
     ansible
+    ruff
     jq
     powerline-fonts
     wireguard-tools

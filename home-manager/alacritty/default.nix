@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-let font-name = "JetBrainsMono Nerd Font";
+let font-name = "JetbrainsMono Nerd Font";
 in {
   programs.alacritty = {
     enable = true;
@@ -14,13 +14,13 @@ in {
 
         decorations = "None";
       };
-      terminal.shell = { program = "${pkgs.zsh}/bin/zsh"; };
+      terminal = { shell = { program = "${pkgs.zsh}/bin/zsh"; }; };
       scrolling = {
         history = 50000;
         multiplier = 3;
       };
       font = {
-        size = 17;
+        size = 19;
         normal = {
           family = "${font-name}";
           style = "Regular";
