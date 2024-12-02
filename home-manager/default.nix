@@ -125,6 +125,10 @@ in {
     (nerdfonts.override {
       fonts = [ "Meslo" "Iosevka" "JetBrainsMono" "VictorMono" ];
     })
+    # nerd-fonts.meslo-lg
+    # nerd-fonts.iosevka
+    # nerd-fonts.jetbrains-mono
+    # nerd-fonts.victor-mono
   ];
 
 }
