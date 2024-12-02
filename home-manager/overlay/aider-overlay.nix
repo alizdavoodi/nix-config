@@ -18,8 +18,27 @@ in {
 
     name = "${oldAttrs.pname}";
 
-    dependencies = oldAttrs.dependencies
-      ++ (with python3.pkgs; [ pydub mixpanel monotonic posthog propcache ]);
+    buildInputs = (oldAttrs.buildInputs or [ ]) ++ [ super.playwright-driver ];
+
+    nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ])
+      ++ [ super.makeWrapper ];
+
+    dependencies = oldAttrs.dependencies ++ (with python3.pkgs; [
+      pydub
+      mixpanel
+      monotonic
+      posthog
+      propcache
+      greenlet
+      playwright
+      pyee
+      typing-extensions
+    ]);
+
+    postFixup = (oldAttrs.postFixup or "") + ''
+      wrapProgram $out/bin/aider \
+        --set PLAYWRIGHT_BROWSERS_PATH ${super.playwright-driver.browsers}
+    '';
 
     disabledTests = oldAttrs.disabledTests ++ [ "test_pipe_editor" ];
   });

@@ -104,6 +104,7 @@ in {
     tflint
     libfido2
     terraform-ls
+    aichat
     sumneko-lua-language-server
     zed-editor
     nodePackages.prettier
