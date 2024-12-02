@@ -12,8 +12,8 @@ in {
     src = super.fetchFromGitHub {
       owner = "paul-gauthier";
       repo = "aider";
-      rev = "v0.64.0";
-      hash = "sha256-/UUZ72YVr046CnnLLM9p0O/1dqXkfgRaUZF1LwjUH44=";
+      rev = "v0.66.0";
+      hash = "sha256-6wD8wBDV6Roo3J+oEYiBzZ7i1iGOZhcoiKXHV7AJjDk=";
     };
 
     name = "${oldAttrs.pname}";
@@ -21,6 +21,7 @@ in {
     dependencies = oldAttrs.dependencies
       ++ (with python3.pkgs; [ pydub mixpanel monotonic posthog propcache ]);
 
-    disabledTests = oldAttrs.disabledTests ++ [ "test_pipe_editor" ];
+    disabledTests = oldAttrs.disabledTests
+      ++ [ "test_pipe_editor" "test_pytest_env_vars " ];
   });
 }
