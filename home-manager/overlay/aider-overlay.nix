@@ -12,8 +12,8 @@ in {
     src = super.fetchFromGitHub {
       owner = "paul-gauthier";
       repo = "aider";
-      rev = "v0.66.0";
-      hash = "sha256-6wD8wBDV6Roo3J+oEYiBzZ7i1iGOZhcoiKXHV7AJjDk=";
+      rev = "v0.67.0";
+      hash = "sha256-JuUfG/+svkkPlBiHx6rJX60gTl+DXDOzmjASMbDWEsw=";
     };
 
     name = "${oldAttrs.pname}";
@@ -33,6 +33,7 @@ in {
       playwright
       pyee
       typing-extensions
+      watchfiles
     ]);
 
     postFixup = (oldAttrs.postFixup or "") + ''

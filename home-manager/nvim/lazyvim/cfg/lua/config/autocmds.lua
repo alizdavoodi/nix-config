@@ -38,14 +38,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   group = format_sync_grp,
 })
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*.tf", "*.tfvars" },
-  callback = function()
-    local current_buf = vim.api.nvim_get_current_buf()
-    vim.api.nvim_buf_set_option(current_buf, "filetype", "terraform")
-  end,
-})
-
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = "markdown",
   callback = function()
@@ -73,6 +65,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "/home/alizdavoodi/.local/share/nvim/gp/*",
   callback = function()
     -- Disable diagnostics for the current buffer
-    vim.diagnostic.disable(0)
+    vim.diagnostic.enable(false)
   end,
 })
