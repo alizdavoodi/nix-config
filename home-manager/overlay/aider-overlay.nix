@@ -12,8 +12,8 @@ in {
     src = super.fetchFromGitHub {
       owner = "paul-gauthier";
       repo = "aider";
-      rev = "v0.67.0";
-      hash = "sha256-JuUfG/+svkkPlBiHx6rJX60gTl+DXDOzmjASMbDWEsw=";
+      rev = "v0.68.0";
+      hash = "sha256-46qonjLyAF4IycNMybezU3Ci2fvZYjc7qnLi592GOFY=";
     };
 
     name = "${oldAttrs.pname}";
@@ -32,6 +32,7 @@ in {
       greenlet
       playwright
       pyee
+      pip
       typing-extensions
       watchfiles
     ]);
