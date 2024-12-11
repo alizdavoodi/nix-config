@@ -60,6 +60,7 @@ in {
     gnupg
     docker-compose
     unzip
+    lynx
     htop
     terraform
     yarn
