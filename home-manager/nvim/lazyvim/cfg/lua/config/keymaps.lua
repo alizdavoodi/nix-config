@@ -13,13 +13,21 @@ vim.keymap.set("n", "<leader>gg", function()
 end, { noremap = true, silent = true, desc = "Open Neogit" })
 
 -- Telescope
-vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope file_browser<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>bb", ":Telescope buffers<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader><space>", ":Telescope find_files<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>fr", ":Telescope file_browser<CR>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>bb", ":Telescope buffers<CR>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader><space>", ":Telescope find_files<CR>", { noremap = true, silent = true })
 
 -- center screen after jumping
 vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
+
+-- Fzflua live grep with glob pattern
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>sg",
+  "<cmd>lua require('fzf-lua').live_grep_glob()<CR>",
+  { noremap = true, silent = true }
+)
 
 -- Harpoon
 -- local harpoon = require("harpoon")

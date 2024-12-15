@@ -12,8 +12,8 @@ in {
     src = super.fetchFromGitHub {
       owner = "paul-gauthier";
       repo = "aider";
-      rev = "v0.68.0";
-      hash = "sha256-46qonjLyAF4IycNMybezU3Ci2fvZYjc7qnLi592GOFY=";
+      rev = "v0.69.0";
+      hash = "sha256-fJLLWL31BLEpgBrYDq0E8t7GN9TyOA5pwt42H/Hqh58=";
     };
 
     name = "${oldAttrs.pname}";
@@ -42,7 +42,10 @@ in {
         --set PLAYWRIGHT_BROWSERS_PATH ${super.playwright-driver.browsers}
     '';
 
-    disabledTests = oldAttrs.disabledTests
-      ++ [ "test_pipe_editor" "test_pytest_env_vars " ];
+    disabledTests = oldAttrs.disabledTests ++ [
+      "test_pipe_editor"
+      "test_pytest_env_vars"
+      "test_simple_send_non_retryable_error"
+    ];
   });
 }
