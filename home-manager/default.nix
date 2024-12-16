@@ -107,7 +107,7 @@ in {
     terraform-ls
     aichat
     sumneko-lua-language-server
-    zed-editor
+    devbox
     nodePackages.prettier
     aider-chat
     (python3.withPackages (ps:
