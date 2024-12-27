@@ -11,6 +11,8 @@ let
   # kubectl127 = kubectlPkgs.kubectl;
 
   nil = inputs.nil.packages.${system}.default;
+  # ghostty = inputs.ghostty.packages.${system}.default;
+
 in {
   imports = [
     ./cli
@@ -107,7 +109,6 @@ in {
     terraform-ls
     aichat
     sumneko-lua-language-server
-    zed-editor
     nodePackages.prettier
     aider-chat
     (python3.withPackages (ps:

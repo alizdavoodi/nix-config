@@ -46,6 +46,14 @@
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Ghostty flake
+    # FIXME: Remove this flake when there is an official package for ghostty
+    # ghostty = {
+    #   url = "github:ghostty-org/ghostty";
+    #   inputs.nixpkgs-stable.url = "nixpkgs";
+    # };
+
     # neovim-nightly = {
     # url = "github:neovim/neovim?dir=contrib";
     # inputs.nixpkgs.follows = "nixpkgs";
