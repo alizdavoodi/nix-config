@@ -13,10 +13,11 @@ return {
   "saghen/blink.cmp",
   dependencies = {
     "mikavilpas/blink-ripgrep.nvim",
-    "octaltree/cmp-look",
-    -- "saghen/blink.compat",
+    -- "octaltree/cmp-look",
+    "saghen/blink.compat",
   },
   opts = {
+    keymap = { preset = "default" },
     sources = {
       default = { "ripgrep" },
       -- compat = { "look" },
@@ -24,7 +25,6 @@ return {
         ripgrep = {
           name = "Ripgrep",
           module = "blink-ripgrep",
-          kind = "ripgrep",
         },
       },
     },
