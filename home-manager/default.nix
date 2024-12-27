@@ -109,6 +109,7 @@ in {
     terraform-ls
     aichat
     sumneko-lua-language-server
+    devbox
     nodePackages.prettier
     aider-chat
     (python3.withPackages (ps:
