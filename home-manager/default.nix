@@ -11,7 +11,6 @@ let
   # kubectl127 = kubectlPkgs.kubectl;
 
   nil = inputs.nil.packages.${system}.default;
-  # ghostty = inputs.ghostty.packages.${system}.default;
 
 in {
   imports = [

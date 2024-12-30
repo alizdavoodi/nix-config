@@ -12,8 +12,8 @@ in {
     src = super.fetchFromGitHub {
       owner = "paul-gauthier";
       repo = "aider";
-      rev = "v0.69.1";
-      hash = "sha256-llzWrz60VO1vDSaZ9zoMkYbDj6hPwVAMYye+sdhRlhQ=";
+      rev = "v0.70.0";
+      hash = "sha256-wGm6JV9ISRi/p1lA3JyzOdHQKFHFxEhfr+NdShUxm0M=";
     };
 
     name = "${oldAttrs.pname}";

@@ -49,10 +49,10 @@
 
     # Ghostty flake
     # FIXME: Remove this flake when there is an official package for ghostty
-    # ghostty = {
-    #   url = "github:ghostty-org/ghostty";
-    #   inputs.nixpkgs-stable.url = "nixpkgs";
-    # };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs-stable.url = "nixpkgs";
+    };
 
     # neovim-nightly = {
     # url = "github:neovim/neovim?dir=contrib";
@@ -89,7 +89,7 @@
         home.packages = with pkgs; [ fuse macfuse-stubs openssh docker ];
       };
 
-      home-server = { pkgs, ... }: {
+      home-server = { pkgs, system, ... }: {
         home.username = "alizdavoodi";
         home.homeDirectory = "/home/alizdavoodi";
 
@@ -104,6 +104,7 @@
           stylua
           libusb1
           webkitgtk
+          inputs.ghostty.packages.${system}.default
         ];
       };
 

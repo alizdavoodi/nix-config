@@ -120,6 +120,12 @@
     recursive = true;
   };
 
+  xdg.configFile.ghostty = {
+    target = "ghostty/config";
+    source = ./ghostty/config;
+    # recursive = true;
+  };
+
   programs.gh-dash = {
     enable = true;
     settings = {

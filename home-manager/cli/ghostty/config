@@ -1,0 +1,6 @@
+font-size = 14
+theme = catppuccin-mocha
+
+window-theme = dark
+window-padding-x = 2
+window-decoration = false
