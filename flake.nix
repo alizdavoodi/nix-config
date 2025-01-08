@@ -47,6 +47,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Add the aichat flake
+    aichat.url = "path:./flakes/aichat"; # Relative path to the aichat flake
+    aichat.inputs.nixpkgs.follows = "nixpkgs";
+    aichat.inputs.flake-utils.follows = "flake-utils";
+
     # Ghostty flake
     # FIXME: Remove this flake when there is an official package for ghostty
     ghostty = {

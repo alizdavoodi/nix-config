@@ -106,10 +106,10 @@ in {
     tflint
     libfido2
     terraform-ls
-    aichat
     sumneko-lua-language-server
     devbox
     nodePackages.prettier
+    inputs.aichat.packages.${system}.default
     aider-chat
     (python3.withPackages (ps:
       with ps; [

@@ -1,6 +1,20 @@
-font-size = 14
+term = xterm-256color
 theme = catppuccin-mocha
 
+font-size = 18
+#font-family = "Geist Mono"
+
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+macos-titlebar-style = hidden
+
+
 window-theme = dark
-window-padding-x = 2
 window-decoration = false
+window-save-state = never
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = extend
+#adjust-cell-height = -5%

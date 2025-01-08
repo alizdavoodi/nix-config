@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "aichat": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-W+zrA6vQqikdTvyudKZrAjo0tfIh5PUB2ISFZvlrwEw=",
+        "path": "./flakes/aichat",
+        "type": "path"
+      },
+      "original": {
+        "path": "./flakes/aichat",
+        "type": "path"
+      }
+    },
     "delta": {
       "flake": false,
       "locked": {
@@ -211,6 +231,7 @@
     },
     "root": {
       "inputs": {
+        "aichat": "aichat",
         "delta": "delta",
         "flake-utils": "flake-utils",
         "ghostty": "ghostty",
