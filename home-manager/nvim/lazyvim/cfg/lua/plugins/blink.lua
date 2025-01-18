@@ -15,17 +15,37 @@ return {
     "mikavilpas/blink-ripgrep.nvim",
     -- "octaltree/cmp-look",
     "saghen/blink.compat",
+    "Kaiser-Yang/blink-cmp-dictionary",
   },
   opts = {
     keymap = { preset = "default" },
     sources = {
       default = { "ripgrep" },
-      -- compat = { "look" },
       providers = {
         ripgrep = {
           name = "Ripgrep",
           module = "blink-ripgrep",
         },
+        -- dictionary = {
+        --   module = "blink-cmp-dictionary",
+        --   name = "Dict",
+        --   opts = {
+        --     get_command = {
+        --       "rg", -- make sure this command is available in your system
+        --       "--color=never",
+        --       "--no-line-number",
+        --       "--no-messages",
+        --       "--no-filename",
+        --       "--ignore-case",
+        --       "--",
+        --       "${prefix}",
+        --       vim.fn.expand("~/.config/nvim/en_dict.txt"),
+        --     },
+        --     documentation = {
+        --       enable = false, -- enable documentation to show the definition of the word
+        --     },
+        --   },
+        -- },
       },
     },
   },
