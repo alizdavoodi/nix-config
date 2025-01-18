@@ -28,7 +28,7 @@
 
         # Single hash for all assets
         assetHash =
-          "sha256-IhvGsXpJA72nuvx5gWrK9VWms6AYjme4/w8WY1wt3q4="; # Replace with the actual hash
+          "sha256-1Fp9QdU/K2d4ztEief3ezE6S7gUOCiY2FA6MdcBLmSQ="; # Replace with the actual hash
 
         # Select the appropriate platform suffix based on the system
         platformSuffix =

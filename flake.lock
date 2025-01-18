@@ -11,12 +11,12 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-W+zrA6vQqikdTvyudKZrAjo0tfIh5PUB2ISFZvlrwEw=",
-        "path": "./flakes/aichat",
+        "narHash": "sha256-LfuILHbJmkf4IYR4VS0Zi3p2yxOdJvJIZxEDKk/yk9g=",
+        "path": "flakes/aichat",
         "type": "path"
       },
       "original": {
-        "path": "./flakes/aichat",
+        "path": "flakes/aichat",
         "type": "path"
       }
     },

@@ -48,7 +48,7 @@
     };
 
     # Add the aichat flake
-    aichat.url = "path:./flakes/aichat"; # Relative path to the aichat flake
+    aichat.url = "path:flakes/aichat";
     aichat.inputs.nixpkgs.follows = "nixpkgs";
     aichat.inputs.flake-utils.follows = "flake-utils";
 
