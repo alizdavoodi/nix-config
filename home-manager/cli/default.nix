@@ -74,48 +74,48 @@
       # based on its Instance ID, Name, Hostname, and State. The function handles errors in retrieving
       # instances and ensures only instances with hostnames are displayed. Upon selection, it connects
       # to the chosen instance using SSH with agent forwarding enabled.
-      ssh-ec2 () {
-          local instances=$(aws ec2 describe-instances \
+      ssh-ec2() {
+        # Retrieve and format EC2 instances with launch time
+        local instances=$(aws ec2 describe-instances \
           --query 'Reservations[*].Instances[*].[
             InstanceId,
             Tags[?Key==`Name`].Value | [0],
             PublicDnsName || PrivateDnsName,
-            State.Name
+            State.Name,
+            LaunchTime
           ]' \
           --output text 2>/dev/null | \
           awk -F'\t' 'BEGIN {OFS=" | "} {
-            # Format output and filter out instances without hostnames
             if ($3 != "") {
               $2 = ($2 == "") ? "unnamed" : $2;
-              print $1, $2, $3, $4
+              print $1, $2, $3, $4, $5
             }
           }')
-              if [[ $? -ne 0 ]]
-              then
-                      echo "ERROR: Failed to retrieve EC2 instances. Check your AWS configuration."
-                      return 1
-              fi
-              if [[ -z "$instances" ]]
-              then
-                      echo "No EC2 instances found."
-                      return 0
-              fi
-          local selected=$(echo "$instances" | \
+
+        if [[ $? -ne 0 ]]; then
+          echo "ERROR: Failed to retrieve EC2 instances. Check your AWS configuration."
+          return 1
+        fi
+
+        if [[ -z "$instances" ]]; then
+          echo "No EC2 instances found."
+          return 0
+        fi
+
+        # Fuzzy-find with raw creation time in preview
+        local selected=$(echo "$instances" | \
           fzf --height 40% --reverse \
               --header="Instance ID | Name | Hostname | State" \
-              --preview "echo -e 'Instance ID: {1}\nName: {2}\nHostname: {3}\nState: {4}'" \
+              --preview "echo -e 'Instance ID: {1}\nName: {2}\nHostname: {3}\nState: {4}\nCreated: {5}'" \
               --preview-window=wrap:50% \
               --delimiter=" \| " --with-nth=1,2,3 \
-              --bind 'change:first' \
-              --bind 'backward-eof:abort' \
-              --color 'header:italic,preview-border:12' \
-              --prompt='🔍 EC2 Search > ')
-              if [[ -n "$selected" ]]
-              then
-                      local hostname=$(echo "$selected" | awk -F' \| ' '{print $3}')
-                      echo "Connecting to $hostname..."
-                      ssh -A "$hostname"
-              fi
+              --bind 'change:first')
+
+        if [[ -n "$selected" ]]; then
+          local hostname=$(echo "$selected" | awk -F' \| ' '{print $3}')
+          echo "Connecting to $hostname..."
+          ssh -A "$hostname"
+        fi
       }
     '' + builtins.readFile (builtins.fetchGit {
       url = "https://github.com/ahmetb/kubectl-aliases";
