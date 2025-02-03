@@ -106,11 +106,11 @@ in {
 
   services.udev.packages = [ trezor-rules pkgs.yubikey-personalization ];
   # Enable OpenGL
-  # hardware.opengl = {
-  #   enable = true;
-  # driSupport = true;
-  # driSupport32Bit = true;
-  # };
+  hardware.opengl = {
+    enable = true;
+    # driSupport = true;
+    # driSupport32Bit = true;
+  };
 
   # hardware.nvidia.prime = {
   #   offload = {
@@ -143,14 +143,14 @@ in {
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus
     # Only available from driver 515.43.04+
     # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
+    open = true;
 
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # Enable CUPS to print documents.
@@ -255,14 +255,15 @@ in {
     };
   };
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 11434 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  # networking.firewall.allowedTCPPorts = [ 52415 ];
+  # networking.firewall.allowedUDPPorts = [ 52415 ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # Open ports in the firewall.
   # networking.firewall.extracommands = ''
-  #   iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 11434 -j nixos-fw-accept
+  #   iptables -A nixos-fw -p tcp --source 192.168.1.0/24 --dport 52415 -j nixos-fw-accept
+  #   iptables -A nixos-fw -p udp --source 192.168.1.0/24 --dport 52415 -j nixos-fw-accept
   # '';
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

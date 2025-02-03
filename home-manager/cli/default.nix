@@ -14,10 +14,12 @@
     sessionVariables = {
       # colorterm = "truecolor";
       # term = "xterm-256color";
-      editor = "nvim";
+      EDITOR = "nvim";
       ANTHROPIC_API_KEY =
         "$(cat ${config.sops.secrets.anthropic_api_key.path})";
       OPENAI_API_KEY = "$(cat ${config.sops.secrets.openai_api_key_work.path})";
+      OPENROUTER_API_KEY =
+        "$(cat ${config.sops.secrets.openrouter_api_key.path})";
     };
     oh-my-zsh = {
       enable = true;
