@@ -10,7 +10,7 @@
   };
   inputs = {
     # Nixpkgs
-    # nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
 
     # Home manager
@@ -71,9 +71,18 @@
     #};
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
+  outputs =
+    { self, nixpkgs, nixpkgs-unstable, home-manager, flake-utils, ... }@inputs:
     let
       inherit (self) outputs;
+
+      # Function to create the unstable-aider package for any system
+      mkUnstableAider = system:
+        (import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [ (import ./home-manager/overlay/aider-overlay.nix) ];
+        }).aider-chat;
 
       home-common = { lib, system, pkgs, ... }: {
 
@@ -81,8 +90,6 @@
         programs.home-manager.enable = true;
         home.stateVersion = "22.05";
 
-        nixpkgs.overlays =
-          [ (import ./home-manager/overlay/aider-overlay.nix) ];
         imports = [ ./home-manager ];
 
       };
@@ -136,6 +143,7 @@
           extraSpecialArgs = {
             inherit inputs outputs;
             system = "x86_64-linux";
+            unstable-aider = mkUnstableAider "x86_64-linux";
           };
           # > Our main home-manager configuration file <
           modules = [ home-common home-server ];
@@ -147,6 +155,7 @@
           extraSpecialArgs = {
             inherit inputs outputs;
             system = "aarch64-darwin";
+            unstable-aider = mkUnstableAider "aarch64-darwin";
           }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
           modules = [ home-common work-macbook ];

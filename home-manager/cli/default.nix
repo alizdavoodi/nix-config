@@ -29,8 +29,8 @@
     };
 
     shellAliases = {
-      gramm = "chatgpt -p grammarly";
-      gramm2 = "chatgpt -p grammarly2";
+      gramm = "aichat --model openai:o3-mini -r grammar-genie";
+      gramm2 = "aichat --model openai:o3-mini -r crystal-clear";
     };
 
     initExtra = ''

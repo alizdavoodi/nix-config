@@ -1,4 +1,4 @@
-{ config, pkgs, system, inputs, ... }:
+{ unstable-aider, pkgs, system, inputs, ... }:
 
 let
   # kubectlPkgs = import (builtins.fetchGit {
@@ -110,7 +110,7 @@ in {
     devbox
     nodePackages.prettier
     inputs.aichat.packages.${system}.default
-    aider-chat
+    unstable-aider
     (python3.withPackages (ps:
       with ps; [
         libtmux

@@ -11,7 +11,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-rSdl0kK8lQMagY+jfvGEo8uEp/KRmy2OsQJkNBN/SZ4=",
+        "narHash": "sha256-Z0QsUDCQdRccMK/gSk+7tyWTXytQdpdI8S6eAsydNqQ=",
         "path": "flakes/aichat",
         "type": "path"
       },
@@ -231,6 +231,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-unstable_2": {
+      "locked": {
+        "lastModified": 1740396192,
+        "narHash": "sha256-ATMHHrg3sG1KgpQA5x8I+zcYpp5Sf17FaFj/fN+8OoQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d9b69c3ec2a2e2e971c534065bdd53374bd68b97",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixpkgs-unstable",
+        "type": "indirect"
+      }
+    },
     "root": {
       "inputs": {
         "aichat": "aichat",
@@ -241,6 +256,7 @@
         "home-manager": "home-manager",
         "nil": "nil",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-unstable": "nixpkgs-unstable_2",
         "secrets": "secrets",
         "sops-nix": "sops-nix",
         "tmux-conf": "tmux-conf"
