@@ -75,8 +75,9 @@
     { self, nixpkgs, nixpkgs-unstable, home-manager, flake-utils, ... }@inputs:
     let
       inherit (self) outputs;
+      inherit (flake-utils.lib) system;
 
-      # Function to create the unstable-aider package for any system
+      # Function to create the unstable-aider package using system
       mkUnstableAider = system:
         (import nixpkgs-unstable {
           inherit system;
@@ -137,25 +138,25 @@
       };
 
       homeConfigurations = {
-        "alizdavoodi@nixos" = home-manager.lib.homeManagerConfiguration {
+        "alizdavoodi@nixos" = let system = flake-utils.lib.system.x86_64-linux;
+        in home-manager.lib.homeManagerConfiguration {
           pkgs =
-            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+            nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs;
-            system = "x86_64-linux";
-            unstable-aider = mkUnstableAider "x86_64-linux";
+            inherit inputs outputs system;
+            unstable-aider = mkUnstableAider system;
           };
           # > Our main home-manager configuration file <
           modules = [ home-common home-server ];
         };
 
-        "alizdavoodi@work" = home-manager.lib.homeManagerConfiguration {
+        "alizdavoodi@work" = let system = flake-utils.lib.system.aarch64-darwin;
+        in home-manager.lib.homeManagerConfiguration {
           pkgs =
-            nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+            nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs;
-            system = "aarch64-darwin";
-            unstable-aider = mkUnstableAider "aarch64-darwin";
+            inherit inputs outputs system;
+            unstable-aider = mkUnstableAider system;
           }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
           modules = [ home-common work-macbook ];
