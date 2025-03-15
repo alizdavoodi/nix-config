@@ -1,18 +1,6 @@
-{ config, pkgs, system, inputs, ... }:
+{ unstable, pkgs, system, inputs, ... }:
 
-let
-  # kubectlPkgs = import (builtins.fetchGit {
-  #   name = "kubectl-1-27";
-  #   url = "https://github.com/NixOS/nixpkgs/";
-  #   ref = "refs/heads/nixpkgs-unstable";
-  #   rev = "976fa3369d722e76f37c77493d99829540d43845";
-  # }) { inherit system; };
-  # # Use default kubectl
-  # kubectl127 = kubectlPkgs.kubectl;
-
-  nil = inputs.nil.packages.${system}.default;
-
-in {
+{
   imports = [
     ./cli
     #./nvim
@@ -49,88 +37,100 @@ in {
   xdg.enable = true;
 
   home.packages = with pkgs; [
-    du-dust
-    yubikey-personalization
-    yubikey-manager
-    awscli2
-    yt-dlp
-    comma
-    krew
-    sox
-    sshuttle
-    gnupg
-    docker-compose
-    unzip
-    lynx
-    htop
-    terraform
-    yarn
-    extract_url
-    nodejs
-    dogdns
-    ripgrep
-    rclone
-    gcc
-    nixfmt
-    openjdk
-    go
+    # Development Tools and Languages
     cargo
-    fd
-    fzf
-    mtr
-    wget
-    aiac
-    xdg-utils
-    sops
-    age
-    nil
-    sshuttle
-    yazi
-    # awscli2
-    just
-    lftp
-    uv
-    delta
-    gnumake
-    postgresql
-    gh
-    rclone
-    ansible
-    ruff
-    jq
-    powerline-fonts
-    wireguard-tools
-    kubectx
-    kubernetes-helm
-    ansible-lint
-    tflint
-    libfido2
-    terraform-ls
-    sumneko-lua-language-server
     devbox
-    nodePackages.prettier
-    inputs.aichat.packages.${system}.default
-    aider-chat
+    gcc
+    gnumake
+    go
+    nil
+    nodejs
+    openjdk
     (python3.withPackages (ps:
       with ps; [
-        libtmux
-        packaging
-        pyyaml
-        colorama
         boto3
-        jinja2
+        colorama
         cryptography
-        pyjwt
+        jinja2
         libtmux
         packaging
+        pyjwt
+        pyyaml
       ]))
+    sumneko-lua-language-server
+    terraform-ls
+    yarn
+
+    # Version Control and Git Tools
+    delta
+    gh
+
+    # Cloud and Infrastructure
+    aiac
+    ansible
+    ansible-lint
+    awscli2
+    docker-compose
+    kubectl
+    kubectx
+    kubernetes-helm
+    terraform
+    tflint
+
+    # File and System Utilities
+    comma
+    du-dust
+    extract_url
+    fd
+    fzf
+    lftp
+    rclone
+    ripgrep
+    unzip
+    uv
+    xdg-utils
+    yazi
+
+    # Text Processing and Formatting
+    jq
+    nixfmt
+    nodePackages.prettier
+    ruff
+
+    # Network Tools
+    dogdns
+    htop
+    lynx
+    mtr
+    postgresql
+    sshuttle
+    wget
+    wireguard-tools
+
+    # Security Tools
+    age
+    libfido2
+    sops
+    yubikey-manager
+    yubikey-personalization
+
+    # Terminal and Shell Enhancements
+    inputs.aichat.packages.${system}.default
+    aider-chat
+    krew
+    powerline-fonts
+    unstable.claude-code
+    unstable.ghostty
     (nerdfonts.override {
       fonts = [ "Meslo" "Iosevka" "JetBrainsMono" "VictorMono" ];
     })
-    # nerd-fonts.meslo-lg
-    # nerd-fonts.iosevka
-    # nerd-fonts.jetbrains-mono
-    # nerd-fonts.victor-mono
+
+    # Multimedia Tools
+    sox
+    yt-dlp
+
+    # Utilities and Other Tools
+    just
   ];
 
 }

@@ -12,6 +12,7 @@
     # Nixpkgs
     # nixpkgs.url = "nixpkgs/nixpkgs-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-24.11";
@@ -42,22 +43,15 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    nil = {
-      url = "github:oxalica/nil";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nil = {
+    #   url = "github:oxalica/nil";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     # Add the aichat flake
-    aichat.url = "path:flakes/aichat";
+    aichat.url = "path:./flakes/aichat";
     aichat.inputs.nixpkgs.follows = "nixpkgs";
     aichat.inputs.flake-utils.follows = "flake-utils";
-
-    # Ghostty flake
-    # FIXME: Remove this flake when there is an official package for ghostty
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs-stable.url = "nixpkgs";
-    };
 
     # neovim-nightly = {
     # url = "github:neovim/neovim?dir=contrib";
@@ -109,7 +103,6 @@
           stylua
           libusb1
           webkitgtk
-          inputs.ghostty.packages.${system}.default
         ];
       };
 
@@ -136,6 +129,10 @@
           extraSpecialArgs = {
             inherit inputs outputs;
             system = "x86_64-linux";
+            unstable = import inputs.nixpkgs-unstable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
           };
           # > Our main home-manager configuration file <
           modules = [ home-common home-server ];
