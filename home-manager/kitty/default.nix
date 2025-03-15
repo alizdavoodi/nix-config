@@ -15,7 +15,7 @@ in {
       # background = "#000000";
       shell =
         "zsh --login -c 'if command -v tmux >/dev/null 2>&1; then tmux attach || tmux; else zsh; fi'";
-      hide_window_decorations = "yes";
+      hide_window_decorations = "no";
       enable_audio_bell = "no";
     };
     extraConfig = ''

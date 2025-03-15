@@ -1,4 +1,4 @@
-{ unstable, pkgs, system, inputs, ... }:
+{ unstable-aider, pkgs, system, inputs, ... }:
 
 {
   imports = [
@@ -40,12 +40,9 @@
     # Development Tools and Languages
     cargo
     devbox
-    gcc
-    gnumake
-    go
-    nil
-    nodejs
-    openjdk
+    nodePackages.prettier
+    inputs.aichat.packages.${system}.default
+    unstable-aider
     (python3.withPackages (ps:
       with ps; [
         boto3

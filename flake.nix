@@ -10,7 +10,7 @@
   };
   inputs = {
     # Nixpkgs
-    # nixpkgs.url = "nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "nixpkgs/nixpkgs-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -65,9 +65,19 @@
     #};
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... }@inputs:
+  outputs =
+    { self, nixpkgs, nixpkgs-unstable, home-manager, flake-utils, ... }@inputs:
     let
       inherit (self) outputs;
+      inherit (flake-utils.lib) system;
+
+      # Function to create the unstable-aider package using system
+      mkUnstableAider = system:
+        (import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [ (import ./home-manager/overlay/aider-overlay.nix) ];
+        }).aider-chat;
 
       home-common = { lib, system, pkgs, ... }: {
 
@@ -75,8 +85,6 @@
         programs.home-manager.enable = true;
         home.stateVersion = "22.05";
 
-        nixpkgs.overlays =
-          [ (import ./home-manager/overlay/aider-overlay.nix) ];
         imports = [ ./home-manager ];
 
       };
@@ -123,27 +131,25 @@
       };
 
       homeConfigurations = {
-        "alizdavoodi@nixos" = home-manager.lib.homeManagerConfiguration {
+        "alizdavoodi@nixos" = let system = flake-utils.lib.system.x86_64-linux;
+        in home-manager.lib.homeManagerConfiguration {
           pkgs =
-            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+            nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs;
-            system = "x86_64-linux";
-            unstable = import inputs.nixpkgs-unstable {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
+            inherit inputs outputs system;
+            unstable-aider = mkUnstableAider system;
           };
           # > Our main home-manager configuration file <
           modules = [ home-common home-server ];
         };
 
-        "alizdavoodi@work" = home-manager.lib.homeManagerConfiguration {
+        "alizdavoodi@work" = let system = flake-utils.lib.system.aarch64-darwin;
+        in home-manager.lib.homeManagerConfiguration {
           pkgs =
-            nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+            nixpkgs.legacyPackages.${system}; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {
-            inherit inputs outputs;
-            system = "aarch64-darwin";
+            inherit inputs outputs system;
+            unstable-aider = mkUnstableAider system;
           }; # Pass flake inputs to our config
           # > Our main home-manager configuration file <
           modules = [ home-common work-macbook ];
