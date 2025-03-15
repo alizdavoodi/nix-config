@@ -10,6 +10,7 @@
       size = 50000;
       save = 50000;
       expireDuplicatesFirst = true;
+      append = true;
     };
     sessionVariables = {
       # colorterm = "truecolor";
@@ -68,7 +69,7 @@
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;3D" backward-word
 
-
+      setopt INC_APPEND_HISTORY_TIME
 
       # This function, `ssh-ec2`, provides an interactive way to connect to AWS EC2 instances via SSH.
       # It retrieves a list of EC2 instances using the AWS CLI, formats the output, and presents it in a
