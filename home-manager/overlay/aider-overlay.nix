@@ -3,6 +3,88 @@ let
   python3 = super.python312.override {
     packageOverrides = self_: super_: {
       tree-sitter = super_.tree-sitter_0_21;
+
+      # Create dummy packages for the missing tree-sitter language modules
+      tree-sitter-c-sharp = self_.buildPythonPackage {
+        pname = "tree-sitter-c-sharp";
+        version = "0.20.0";
+        format = "setuptools";
+
+        src = super.pkgs.writeTextDir "setup.py" ''
+          from setuptools import setup
+          setup(
+              name="tree-sitter-c-sharp",
+              version="0.20.0",
+              description="C# grammar for tree-sitter",
+              packages=[],
+          )
+        '';
+
+        propagatedBuildInputs = [ self_.tree-sitter ];
+        meta.description = "C# grammar for tree-sitter";
+      };
+
+      tree-sitter-embedded-template = self_.buildPythonPackage {
+        pname = "tree-sitter-embedded-template";
+        version = "0.20.0";
+        format = "setuptools";
+
+        src = super.pkgs.writeTextDir "setup.py" ''
+          from setuptools import setup
+          setup(
+              name="tree-sitter-embedded-template",
+              version="0.20.0",
+              description="Embedded template grammar for tree-sitter",
+              packages=[],
+          )
+        '';
+
+        propagatedBuildInputs = [ self_.tree-sitter ];
+        meta.description = "Embedded template grammar for tree-sitter";
+      };
+
+      tree-sitter-yaml = self_.buildPythonPackage {
+        pname = "tree-sitter-yaml";
+        version = "0.20.0";
+        format = "setuptools";
+
+        src = super.pkgs.writeTextDir "setup.py" ''
+          from setuptools import setup
+          setup(
+              name="tree-sitter-yaml",
+              version="0.20.0",
+              description="YAML grammar for tree-sitter",
+              packages=[],
+          )
+        '';
+
+        propagatedBuildInputs = [ self_.tree-sitter ];
+        meta.description = "YAML grammar for tree-sitter";
+      };
+
+      tree-sitter-language-pack = self_.buildPythonPackage {
+        pname = "tree-sitter-language-pack";
+        version = "0.20.0";
+        format = "setuptools";
+
+        src = super.pkgs.writeTextDir "setup.py" ''
+          from setuptools import setup
+          setup(
+              name="tree-sitter-language-pack",
+              version="0.20.0",
+              description="Language pack for tree-sitter",
+              packages=[],
+          )
+        '';
+
+        propagatedBuildInputs = [
+          self_.tree-sitter
+          self_.tree-sitter-c-sharp
+          self_.tree-sitter-embedded-template
+          self_.tree-sitter-yaml
+        ];
+        meta.description = "Language pack for tree-sitter";
+      };
     };
   };
 in {
@@ -10,10 +92,10 @@ in {
     inherit python3;
 
     src = super.fetchFromGitHub {
-      owner = "paul-gauthier";
+      owner = "Aider-AI";
       repo = "aider";
-      rev = "v0.76.2";
-      hash = "sha256-5pmzqlFQEAACAqF12FGTHkyJjpnpuGUe0Y0cpQ0z2Bg=";
+      rev = "v0.77.0";
+      hash = "sha256-wGVkcccTNhNbAWhWwpprNrXOm7u1R7qtiPTT5Lqidkg=";
     };
 
     name = "${oldAttrs.pname}";
@@ -24,7 +106,14 @@ in {
       ++ [ super.makeWrapper ];
 
     propagatedBuildInputs = (oldAttrs.propagatedBuildInputs or [ ])
-      ++ (with python3.pkgs; [ grep-ast ]);
+      ++ (with python3.pkgs; [
+        grep-ast
+        tree-sitter
+        tree-sitter-c-sharp
+        tree-sitter-embedded-template
+        tree-sitter-yaml
+        tree-sitter-language-pack
+      ]);
 
     nativeCheckInputs = [ ];
 
@@ -48,11 +137,6 @@ in {
       wrapProgram $out/bin/aider \
         --set PLAYWRIGHT_BROWSERS_PATH ${super.playwright-driver.browsers}
     '';
-
-    # disabledTests = oldAttrs.disabledTests ++ [
-    #   "test_pipe_editor"
-    #   "test_pytest_env_vars"
-    #   "test_simple_send_non_retryable_error"
-    # ];
   });
 }
+

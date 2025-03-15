@@ -1,4 +1,4 @@
-{ unstable-aider, pkgs, system, inputs, ... }:
+{ unstable-aider, pkgs, system, inputs, unstable, ... }:
 
 {
   imports = [
@@ -39,9 +39,10 @@
   home.packages = with pkgs; [
     # Development Tools and Languages
     cargo
+    nodejs
     devbox
+    nil
     nodePackages.prettier
-    inputs.aichat.packages.${system}.default
     unstable-aider
     (python3.withPackages (ps:
       with ps; [
@@ -113,7 +114,6 @@
 
     # Terminal and Shell Enhancements
     inputs.aichat.packages.${system}.default
-    aider-chat
     krew
     powerline-fonts
     unstable.claude-code
