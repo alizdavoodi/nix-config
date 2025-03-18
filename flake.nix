@@ -48,9 +48,11 @@
     # };
 
     # Add the aichat flake
-    aichat.url = "path:./flakes/aichat";
-    aichat.inputs.nixpkgs.follows = "nixpkgs";
-    aichat.inputs.flake-utils.follows = "flake-utils";
+    aichat = {
+      url = "path:flakes/aichat";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
 
     # neovim-nightly = {
     # url = "github:neovim/neovim?dir=contrib";
@@ -93,7 +95,7 @@
         home.packages = with pkgs; [ fuse macfuse-stubs openssh docker ];
       };
 
-      home-server = { pkgs, system, ... }: {
+      home-server = { pkgs, system, unstable, ... }: {
         home.username = "alizdavoodi";
         home.homeDirectory = "/home/alizdavoodi";
 
@@ -108,6 +110,7 @@
           stylua
           libusb1
           webkitgtk
+          unstable.ghostty
         ];
       };
 

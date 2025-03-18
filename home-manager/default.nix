@@ -80,7 +80,6 @@
     du-dust
     extract_url
     fd
-    fzf
     lftp
     rclone
     ripgrep
@@ -117,7 +116,6 @@
     krew
     powerline-fonts
     unstable.claude-code
-    unstable.ghostty
     (nerdfonts.override {
       fonts = [ "Meslo" "Iosevka" "JetBrainsMono" "VictorMono" ];
     })

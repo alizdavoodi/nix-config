@@ -12,7 +12,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
 
         # Define reusable variables
-        version = "v0.27.0";
+        version = "v0.28.0";
         repoOwner = "sigoden";
         repoName = "aichat";
         repoUrl =
@@ -27,7 +27,7 @@
         };
 
         # Single hash for all assets
-        assetHash = "sha256-QwMX2IxpaIdzmwq8JQgoeAVDWRO+/yM7U5vKFvMhblU=";
+        assetHash = "sha256-TrMqpJLabkG77M09EMM00uwIs54CIZOn8sCwK2DMoeQ=";
 
         # Select the appropriate platform suffix based on the system
         platformSuffix =

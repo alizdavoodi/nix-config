@@ -1,7 +1,8 @@
-{ ... }: {
+{ unstable, ... }: {
   # Starship Prompt
   programs.starship = {
     enable = true;
+    package = unstable.starship;
     settings = {
       character = {
         success_symbol = "[λ](green)";

@@ -1,9 +1,10 @@
-{ config, lib, pkgs, inputs, ... }: {
+{ config, lib, pkgs, inputs, unstable, ... }: {
 
   imports = [ ./chatgpt-cli ./starship ./terminal ./sops ./gpg-agent ];
 
   programs.zsh = {
     enable = true;
+    package = unstable.zsh;
     autocd = true;
     history = {
       ignoreSpace = true;
@@ -38,10 +39,10 @@
       export AWS_PROFILE=InfraOps-sympower
       export KUBECONFIG=~/.kube/kubeconfig
 
-      if type rg &> /dev/null; then
-        export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs --hidden'
-        export FZF_DEFAULT_OPTS='-m --height 50% --border'
-      fi
+      # if type rg &> /dev/null; then
+      #   export FZF_DEFAULT_COMMAND='rg --files --ignore-vcs --hidden'
+      #   export FZF_DEFAULT_OPTS='-m --height 50% --border'
+      # fi
 
       # zsh-vi-mode
       ZVM_LAZY_KEYBINDINGS=false
@@ -128,6 +129,7 @@
 
   programs.tmux = {
     enable = true;
+    package = unstable.tmux;
     extraConfig = builtins.readFile "${inputs.tmux-conf}/.tmux.conf";
     shell = "${pkgs.zsh}/bin/zsh";
     plugins = with pkgs; [
@@ -163,6 +165,7 @@
   };
   programs.fzf = {
     enable = true;
+    package = unstable.fzf;
     enableZshIntegration = true;
   };
 
