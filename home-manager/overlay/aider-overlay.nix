@@ -94,8 +94,8 @@ in {
     src = super.fetchFromGitHub {
       owner = "Aider-AI";
       repo = "aider";
-      rev = "v0.77.0";
-      hash = "sha256-wGVkcccTNhNbAWhWwpprNrXOm7u1R7qtiPTT5Lqidkg=";
+      rev = "v0.77.1";
+      hash = "sha256-CQIL49kxIby9pRSALunxN9HEmGA4MLzZvTuGX+fhWKg=";
     };
 
     name = "${oldAttrs.pname}";

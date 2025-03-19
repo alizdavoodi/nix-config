@@ -67,7 +67,7 @@
     aiac
     ansible
     ansible-lint
-    awscli2
+    unstable.awscli2
     docker-compose
     kubectl
     kubectx
