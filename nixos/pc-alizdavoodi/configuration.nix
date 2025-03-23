@@ -56,9 +56,17 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nix.settings = {
-    trusted-substituters = [ "https://devenv.cachix.org" ];
-    trusted-public-keys =
-      [ "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=" ];
+    trusted-users = [ "root" "alizdavoodi" ];
+    substituters = [
+      "https://cache.nixos.org"
+      "https://devenv.cachix.org"
+      "https://nix-community.cachix.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
   };
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -106,11 +114,7 @@ in {
 
   services.udev.packages = [ trezor-rules pkgs.yubikey-personalization ];
   # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    # driSupport = true;
-    # driSupport32Bit = true;
-  };
+  hardware.graphics.enable = true;
 
   # hardware.nvidia.prime = {
   #   offload = {
@@ -136,6 +140,7 @@ in {
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
     powerManagement.finegrained = false;
 
+    nvidiaPersistenced = true;
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
     # Support is limited to the Turing and later architectures. Full list of
@@ -150,7 +155,7 @@ in {
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # Enable CUPS to print documents.
@@ -189,6 +194,8 @@ in {
       ruff-lsp
       yarn
       ruff
+      gcc
+      gnumake
     ];
   };
 
@@ -228,6 +235,13 @@ in {
           [ "CascadiaCode" "Meslo" "JetBrainsMono" "Iosevka" "VictorMono" ];
       })
     ];
+  # for the next version
+  # fonts.packages = with pkgs; [
+  #   nerd-fonts.meslo-lg
+  #   nerd-fonts.jetbrains-mono
+  #   nerd-fonts.iosevka
+  #   nerd-fonts.victor-mono
+  # ];
   environment.variables = { OPENSSL_DEV = pkgs.openssl.dev; };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
