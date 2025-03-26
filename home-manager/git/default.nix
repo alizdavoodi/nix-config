@@ -26,7 +26,38 @@
     ];
     extraConfig = {
       format.signoff = true;
-      diff.colorMoved = "default";
+      column.ui = "auto";
+      branch.sort = "-committerdate";
+      tag.sort = "version:refname";
+      init.defaultBranch = "main";
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain"; # Changed from "default"
+        mnemonicPrefix = true;
+        renames = true;
+      };
+      push = {
+        default = "simple";
+        autoSetupRemote = true;
+        followTags = true;
+      };
+      fetch = {
+        prune = true;
+        pruneTags = true;
+        all = true;
+      };
+      help.autocorrect = "prompt";
+      commit.verbose = true;
+      rerere = {
+        enabled = true;
+        autoupdate = true;
+      };
+      core.excludesfile = "~/.gitignore";
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+        updateRefs = true;
+      };
       ghq = {
         vcs = "git";
         root = "~/projects";
@@ -38,9 +69,6 @@
         reflog = "delta";
         show = "delta";
         blame = "delta";
-      };
-      url = {
-        "git@gitlab.ci.fdmg.org:".insteadOf = "https://gitlab.ci.fdmg.org/";
       };
     };
     includes = [
