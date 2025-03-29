@@ -22,6 +22,7 @@
       OPENAI_API_KEY = "$(cat ${config.sops.secrets.openai_api_key_work.path})";
       OPENROUTER_API_KEY =
         "$(cat ${config.sops.secrets.openrouter_api_key.path})";
+      GEMINI_API_KEY = "$(cat ${config.sops.secrets.gemini_api_key.path})";
     };
     oh-my-zsh = {
       enable = true;

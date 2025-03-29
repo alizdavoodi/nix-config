@@ -321,10 +321,10 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1738406279,
-        "narHash": "sha256-7vzkBjLs/Ch1HemvTBZOBmTff110mKoY9K/RSMc6sQ8=",
+        "lastModified": 1743247525,
+        "narHash": "sha256-jNwontCvb06TskldJZfYauZdFa6X+8Ba3G4ALqPVo9o=",
         "ref": "main",
-        "rev": "32816c563d6290a3db465f73d53c66b4dd938e3f",
+        "rev": "6c9d603ac5f469e2d0177a3af6f48b7dc9a8c392",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/alizdavoodi/secrets.git"
