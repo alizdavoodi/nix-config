@@ -11,7 +11,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-LRVLuCMdyzPqAMTKk1jYwWNXhJ07PT3+uftvWB/xRb0=",
+        "narHash": "sha256-tsZoQt98BjkEtxlboaYj/zYSaAIVnkCouY3C3wyKCUc=",
         "path": "./flakes/aichat",
         "type": "path"
       },
