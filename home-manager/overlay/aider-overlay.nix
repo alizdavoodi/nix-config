@@ -85,6 +85,33 @@ let
         ];
         meta.description = "Language pack for tree-sitter";
       };
+
+      # Add typing-inspection package from PyPI wheel
+      typing-inspection = self_.buildPythonPackage {
+        pname = "typing-inspection";
+        version = "0.4.0";
+        format = "wheel";
+
+        src = super.fetchurl {
+          url =
+            "https://files.pythonhosted.org/packages/py3/t/typing_inspection/typing_inspection-0.4.0-py3-none-any.whl";
+          sha256 =
+            "50e72559fcd2a6367a19f7a7e610e6afcb9fac940c650290eed893d61386832f";
+        };
+
+        propagatedBuildInputs = with self_; [
+          mypy-extensions
+          typing-extensions
+        ];
+
+        pythonImportsCheck = [ "typing_inspection" ];
+
+        meta = {
+          description = "Runtime typing introspection tools";
+          homepage = "https://github.com/pydantic/typing-inspection";
+          license = super.lib.licenses.mit;
+        };
+      };
     };
   };
 in {
@@ -94,8 +121,8 @@ in {
     src = super.fetchFromGitHub {
       owner = "Aider-AI";
       repo = "aider";
-      rev = "v0.79.2";
-      hash = "sha256-gVBfntKACLSHnbj8+F+/1TM91S6mEYbwz4ASHffQGLA=";
+      rev = "v0.80.1";
+      hash = "sha256-THJW3ZORXaRTeYE6Gmtu7Efi7F0VvU2wT7d/hQjhMzU=";
     };
 
     name = "${oldAttrs.pname}";
@@ -113,6 +140,7 @@ in {
         tree-sitter-embedded-template
         tree-sitter-yaml
         tree-sitter-language-pack
+        typing-inspection
       ]);
 
     nativeCheckInputs = [ ];
@@ -131,6 +159,7 @@ in {
       pip
       typing-extensions
       watchfiles
+      google-generativeai
     ]);
 
     postFixup = (oldAttrs.postFixup or "") + ''
