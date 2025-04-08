@@ -58,6 +58,7 @@
     sumneko-lua-language-server
     terraform-ls
     yarn
+    podman
 
     # Version Control and Git Tools
     delta
