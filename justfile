@@ -32,6 +32,7 @@ aws-export-creds:
     just -g aws-id
     just -g aws-export-creds
   fi
+  just -g aws-export-creds
 
 
 
