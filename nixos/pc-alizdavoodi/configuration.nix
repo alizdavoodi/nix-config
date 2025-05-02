@@ -190,12 +190,12 @@ in {
       firefox
       docker
       obsidian
-      #Python nvim
       ruff-lsp
       yarn
       ruff
       gcc
       gnumake
+      code-cursor
     ];
   };
 
