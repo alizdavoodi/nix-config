@@ -3,8 +3,8 @@
 {
   programs.neovim = {
     enable = true;
-    package = inputs.neovim-nightly.packages.${system}.default;
     vimAlias = true;
+    # package = inputs.neovim-nightly.packages.${system}.default;
   };
 
   xdg.configFile.nvim = {

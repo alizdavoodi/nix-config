@@ -1,4 +1,11 @@
-{ unstable-aider, pkgs, system, inputs, unstable, ... }:
+{
+  unstable-aider,
+  pkgs,
+  system,
+  inputs,
+  unstable,
+  ...
+}:
 
 {
   imports = [
@@ -43,9 +50,10 @@
     devbox
     nil
     nodePackages.prettier
+    # unstable.aider-chat-with-playwright
     unstable-aider
-    (python3.withPackages (ps:
-      with ps; [
+    (python3.withPackages (
+      ps: with ps; [
         boto3
         colorama
         cryptography
@@ -54,7 +62,8 @@
         packaging
         pyjwt
         pyyaml
-      ]))
+      ]
+    ))
     sumneko-lua-language-server
     terraform-ls
     yarn
@@ -91,9 +100,11 @@
 
     # Text Processing and Formatting
     jq
-    nixfmt
+    # nixfmt
     nodePackages.prettier
     ruff
+    nixd
+    nixfmt-rfc-style
 
     # Network Tools
     dogdns
@@ -118,7 +129,12 @@
     powerline-fonts
     unstable.claude-code
     (nerdfonts.override {
-      fonts = [ "Meslo" "Iosevka" "JetBrainsMono" "VictorMono" ];
+      fonts = [
+        "Meslo"
+        "Iosevka"
+        "JetBrainsMono"
+        "VictorMono"
+      ];
     })
 
     # Multimedia Tools
