@@ -54,7 +54,7 @@
       gramm2 = "aichat --model openai:o3-mini -r crystal-clear";
     };
 
-    initExtra =
+    initContent =
       ''
         export AWS_PROFILE=InfraOps-sympower
         export KUBECONFIG=~/.kube/kubeconfig
@@ -155,27 +155,27 @@
 
   programs.tmux = {
     enable = true;
-    # package = unstable.tmux;
+    package = unstable.tmux;
     extraConfig = builtins.readFile "${inputs.tmux-conf}/.tmux.conf";
-    shell = "${pkgs.zsh}/bin/zsh";
+    # shell = "${pkgs.zsh}/bin/zsh";
     plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-      }
+      # {
+      #   plugin = tmuxPlugins.resurrect;
+      #   extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      # }
       { plugin = tmuxPlugins.fzf-tmux-url; }
       { plugin = tmuxPlugins.tmux-fzf; }
       { plugin = tmuxPlugins.tmux-thumbs; }
       {
         plugin = tmuxPlugins.mkTmuxPlugin {
           pluginName = "tmux-session-wizard";
-          version = "0.1.0";
+          version = "1.5.0";
           rtpFilePath = "session-wizard.tmux";
 
           src = fetchFromGitHub {
             owner = "27medkamal";
             repo = "tmux-session-wizard";
-            rev = "96918e95b6fd2f73e29fb08bd6f371bec929df32";
+            rev = "v1.5.0";
             sha256 = "sha256-GJ9Jz4mpz8ov7kALEZdfxUZciERvuKYAG82LU8HQbUQ=";
           };
           meta = with lib; {

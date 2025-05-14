@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
+local act = wezterm.action
 local padding = 1
 
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
@@ -32,6 +33,7 @@ config.window_padding = {
 	right = padding,
 	bottom = padding,
 }
+config.window_decorations = "RESIZE"
 config.audible_bell = "Disabled"
 config.default_cursor_style = "SteadyBar"
 config.scrollback_lines = 50000
@@ -62,17 +64,76 @@ config.native_macos_fullscreen_mode = true
 
 -- Keybindings
 config.keys = {
+	{ key = "s", mods = "CTRL|SHIFT", action = workspace_switcher.switch_workspace() },
+	{ key = "t", mods = "LEADER|SHIFT", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	{ key = "q", mods = "CTRL|SHIFT", action = wezterm.action.QuickSelect },
+
 	{
-		key = "9",
-		mods = "ALT",
-		action = workspace_switcher.switch_workspace(),
+		key = "U",
+		mods = "LEADER",
+		action = wezterm.action.QuickSelectArgs({
+			label = "open url",
+			patterns = {
+				"https?://\\S+",
+			},
+			skip_action_on_paste = true,
+			action = wezterm.action_callback(function(window, pane)
+				local url = window:get_selection_text_for_pane(pane)
+				wezterm.log_info("opening: " .. url)
+				wezterm.open_with(url)
+			end),
+		}),
 	},
-	{ key = "q", mods = "LEADER|CTRL", action = wezterm.action.QuickSelect },
 
 	-- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
 	{ key = "LeftArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bb" }) },
 	-- Make Option-Right equivalent to Alt-f; forward-word
 	{ key = "RightArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bf" }) },
+
+	-- Custom: switch tabs with CTRL+h / CTRL+l
+	-- The first CTRL-h/CTRL-l entered after <leader> both
+	--   1. activate a temporary key-table (`tab_nav`) that stays
+	--      alive while you keep CTRL pressed (≈500 ms idle timeout)
+	--   2. perform the tab move once.
+	-- Subsequent CTRL-h/CTRL-l presses continue to run as long as
+	-- CTRL is held.  Releasing CTRL (or waiting >500 ms) exits the
+	-- key-table automatically, so the leader key is required again
+	-- for the next navigation series.
+	{
+		key = "h",
+		mods = "LEADER|CTRL",
+		action = act.Multiple({
+			act.ActivateKeyTable({
+				name = "tab_nav",
+				one_shot = false,
+				until_unknown = true,
+				timeout_milliseconds = 500,
+			}),
+			act.ActivateTabRelative(-1),
+		}),
+	},
+	{
+		key = "l",
+		mods = "LEADER|CTRL",
+		action = act.Multiple({
+			act.ActivateKeyTable({
+				name = "tab_nav",
+				one_shot = false,
+				until_unknown = true,
+				timeout_milliseconds = 500,
+			}),
+			act.ActivateTabRelative(1),
+		}),
+	},
+}
+
+-- Define key table for repeated tab navigation
+config.key_tables = {
+	tab_nav = {
+		{ key = "h", mods = "CTRL", action = act.ActivateTabRelative(-1) },
+		{ key = "l", mods = "CTRL", action = act.ActivateTabRelative(1) },
+		{ key = "Escape", action = "PopKeyTable" },
+	},
 }
 
 -- nvim plugin smart-splits

@@ -38,7 +38,6 @@
   };
   programs.lsd = {
     enable = true;
-    enableAliases = true;
   };
 
   xdg.enable = true;
@@ -118,24 +117,20 @@
 
     # Security Tools
     age
-    libfido2
-    sops
-    yubikey-manager
-    yubikey-personalization
+    unstable.libfido2
+    unstable.sops
+    unstable.yubikey-manager
+    unstable.yubikey-personalization
 
     # Terminal and Shell Enhancements
     inputs.aichat.packages.${system}.default
     krew
     powerline-fonts
     unstable.claude-code
-    (nerdfonts.override {
-      fonts = [
-        "Meslo"
-        "Iosevka"
-        "JetBrainsMono"
-        "VictorMono"
-      ];
-    })
+    nerd-fonts."meslo-lg"
+    nerd-fonts.iosevka
+    nerd-fonts."jetbrains-mono"
+    nerd-fonts."victor-mono"
 
     # Multimedia Tools
     sox
