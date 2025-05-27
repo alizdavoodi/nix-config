@@ -62,8 +62,16 @@ config.color_scheme = "Rosé Pine (Gogh)"
 -- Specific to macos
 config.native_macos_fullscreen_mode = true
 
+config.send_composed_key_when_left_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = false
+
 -- Keybindings
 config.keys = {
+	{
+		key = "Enter",
+		mods = "ALT",
+		action = wezterm.action.SendString("\x1b\r"),
+	},
 	{ key = "s", mods = "CTRL|SHIFT", action = workspace_switcher.switch_workspace() },
 	{ key = "t", mods = "LEADER|SHIFT", action = wezterm.action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 	{ key = "q", mods = "CTRL|SHIFT", action = wezterm.action.QuickSelect },
