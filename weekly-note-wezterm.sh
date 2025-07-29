@@ -40,37 +40,27 @@ list_output=$(wezterm cli list --format json)
 target_window_id=""
 
 if [ -n "$list_output" ] && [ "$list_output" != "[]" ] && [ "$list_output" != "null" ]; then
-    # Ensure it's valid JSON
-    if echo "$list_output" | jq empty > /dev/null 2>&1; then
-        # Extract window ID for any window in the weekly workspace
-        # This is a simpler jq query to avoid syntax issues
-        target_window_id=$(echo "$list_output" | jq -r '.[] | select(.workspace == "weekly") | .window_id' | head -n 1)
-    fi
+  # Ensure it's valid JSON
+  if echo "$list_output" | jq empty >/dev/null 2>&1; then
+    # Extract window ID for any window in the weekly workspace
+    # This is a simpler jq query to avoid syntax issues
+    target_window_id=$(echo "$list_output" | jq -r '.[] | select(.workspace == "weekly") | .window_id' | head -n 1)
+  fi
 fi
 
 new_pane_id=""
 
 if [ -n "$target_window_id" ] && [ "$target_window_id" != "null" ]; then
-    echo "Found existing window ID $target_window_id in workspace $workspace_name. Spawning new tab..."
-    new_pane_id=$(wezterm cli spawn --window-id "$target_window_id" --cwd "$note_dir" nvim +norm\ G "$full_path")
-else
-    echo "Workspace $workspace_name not found or has no windows. Spawning new window in $workspace_name..."
-    new_pane_id=$(wezterm cli spawn --new-window --workspace "$workspace_name" --cwd "$note_dir" nvim +norm\ G "$full_path")
-fi
+    echo "Found existing window ID $target_window_id in workspace $workspace_name."
+    # Extract the first pane ID in the window
+    existing_pane_id=$(echo "$list_output" | jq -r ".[] | select(.window_id == \"$target_window_id\") | .panes[0].pane_id" 2>/dev/null)
 
-if [ -n "$new_pane_id" ]; then
-    echo "Pane created with ID: $new_pane_id. Waiting a moment before activating..."
-    sleep 1.0  # Increased sleep time
-    echo "Activating pane $new_pane_id..."
-    wezterm cli activate-pane --pane-id "$new_pane_id"
-
-    # As a backup, also try using AppleScript to focus WezTerm
-    if command -v osascript &> /dev/null; then
-        echo "Also attempting to focus WezTerm using AppleScript..."
-        osascript -e 'tell application "WezTerm" to activate' &
+    if [ -n "$existing_pane_id" ] && [ "$existing_pane_id" != "null" ]; then
+      echo "Found existing pane ID $existing_pane_id in the window."
     fi
-
-    echo "Activation command sent for pane $new_pane_id."
 else
-    echo "Failed to create new pane."
+  echo "Workspace $workspace_name not found or has no windows. Spawning new window in $workspace_name..."
+  new_pane_id=$(wezterm cli spawn --new-window --workspace "$workspace_name" --cwd "$note_dir" nvim +norm\ G "$full_path")
 fi
+
+echo "Please switch to your WezTerm window to complete the process..."

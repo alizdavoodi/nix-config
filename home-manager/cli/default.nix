@@ -50,8 +50,8 @@
     };
 
     shellAliases = {
-      gramm = "aichat --model openai:o3-mini -r grammar-genie";
-      gramm2 = "aichat --model openai:o3-mini -r crystal-clear";
+      gramm = "aichat --model openai:o4-mini -r grammar-genie";
+      gramm2 = "aichat --model openai:o4-mini -r crystal-clear";
     };
 
     initContent =

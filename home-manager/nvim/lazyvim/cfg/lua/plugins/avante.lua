@@ -57,7 +57,7 @@ return {
     --   max_tokens = 4096,
     --   -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
     -- },
-    vendors = {
+    providers = {
       openrouter = {
         __inherited_from = "openai",
         endpoint = "https://openrouter.ai/api/v1",

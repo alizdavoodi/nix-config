@@ -6,17 +6,22 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
         # Define reusable variables
-        version = "v0.29.0";
+        version = "v0.30.0";
         repoOwner = "sigoden";
         repoName = "aichat";
-        repoUrl =
-          "https://github.com/${repoOwner}/${repoName}/releases/download/${version}";
+        repoUrl = "https://github.com/${repoOwner}/${repoName}/releases/download/${version}";
 
         # Map system types to the corresponding platform-specific suffix
         platformSuffixes = {
@@ -30,8 +35,7 @@
         assetHash = "sha256-+yfKDiD1AzPlwiZTQlWkEE7el93kFHrCULV9VBKAD0M=";
 
         # Select the appropriate platform suffix based on the system
-        platformSuffix =
-          platformSuffixes.${system} or (throw "Unsupported system: ${system}");
+        platformSuffix = platformSuffixes.${system} or (throw "Unsupported system: ${system}");
 
         # Construct the asset filename dynamically
         assetFilename = "aichat-${version}-${platformSuffix}.tar.gz";
@@ -61,18 +65,20 @@
             chmod +x $out/bin/aichat
           '';
         };
-      in {
-        packages = { default = aichat; };
+      in
+      {
+        packages = {
+          default = aichat;
+        };
 
         apps = {
           default = flake-utils.lib.mkApp {
             drv = aichat;
-            exePath =
-              "/bin/aichat"; # Adjust if the executable has a different name
+            exePath = "/bin/aichat"; # Adjust if the executable has a different name
           };
         };
 
         devShells.default = pkgs.mkShell { packages = [ aichat ]; };
-      });
+      }
+    );
 }
-
