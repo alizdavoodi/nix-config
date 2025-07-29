@@ -32,7 +32,7 @@
         };
 
         # Single hash for all assets
-        assetHash = "sha256-+yfKDiD1AzPlwiZTQlWkEE7el93kFHrCULV9VBKAD0M=";
+        assetHash = "sha256-aA027X97qKLCSQoJnfJsnaVElZA8J5VhCaich+657bM=";
 
         # Select the appropriate platform suffix based on the system
         platformSuffix = platformSuffixes.${system} or (throw "Unsupported system: ${system}");

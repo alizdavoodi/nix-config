@@ -1,5 +1,5 @@
 self: super: {
-  aider-chat = super.aider-chat-with-playwright.overridePythonAttrs (oldAttrs: {
+  aider-chat-with-playwright = super.aider-chat-with-playwright.overridePythonAttrs (oldAttrs: {
     src = super.fetchFromGitHub {
       owner = "Aider-AI";
       repo = "aider";

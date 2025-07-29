@@ -89,7 +89,7 @@
           inherit system;
           config.allowUnfree = true;
           overlays = [ (import ./home-manager/overlay/aider-overlay.nix) ];
-        }).aider-chat;
+        }).aider-chat-with-playwright;
 
       home-common =
         {

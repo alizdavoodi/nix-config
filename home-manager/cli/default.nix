@@ -25,6 +25,9 @@
       size = 50000;
       save = 50000;
       expireDuplicatesFirst = true;
+      share = false;
+      extended = true;
+      ignoreDups = true;
       append = true;
     };
     sessionVariables = {
@@ -166,26 +169,26 @@
       { plugin = tmuxPlugins.fzf-tmux-url; }
       { plugin = tmuxPlugins.tmux-fzf; }
       { plugin = tmuxPlugins.tmux-thumbs; }
-      {
-        plugin = tmuxPlugins.mkTmuxPlugin {
-          pluginName = "tmux-session-wizard";
-          version = "1.5.0";
-          rtpFilePath = "session-wizard.tmux";
-
-          src = fetchFromGitHub {
-            owner = "27medkamal";
-            repo = "tmux-session-wizard";
-            rev = "v1.5.0";
-            sha256 = "sha256-GJ9Jz4mpz8ov7kALEZdfxUZciERvuKYAG82LU8HQbUQ=";
-          };
-          meta = with lib; {
-            description = "Creating a new session from a list of recently accessed directories";
-            homepage = "https://github.com/27medkamal/tmux-session-wizard";
-            license = licenses.mit;
-            platforms = platforms.all;
-          };
-        };
-      }
+      # {
+      #   plugin = tmuxPlugins.mkTmuxPlugin {
+      #     pluginName = "tmux-session-wizard";
+      #     version = "1.5.0";
+      #     rtpFilePath = "session-wizard.tmux";
+      #
+      #     src = fetchFromGitHub {
+      #       owner = "27medkamal";
+      #       repo = "tmux-session-wizard";
+      #       rev = "v1.5.0";
+      #       sha256 = "sha256-GJ9Jz4mpz8ov7kALEZdfxUZciERvuKYAG82LU8HQbUQ=";
+      #     };
+      #     meta = with lib; {
+      #       description = "Creating a new session from a list of recently accessed directories";
+      #       homepage = "https://github.com/27medkamal/tmux-session-wizard";
+      #       license = licenses.mit;
+      #       platforms = platforms.all;
+      #     };
+      #   };
+      # }
     ];
   };
   programs.fzf = {
