@@ -3,8 +3,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "Aider-AI";
       repo = "aider";
-      rev = "v0.85.0";
-      hash = "sha256-ZYjDRu4dAOkmz+fMOG8KU6y27RI/t3iEoTSUebundqo=";
+      rev = "v0.86.0";
+      hash = "sha256-pqwsYObgio50rbuGGOmi7PlEMxdX75B1ONKs+VAJrd8=";
     };
   });
 }
