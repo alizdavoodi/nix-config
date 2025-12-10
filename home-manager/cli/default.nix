@@ -7,6 +7,16 @@
   ...
 }:
 {
+  home.packages = [
+    (pkgs.writeShellScriptBin "tree-me" (
+      builtins.readFile (
+        builtins.fetchurl {
+          url = "https://raw.githubusercontent.com/haacked/dotfiles/main/bin/tree-me";
+          sha256 = "1p8fdn50czhlnhsy7dq3kdmsj4qp9bx92ys7jfmd85x5cbgmk8z5";
+        }
+      )
+    ))
+  ];
 
   imports = [
     ./chatgpt-cli
@@ -53,13 +63,14 @@
     };
 
     shellAliases = {
-      gramm = "aichat --model openai:o4-mini -r grammar-genie";
-      gramm2 = "aichat --model openai:o4-mini -r crystal-clear";
+      gramm = "aichat --model openai:gpt-5.1 -r grammar-genie";
+      gramm2 = "aichat --model openai:gpt-5.1 -r crystal-clear";
     };
 
     initContent = ''
       export AWS_PROFILE=InfraOps-sympower
       export KUBECONFIG=~/.kube/kubeconfig
+      command -v tree-me &> /dev/null && source <(tree-me shellenv)
 
       [[ ! $(command -v nix) && -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]] && source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 

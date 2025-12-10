@@ -63,7 +63,7 @@
         pyyaml
       ]
     ))
-    sumneko-lua-language-server
+    lua-language-server
     terraform-ls
     yarn
     go
@@ -86,7 +86,7 @@
 
     # File and System Utilities
     comma
-    du-dust
+    dust
     extract_url
     fd
     lftp
@@ -126,7 +126,6 @@
     inputs.aichat.packages.${system}.default
     krew
     powerline-fonts
-    unstable.claude-code
     nerd-fonts."meslo-lg"
     nerd-fonts.iosevka
     nerd-fonts."jetbrains-mono"
