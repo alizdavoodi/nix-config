@@ -5,26 +5,18 @@
 
   programs.git = {
     enable = true;
-    userName = "Alireza Davoodi";
-    userEmail = "alizdavoodi@gmail.com";
     signing = {
       signByDefault = true;
       key = "0x7CC14AB284E9B569";
     };
-    delta = {
-      enable = true;
-      options = {
-        features = "decorations calochortus-lyallii";
-        syntax-theme = "Dracula";
-        line-numbers = true;
-        navigate = true;
-        side-by-side = true;
-      };
-    };
     ignores = [
       ".idea" # Jetbrains
     ];
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Alireza Davoodi";
+        email = "alizdavoodi@gmail.com";
+      };
       format.signoff = true;
       column.ui = "auto";
       branch.sort = "-committerdate";
@@ -84,5 +76,17 @@
         };
       }
     ];
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      features = "decorations calochortus-lyallii";
+      syntax-theme = "Dracula";
+      line-numbers = true;
+      navigate = true;
+      side-by-side = true;
+    };
   };
 }

@@ -18,13 +18,13 @@
   };
   inputs = {
     # Nixpkgs
-    # nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-25.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Home manager
-    # home-manager.url = "github:nix-community/home-manager/release-24.11";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    # home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     hardware.url = "github:nixos/nixos-hardware";
